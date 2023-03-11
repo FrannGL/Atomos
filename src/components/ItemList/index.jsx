@@ -9,7 +9,7 @@ export default function ItemList({ products }) {
         display: "flex",
         flexWrap: "wrap",
         justifyContent: "center",
-        gap: 5,
+        gap: 2,
         mt: 12,
         mb: 5,
       }}

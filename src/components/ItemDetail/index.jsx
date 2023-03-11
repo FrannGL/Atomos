@@ -2,6 +2,7 @@ import { Card, CardMedia, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { Button } from "@mui/material";
 import Footer from "../Footer";
+import { NavLink } from "react-router-dom";
 
 export default function ItemDetail({ product }) {
   console.log(product);
@@ -28,7 +29,7 @@ export default function ItemDetail({ product }) {
               component="img"
               sx={{ height: "100%" }}
               image={product?.image}
-              title="green iguana"
+              title={product?.name}
             />
           </Box>
 
@@ -116,9 +117,14 @@ export default function ItemDetail({ product }) {
                 mb: 2,
               }}
             >
-              <Button size="large" variant="outlined" color="primary">
-                Seguir Comprando
-              </Button>
+              <NavLink
+                to={"/"}
+                style={{ textDecoration: "none", color: "white" }}
+              >
+                <Button size="large" variant="outlined" color="primary">
+                  Seguir Comprando
+                </Button>
+              </NavLink>
             </Box>
           </Box>
         </Card>
