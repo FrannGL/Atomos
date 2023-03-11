@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Container } from "@mui/system";
 import ItemDetail from "../ItemDetail";
 
-export default function ItemDetailContainer({ categoryId, isCategoryRoute }) {
+export default function ItemDetailContainer({ id }) {
   const [product, setProduct] = useState(null);
 
   const getProduct = (id) => {
@@ -16,25 +16,10 @@ export default function ItemDetailContainer({ categoryId, isCategoryRoute }) {
   };
 
   useEffect(() => {
-    getProduct(categoryId).then((item) => {
+    getProduct(id).then((item) => {
       setProduct(item);
     });
-    // const productPromise = new Promise((resolve, reject) =>
-    //   setTimeout(() => resolve(products), 2000)
-    // );
-    // productPromise
-    //   .then((response) => {
-    //     if (isCategoryRoute) {
-    //       const productsFiltered = response.find(
-    //         (producto) => producto.id === categoryId
-    //       );
-    //       setProduct(productsFiltered);
-    //     } else {
-    //       setProduct(response);
-    //     }
-    //   })
-    //   .catch((err) => console.log(err));
-  }, [categoryId]);
+  }, [id]);
 
   return (
     <Container maxWidth={false} disableGutters>

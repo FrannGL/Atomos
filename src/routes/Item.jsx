@@ -1,13 +1,15 @@
 import { Container } from "@mui/material/";
 import NavBar from "../components/NavBar";
 import ItemDetailContainer from "../components/ItemDetailContainer";
+import { useParams } from "react-router-dom";
 
 function ItemRoot() {
+  const { id } = useParams();
   return (
     <>
       <NavBar />
       <Container maxWidth="xl" disableGutters>
-        <ItemDetailContainer />
+        <ItemDetailContainer id={id} />
       </Container>
     </>
   );
