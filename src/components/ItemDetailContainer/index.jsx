@@ -2,6 +2,7 @@ import products from "../../mocks/products";
 import { useEffect, useState } from "react";
 import { Container } from "@mui/system";
 import ItemDetail from "../ItemDetail";
+import CardItemSkeleton from "../CardItemDetailSkeleton";
 
 export default function ItemDetailContainer({ id }) {
   const [product, setProduct] = useState(null);
@@ -11,7 +12,7 @@ export default function ItemDetailContainer({ id }) {
       const productoFiltrado = products.find((p) => p.id === parseInt(id));
       setTimeout(() => {
         resolve(productoFiltrado);
-      }, 1000);
+      }, 2000);
     });
   };
 

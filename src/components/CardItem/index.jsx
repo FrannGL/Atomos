@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
-export default function Item({ product }) {
+export default function CardItem({ product }) {
   return (
     <Card
       sx={{
