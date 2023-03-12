@@ -35,13 +35,10 @@ export default function ItemList({ products }) {
       }}
     >
       {loading
-        ? [1, 2, 3, 4, 5, 6].map((item) => <CardItemSkeleton key={item} />)
+        ? [1, 2, 3, 4].map((item) => <CardItemSkeleton key={item} />)
         : products.map((product, index) => (
             <CardItem product={product} key={product.id} component="li" />
           ))}
-      {/* {products.map((product, index) => (
-        <CardItem product={product} key={product.id} component="li" />
-      ))} */}
     </Box>
   );
 }

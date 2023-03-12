@@ -13,7 +13,6 @@ import { useState } from "react";
 import NavListDrawe from "../NavListDrawer";
 import { Box } from "@mui/system";
 import CartWidget from "../CartWidget/index";
-import "./NavBar.css";
 import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
@@ -34,7 +33,7 @@ export default function NavBar() {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Button>
             <NavLink to={"/"}>
-              <img src={logo} className="logo" />
+              <img src={logo} className="logo" style={{ width: "50px" }} />
             </NavLink>
           </Button>
           {/* --- VISTA MOBILE ---  */}

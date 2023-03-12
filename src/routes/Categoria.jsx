@@ -4,7 +4,7 @@ import ItemListContainer from "../components/ItemListContainer";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 
-function Root() {
+function Categoria() {
   const params = useParams();
   const isCategoryRoute = Boolean(params.id);
 
@@ -22,4 +22,4 @@ function Root() {
   );
 }
 
-export default Root;
+export default Categoria;

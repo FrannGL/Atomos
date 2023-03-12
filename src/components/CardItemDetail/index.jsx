@@ -2,17 +2,19 @@ import {
   Box,
   Button,
   Card,
-  CardContent,
   CardMedia,
+  IconButton,
   Typography,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import ItemCount from "../ItemCount";
 
 export default function CardItemDetail({ product }) {
   return (
     <Card
       sx={{
-        my: 12,
+        mt: 10,
+        mb: 4,
         width: "90%",
         height: 400,
         display: "flex",
@@ -82,6 +84,10 @@ export default function CardItemDetail({ product }) {
           </Typography>
         </Box>
 
+        {/* --- CONTENEDOR CONTROLES --- */}
+
+        <ItemCount />
+
         {/* --- CONTENEDOR CARRITO ---  */}
         <Box
           sx={{
@@ -90,6 +96,7 @@ export default function CardItemDetail({ product }) {
             display: "flex",
             justifyContent: "start",
             alignItems: "center",
+            gap: 5,
             mr: 2,
             mb: 2,
           }}
@@ -97,21 +104,6 @@ export default function CardItemDetail({ product }) {
           <Button size="large" variant="contained" color="primary">
             Agregar al carrito
           </Button>
-        </Box>
-
-        {/* --- CONTENEDOR SEGUIR COMPRA --- */}
-        <Box
-          sx={{
-            width: "97%",
-            height: "auto",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "center",
-            mt: 5,
-            mr: 2,
-            mb: 2,
-          }}
-        >
           <NavLink to={"/"} style={{ textDecoration: "none", color: "white" }}>
             <Button size="large" variant="outlined" color="primary">
               Seguir Comprando
