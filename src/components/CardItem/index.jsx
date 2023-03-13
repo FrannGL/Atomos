@@ -102,7 +102,7 @@ export default function CardItem({ product }) {
         </Button>
         <Button size="small" variant="outlined" color="base">
           <NavLink
-            to={`/catalogo/${product.id}`}
+            to={`/descripcion/${product.id}`}
             style={{ textDecoration: "none", color: "white" }}
           >
             Ver Más

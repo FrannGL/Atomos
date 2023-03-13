@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Categoria from "./routes/Categoria";
+import Categorias from "./routes/Categorias";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -8,20 +8,21 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Catalogo from "./routes/Catalogo";
+import Descripcion from "./routes/Descripcion";
+import Inicio from "./routes/Inicio";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Categoria />,
+    element: <Inicio />,
   },
   {
     path: "/category/:id",
-    element: <Categoria />,
+    element: <Categorias />,
   },
   {
-    path: "/catalogo/:id",
-    element: <Catalogo />,
+    path: "/descripcion/:id",
+    element: <Descripcion />,
   },
   {
     path: "/cart",

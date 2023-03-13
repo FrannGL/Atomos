@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 import ItemDetailContainer from "../components/ItemDetailContainer";
 import { useParams } from "react-router-dom";
 
-function Catalogo() {
+function Descripcion() {
   const { id } = useParams();
   return (
     <>
@@ -15,4 +15,4 @@ function Catalogo() {
   );
 }
 
-export default Catalogo;
+export default Descripcion;

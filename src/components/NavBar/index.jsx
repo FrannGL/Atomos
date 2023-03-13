@@ -104,7 +104,7 @@ export default function NavBar() {
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <NavLink
-                  to={"/"}
+                  to={"/category/:"}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   VER TODO
@@ -115,10 +115,10 @@ export default function NavBar() {
 
           {/* --- MENU DERECHO --- */}
 
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button color="inherit">LOGIN</Button>
             <Button color="inherit">REGISTER</Button>
-          </Box>
+          </Box> */}
           <CartWidget />
         </Toolbar>
       </AppBar>
