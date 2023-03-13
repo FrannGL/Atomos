@@ -1,6 +1,7 @@
 import { Button, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import { NavLink } from "react-router-dom";
+
 import "./estilos.css";
 
 export default function Background() {
@@ -10,7 +11,7 @@ export default function Background() {
         maxWidth="xl"
         disableGutters
         sx={{ width: "100%", height: "100vh" }}
-        className="div"
+        className="wrapper"
       >
         <Box
           sx={{
@@ -24,13 +25,7 @@ export default function Background() {
             height: "100%",
           }}
         >
-          <Typography
-            variant="h1"
-            color="white"
-            sx={{ fontWeight: "bold", letterSpacing: 5 }}
-          >
-            TIENDA ONLINE
-          </Typography>
+          <h1>TIENDA ONLINE</h1>
           <Typography variant="h6" color="white" sx={{ letterSpacing: 5 }}>
             CALIDAD EN CERVEZAS ARTESANALES
           </Typography>

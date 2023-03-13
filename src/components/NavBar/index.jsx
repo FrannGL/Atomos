@@ -52,14 +52,6 @@ export default function NavBar() {
           <Box
             sx={{ display: { xs: "none", sm: "block" }, ml: 3, flexGrow: 1 }}
           >
-            {/* <Button color="inherit">
-              <NavLink
-                to={"/"}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                INICIO
-              </NavLink>
-            </Button> */}
             <Button
               color="base"
               id="basic-button"
@@ -113,13 +105,24 @@ export default function NavBar() {
               </MenuItem>
             </Menu>
             <NavLink style={{ textDecoration: "none", color: "white" }}>
-              <Button color="base">RESERVAS</Button>
+              <Button color="base" sx={{ fontWeight: 200 }}>
+                RESERVAS
+              </Button>
             </NavLink>
             <NavLink style={{ textDecoration: "none", color: "white" }}>
-              <Button color="base">SUCURSALES</Button>
+              <Button color="base" sx={{ fontWeight: 200 }}>
+                SUCURSALES
+              </Button>
             </NavLink>
-            <NavLink style={{ textDecoration: "none", color: "white" }}>
-              <Button color="base">NOSOTROS</Button>
+            <NavLink
+              style={{
+                textDecoration: "none",
+                color: "white",
+              }}
+            >
+              <Button color="base" sx={{ fontWeight: 200 }}>
+                NOSOTROS
+              </Button>
             </NavLink>
           </Box>
 

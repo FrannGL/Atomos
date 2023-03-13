@@ -1,5 +1,14 @@
-.div {
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
+
+.wrapper {
   background-image: url(../../../public//assets//images//back2.jpg);
   background-position: center;
   background-size: cover;
+}
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  font-size: 100px;
+  letter-spacing: 10px;
+  color: #fff;
 }
