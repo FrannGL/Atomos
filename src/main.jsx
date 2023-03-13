@@ -10,11 +10,16 @@ import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Descripcion from "./routes/Descripcion";
 import Inicio from "./routes/Inicio";
+import Productos from "./routes/Productos";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Inicio />,
+  },
+  {
+    path: "/products",
+    element: <Productos />,
   },
   {
     path: "/category/:id",

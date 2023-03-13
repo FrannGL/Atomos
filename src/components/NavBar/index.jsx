@@ -14,6 +14,7 @@ import NavListDrawe from "../NavListDrawer";
 import { Box } from "@mui/system";
 import CartWidget from "../CartWidget/index";
 import { NavLink } from "react-router-dom";
+import SearchInput from "../SearchInput";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -33,7 +34,7 @@ export default function NavBar() {
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <Button>
             <NavLink to={"/"}>
-              <img src={logo} className="logo" style={{ width: "50px" }} />
+              <img src={logo} className="logo" style={{ width: "150px" }} />
             </NavLink>
           </Button>
           {/* --- VISTA MOBILE ---  */}
@@ -67,7 +68,7 @@ export default function NavBar() {
               aria-expanded={openMenu ? "true" : undefined}
               onClick={handleClick}
             >
-              CATALOGO
+              NUESTAS CERVEZAS
             </Button>
             <Menu
               id="basic-menu"
@@ -104,21 +105,27 @@ export default function NavBar() {
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <NavLink
-                  to={"/category/:"}
+                  to={"/products"}
                   style={{ textDecoration: "none", color: "black" }}
                 >
                   VER TODO
                 </NavLink>
               </MenuItem>
             </Menu>
+            <NavLink style={{ textDecoration: "none", color: "white" }}>
+              <Button color="base">RESERVAS</Button>
+            </NavLink>
+            <NavLink style={{ textDecoration: "none", color: "white" }}>
+              <Button color="base">SUCURSALES</Button>
+            </NavLink>
+            <NavLink style={{ textDecoration: "none", color: "white" }}>
+              <Button color="base">NOSOTROS</Button>
+            </NavLink>
           </Box>
 
           {/* --- MENU DERECHO --- */}
 
-          {/* <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <Button color="inherit">LOGIN</Button>
-            <Button color="inherit">REGISTER</Button>
-          </Box> */}
+          <SearchInput />
           <CartWidget />
         </Toolbar>
       </AppBar>

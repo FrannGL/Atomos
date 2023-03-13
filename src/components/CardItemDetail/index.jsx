@@ -13,7 +13,7 @@ export default function CardItemDetail({ product }) {
   return (
     <Card
       sx={{
-        mt: 10,
+        mt: 11,
         mb: 4,
         width: "90%",
         height: 400,
@@ -104,7 +104,10 @@ export default function CardItemDetail({ product }) {
           <Button size="large" variant="contained" color="primary">
             Agregar al carrito
           </Button>
-          <NavLink to={"/"} style={{ textDecoration: "none", color: "white" }}>
+          <NavLink
+            to={"/products"}
+            style={{ textDecoration: "none", color: "white" }}
+          >
             <Button size="large" variant="outlined" color="primary">
               Seguir Comprando
             </Button>
