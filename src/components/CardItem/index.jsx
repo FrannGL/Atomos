@@ -8,7 +8,6 @@ import {
   Typography,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import CardItemInfo from "../CardItemInfo";
 import { useParams } from "react-router-dom";
 
 export default function CardItem({ product }) {
@@ -54,8 +53,7 @@ export default function CardItem({ product }) {
             display: "flex",
           }}
         >
-          <CardItemInfo products={product} />
-          {/* <CardMedia
+          <CardMedia
             image={product.typeimage}
             sx={{
               border: 1,
@@ -86,7 +84,7 @@ export default function CardItem({ product }) {
             >
               {product.ibu} - {product.abv}
             </Box>
-          </Box> */}
+          </Box>
         </Box>
         <Typography
           variant="body2"
