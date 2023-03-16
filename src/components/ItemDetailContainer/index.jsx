@@ -2,7 +2,6 @@ import products from "../../mocks/products";
 import { useEffect, useState } from "react";
 import { Container } from "@mui/system";
 import ItemDetail from "../ItemDetail";
-import CardItemSkeleton from "../CardItemDetailSkeleton";
 
 export default function ItemDetailContainer({ id }) {
   const [product, setProduct] = useState(null);

@@ -24,7 +24,10 @@ export default function ItemCount() {
       </Box>
       <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>{count}</Typography>
       <Box sx={{ border: 1, backgroundColor: "#040b16" }}>
-        <IconButton color="base" onClick={() => setCount(count - 1)}>
+        <IconButton
+          color="base"
+          onClick={() => (count > 0 ? setCount(count - 1) : setCount(0))}
+        >
           <RemoveIcon />
         </IconButton>
       </Box>

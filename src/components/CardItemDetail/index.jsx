@@ -1,13 +1,8 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardMedia,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import ItemCount from "../ItemCount";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 export default function CardItemDetail({ product }) {
   return (
@@ -108,8 +103,23 @@ export default function CardItemDetail({ product }) {
             to={"/products"}
             style={{ textDecoration: "none", color: "white" }}
           >
-            <Button size="large" variant="outlined" color="primary">
+            <Button
+              size="large"
+              variant="outlined"
+              color="info"
+              startIcon={<AddShoppingCartIcon />}
+            >
               Seguir Comprando
+            </Button>
+          </NavLink>
+          <NavLink to={""} style={{ textDecoration: "none", color: "white" }}>
+            <Button
+              size="large"
+              variant="outlined"
+              color="success"
+              startIcon={<CheckCircleIcon />}
+            >
+              Finalizar Compra
             </Button>
           </NavLink>
         </Box>

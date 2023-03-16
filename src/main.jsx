@@ -11,31 +11,40 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Descripcion from "./routes/Descripcion";
 import Inicio from "./routes/Inicio";
 import Productos from "./routes/Productos";
+import Layout from "./layout";
+import PageError from "./routes/Page-Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Inicio />,
-  },
-  {
-    path: "/products",
-    element: <Productos />,
-  },
-  {
-    path: "/category/:id",
-    element: <Categorias />,
-  },
-  {
-    path: "/descripcion/:id",
-    element: <Descripcion />,
-  },
-  {
-    path: "/cart",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "/checkout",
-    element: <div>Hello world!</div>,
+    errorElement: <PageError />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Inicio />,
+      },
+      {
+        path: "/products",
+        element: <Productos />,
+      },
+      {
+        path: "/category/:id",
+        element: <Categorias />,
+      },
+      {
+        path: "/descripcion/:id",
+        element: <Descripcion />,
+      },
+      {
+        path: "/cart",
+        element: <div>Hello world!</div>,
+      },
+      {
+        path: "/checkout",
+        element: <div>Hello world!</div>,
+      },
+    ],
   },
 ]);
 

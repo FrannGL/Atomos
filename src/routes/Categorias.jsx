@@ -1,5 +1,4 @@
 import { Container } from "@mui/material/";
-import NavBar from "../components/NavBar";
 import ItemListContainer from "../components/ItemListContainer";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -10,7 +9,6 @@ function Categorias() {
 
   return (
     <>
-      <NavBar />
       <Container maxWidth="xl" disableGutters>
         <ItemListContainer
           isCategoryRoute={isCategoryRoute}

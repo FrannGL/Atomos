@@ -60,7 +60,7 @@ export default function NavBar() {
               aria-expanded={openMenu ? "true" : undefined}
               onClick={handleClick}
             >
-              NUESTAS CERVEZAS
+              NUESTRAS CERVEZAS
             </Button>
             <Menu
               id="basic-menu"
