@@ -1,5 +1,5 @@
-import { Card, Skeleton, Stack } from "@mui/material";
-import { Box } from "@mui/system";
+// COMPONENTES MATERIAL-UI
+import { Card, Skeleton, Stack, Box } from "@mui/material";
 
 export default function CardItemDetailSkeleton() {
   return (

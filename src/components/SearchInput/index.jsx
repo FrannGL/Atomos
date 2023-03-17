@@ -1,10 +1,10 @@
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
+// COMPONENTES MATERIAL-UI
+import { Paper, InputBase, Divider, IconButton } from "@mui/material";
+
+// ICONOS MATERIAL-UI
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function CustomizedInputBase() {
+export default function SearchInput() {
   return (
     <Paper
       component="form"

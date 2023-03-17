@@ -1,17 +1,22 @@
+// COMPONENTES MATERIAL-UI
 import { Container } from "@mui/system";
-import Footer from "../Footer";
-import CardItemDetailSkeleton from "../CardItemDetailSkeleton";
+
+// HOOKS REACT
 import { useEffect, useState } from "react";
+
+// COMPONENTES PROPIOS
 import CardItemDetail from "../CardItemDetail";
+import CardItemDetailSkeleton from "../CardItemDetailSkeleton";
+import Footer from "../Footer";
 
 export default function ItemDetail({ product }) {
   const [loading, setLoading] = useState(true);
 
-  const famePromise = () => new Promise((resolve) => setTimeout(resolve, 2000));
+  const fakePromise = () => new Promise((resolve) => setTimeout(resolve, 2000));
 
   const data = async () => {
     try {
-      await famePromise();
+      await fakePromise();
     } catch (err) {
       console.log(err);
     } finally {

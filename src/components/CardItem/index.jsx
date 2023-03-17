@@ -1,3 +1,4 @@
+// COMPONENTES MATERIAL-UI
 import {
   Box,
   Button,
@@ -7,6 +8,8 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+
+// HOOKS REACT
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
 

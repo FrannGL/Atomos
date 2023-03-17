@@ -1,18 +1,24 @@
+// REACT & REACT-ROUTER-DOM
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Categorias from "./routes/Categorias";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
+// COMPONENTES MATERIAL-UI
+import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
-import { CssBaseline, createTheme, ThemeProvider } from "@mui/material";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Descripcion from "./routes/Descripcion";
+
+// RUTAS
 import Inicio from "./routes/Inicio";
 import Productos from "./routes/Productos";
-import Layout from "./layout";
+import Categorias from "./routes/Categorias";
+import Descripcion from "./routes/Descripcion";
 import PageError from "./routes/Page-Error";
+
+// CONTEXT
+import Layout from "./layout";
 
 const router = createBrowserRouter([
   {

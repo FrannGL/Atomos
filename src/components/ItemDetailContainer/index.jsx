@@ -1,6 +1,13 @@
-import products from "../../mocks/products";
-import { useEffect, useState } from "react";
+// COMPONENTES MATERIAL-UI
 import { Container } from "@mui/system";
+
+// MOCKS PRODUCTS
+import products from "../../mocks/products";
+
+// HOOKS REACT
+import { useEffect, useState } from "react";
+
+// COMPONENTES PROPIOS
 import ItemDetail from "../ItemDetail";
 
 export default function ItemDetailContainer({ id }) {

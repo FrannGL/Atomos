@@ -1,7 +1,11 @@
+// COMPONENTES MATERIAL-UI
 import { Button, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
+
+// HOOKS REACT
 import { NavLink } from "react-router-dom";
 
+// HOJA DE ESTILOS PROPIA
 import "./estilos.css";
 
 export default function Background() {

@@ -1,8 +1,8 @@
+// COMPONENTES MATERIAL-UI
+import { Box, styled, Badge, IconButton } from "@mui/material";
+
+// ICONOS MATERIAL-UI
 import LocalMallIcon from "@mui/icons-material/LocalMall";
-import Badge from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
-import IconButton from "@mui/material/IconButton";
-import { Box } from "@mui/material";
 
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {

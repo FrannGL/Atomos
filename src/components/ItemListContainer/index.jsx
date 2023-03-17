@@ -1,7 +1,14 @@
-import products from "../../mocks/products";
-import ItemList from "../ItemList/index";
-import { useEffect, useState } from "react";
+// COMPONENTES MATERIAL-UI
 import { Container } from "@mui/material";
+
+// MOCKS PRODUCTS
+import products from "../../mocks/products";
+
+// HOOKS REACT
+import { useEffect, useState } from "react";
+
+// COMPONENTES PROPIOS
+import ItemList from "../ItemList/index";
 
 export default function ItemListContainer({ categoryId, isCategoryRoute }) {
   const [productos, setProductos] = useState([]);

@@ -1,6 +1,11 @@
+// COMPONENTES MATERIAL-UI
 import { Box, IconButton, Typography } from "@mui/material";
+
+// ICONOS MATERIAL-UI
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+
+// HOOKS REACT
 import { useState } from "react";
 
 export default function ItemCount() {

@@ -1,8 +1,15 @@
+// COMPONENTES MATERIAL-UI
 import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import ItemCount from "../ItemCount";
+
+// ICONOS MATERIAL-UI
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+
+// HOOKS REACT
+import { NavLink } from "react-router-dom";
+
+// COMPONENTES PROPIOS
+import ItemCount from "../ItemCount";
 
 export default function CardItemDetail({ product }) {
   return (
@@ -43,6 +50,55 @@ export default function CardItemDetail({ product }) {
           <Typography align="center" variant="h4">
             {product?.name}
           </Typography>
+
+          {/* --- CONTENEDOR DETALLES DEL PRODUCTO --- */}
+          <Card
+            sx={{
+              width: 250,
+              height: 60,
+              mx: "auto",
+              mt: 2,
+              color: "black",
+              display: "flex",
+              fontSize: 20,
+            }}
+          >
+            <CardMedia
+              image={product?.typeimage}
+              sx={{
+                border: 1,
+                width: 60,
+                height: "100%",
+                backgroundColor: "primary.main",
+              }}
+            ></CardMedia>
+            <Box sx={{ width: "100%" }}>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "50%",
+                  border: 1,
+                  textAlign: "center",
+                  textTransform: "uppercase",
+                  letterSpacing: 3,
+                  fontFamily: "initial",
+                  fontWeight: "bold",
+                }}
+              >
+                {product?.category}
+              </Box>
+              <Box
+                sx={{
+                  width: "100%",
+                  height: "50%",
+                  border: 1,
+                  textAlign: "center",
+                }}
+              >
+                {product?.ibu} - {product?.abv}
+              </Box>
+            </Box>
+          </Card>
         </Box>
 
         {/* --- CONTENEDOR PRECIO --- */}
@@ -74,7 +130,7 @@ export default function CardItemDetail({ product }) {
             mb: 2,
           }}
         >
-          <Typography align="justify" variant="h6">
+          <Typography align="justify" variant="h6" fontSize="1.1rem">
             {product?.description}
           </Typography>
         </Box>

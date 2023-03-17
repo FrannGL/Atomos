@@ -1,16 +1,21 @@
+// COMPONENTES MATERIAL-UI
 import { Box } from "@mui/material";
+
+// HOOKS REACT
 import { useEffect, useState } from "react";
+
+// COMPONENTES PROPIOS
 import CardItem from "../CardItem/index";
 import CardItemSkeleton from "../CardItemSkeleton";
 
 export default function ItemList({ products }) {
   const [loading, setLoading] = useState(true);
 
-  const famePromise = () => new Promise((resolve) => setTimeout(resolve, 2000));
+  const fakePromise = () => new Promise((resolve) => setTimeout(resolve, 2000));
 
-  const data = async () => {
+  const getProducts = async () => {
     try {
-      await famePromise();
+      await fakePromise();
     } catch (err) {
       console.log(err);
     } finally {
@@ -19,7 +24,7 @@ export default function ItemList({ products }) {
   };
 
   useEffect(() => {
-    data();
+    getProducts();
   }, []);
 
   return (

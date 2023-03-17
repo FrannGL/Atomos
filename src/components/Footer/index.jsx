@@ -1,16 +1,14 @@
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+// COMPONENTES MATERIAL UI
+import { Box, Container, Grid, IconButton, Typography } from "@mui/material";
+
+// ICONOS MATERIAL UI
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
+// HOOKS REACT
 import { NavLink } from "react-router-dom";
 
 export default function Footer() {

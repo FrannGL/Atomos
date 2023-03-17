@@ -1,3 +1,4 @@
+// COMPONENTES MATERIAL-UI
 import {
   AppBar,
   Button,
@@ -6,24 +7,33 @@ import {
   Menu,
   MenuItem,
   Toolbar,
+  Box,
 } from "@mui/material";
-import logo from "../../../public/assets/images/logo-white.png";
+
+// ICONOS MATERIAL UI
 import MenuIcon from "@mui/icons-material/Menu";
+
+// HOOKS REACT
 import { useState } from "react";
-import NavListDrawe from "../NavListDrawer";
-import { Box } from "@mui/system";
-import CartWidget from "../CartWidget/index";
 import { NavLink } from "react-router-dom";
+
+// COMPONENTES PROPIOS
+import NavListDrawe from "../NavListDrawer";
+import CartWidget from "../CartWidget/index";
 import SearchInput from "../SearchInput";
+
+// LOGO
+import logo from "../../../public/assets/images/logo-white.png";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
-
   const [anchorEl, setAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
