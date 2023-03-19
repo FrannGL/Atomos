@@ -16,11 +16,10 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        width: "100%",
-        height: "auto",
         backgroundColor: "primary.main",
         paddingTop: "1rem",
         paddingBottom: "1rem",
+        mt: 1,
       }}
     >
       <Container maxWidth="lg">

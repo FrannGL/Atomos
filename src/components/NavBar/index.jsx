@@ -114,7 +114,10 @@ export default function NavBar() {
                 </NavLink>
               </MenuItem>
             </Menu>
-            <NavLink style={{ textDecoration: "none", color: "white" }}>
+            <NavLink
+              to={"/reservas"}
+              style={{ textDecoration: "none", color: "white" }}
+            >
               <Button color="base" sx={{ fontWeight: 200 }}>
                 RESERVAS
               </Button>
@@ -125,6 +128,7 @@ export default function NavBar() {
               </Button>
             </NavLink>
             <NavLink
+              to={"/nosotros"}
               style={{
                 textDecoration: "none",
                 color: "white",

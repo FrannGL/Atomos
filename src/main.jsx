@@ -16,9 +16,11 @@ import Productos from "./routes/Productos";
 import Categorias from "./routes/Categorias";
 import Descripcion from "./routes/Descripcion";
 import PageError from "./routes/Page-Error";
+import Reservas from "./routes/Reservas";
 
 // CONTEXT
 import Layout from "./layout";
+import Nosotros from "./routes/Nosotros";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,18 @@ const router = createBrowserRouter([
       {
         path: "/descripcion/:id",
         element: <Descripcion />,
+      },
+      {
+        path: "/reservas",
+        element: <Reservas />,
+      },
+      {
+        path: "/sucursales",
+        element: "",
+      },
+      {
+        path: "/nosotros",
+        element: <Nosotros />,
       },
       {
         path: "/cart",

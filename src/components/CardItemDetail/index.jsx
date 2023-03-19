@@ -1,17 +1,36 @@
 // COMPONENTES MATERIAL-UI
-import { Box, Button, Card, CardMedia, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardMedia,
+  IconButton,
+  Popper,
+  Typography,
+} from "@mui/material";
 
 // ICONOS MATERIAL-UI
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 // COMPONENTES PROPIOS
 import ItemCount from "../ItemCount";
 
 export default function CardItemDetail({ product }) {
+  const [openMenu, setOpenMenu] = useState(null);
+
+  const handleClick = (event) => {
+    setOpenMenu(openMenu ? null : event.currentTarget);
+  };
+
+  const open = Boolean(openMenu);
+  const id = open ? "simple-popper" : undefined;
+
   return (
     <Card
       sx={{
@@ -53,6 +72,7 @@ export default function CardItemDetail({ product }) {
 
           {/* --- CONTENEDOR DETALLES DEL PRODUCTO --- */}
           <Card
+            variant="outlined"
             sx={{
               width: 250,
               height: 60,
@@ -93,11 +113,40 @@ export default function CardItemDetail({ product }) {
                   height: "50%",
                   border: 1,
                   textAlign: "center",
+                  fontSize: 18.5,
                 }}
               >
-                {product?.ibu} - {product?.abv}
+                {product?.abv} - {product?.ibu}
               </Box>
             </Box>
+            <IconButton
+              aria-describedby={id}
+              type="button"
+              onClick={handleClick}
+            >
+              <HelpOutlineIcon />
+            </IconButton>
+            <Popper id={id} open={open} anchorEl={openMenu}>
+              <Box
+                sx={{
+                  border: 1,
+                  p: 1,
+                  bgcolor: "background.paper",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography variant="p">
+                  ABV: Alcohol By Volume, expresa el porcentaje de alcohol por
+                  volumen de cerveza.
+                </Typography>
+                <br />
+                <Typography variant="p">
+                  IBU: International Bitterness Unit, es la forma de medir el
+                  grado de amargor aportado por el lúpulo.
+                </Typography>
+              </Box>
+            </Popper>
           </Card>
         </Box>
 
