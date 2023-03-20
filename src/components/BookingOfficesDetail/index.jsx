@@ -1,6 +1,8 @@
 import { Box, List, ListItem, Paper, Typography } from "@mui/material";
 
-export default function BookingOfficesDetail() {
+export default function BookingOfficesDetail({ item }) {
+  console.log(item);
+
   return (
     <>
       <Paper

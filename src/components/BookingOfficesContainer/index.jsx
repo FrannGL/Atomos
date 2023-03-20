@@ -70,7 +70,7 @@ export default function BookingOfficesContainer() {
       {loading
         ? console.log("cargando...")
         : offices.map((item) => {
-            console.log(item);
+            <BookingOfficesDetail item={item} />;
           })}
 
       {/* <Paper
