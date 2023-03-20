@@ -35,8 +35,9 @@ export default function ItemList({ products }) {
         flexWrap: "wrap",
         justifyContent: "center",
         gap: 2,
-        mt: 12,
-        mb: 5,
+        paddingTop: 11,
+        paddingBottom: 5,
+        backgroundColor: "#ededed",
       }}
     >
       {loading

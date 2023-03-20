@@ -38,6 +38,7 @@ export default function ItemDetail({ product }) {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          backgroundColor: "#ededed",
         }}
       >
         {loading ? (

@@ -118,14 +118,10 @@ export default function NavBar() {
               to={"/reservas"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Button color="base" sx={{ fontWeight: 200 }}>
-                RESERVAS
-              </Button>
+              <Button color="base">RESERVAS</Button>
             </NavLink>
             <NavLink style={{ textDecoration: "none", color: "white" }}>
-              <Button color="base" sx={{ fontWeight: 200 }}>
-                SUCURSALES
-              </Button>
+              <Button color="base">SUCURSALES</Button>
             </NavLink>
             <NavLink
               to={"/nosotros"}
@@ -134,9 +130,7 @@ export default function NavBar() {
                 color: "white",
               }}
             >
-              <Button color="base" sx={{ fontWeight: 200 }}>
-                NOSOTROS
-              </Button>
+              <Button color="base">NOSOTROS</Button>
             </NavLink>
           </Box>
 

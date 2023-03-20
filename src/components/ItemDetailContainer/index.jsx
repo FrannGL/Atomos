@@ -29,7 +29,11 @@ export default function ItemDetailContainer({ id }) {
   }, [id]);
 
   return (
-    <Container maxWidth={false} disableGutters>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{ backgroundColor: "#ededed" }}
+    >
       <ItemDetail product={product} />
     </Container>
   );

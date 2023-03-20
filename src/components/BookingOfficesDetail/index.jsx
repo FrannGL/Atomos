@@ -1,58 +1,11 @@
-import { Box, Chip, List, ListItem, Paper, Typography } from "@mui/material";
+import { Box, List, ListItem, Paper, Typography } from "@mui/material";
 
-// ICONOS MATERIAL-UI
-import CheckIcon from "@mui/icons-material/Check";
+export default function BookingOfficesDetail(item) {
+  console.log(item);
 
-import Footer from "../Footer";
-import BookingOfficesDetail from "../BookingOfficesDetail";
-export default function BookingOfficesContainer({ offices, loading }) {
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 4,
-        }}
-      >
-        <Chip
-          icon={<CheckIcon />}
-          label="Barriles"
-          variant="outlined"
-          color="success"
-          sx={{ p: 2.5, fontSize: "1.1rem" }}
-        ></Chip>
-        <Chip
-          icon={<CheckIcon />}
-          label="Alquiler de Equipo"
-          variant="outlined"
-          color="success"
-          sx={{ p: 2.5, fontSize: "1.1rem" }}
-        ></Chip>
-        <Chip
-          icon={<CheckIcon />}
-          label="Instalación"
-          variant="outlined"
-          color="success"
-          sx={{ p: 2.5, fontSize: "1.1rem" }}
-        ></Chip>
-        <Chip
-          icon={<CheckIcon />}
-          label="Hielo"
-          variant="outlined"
-          color="success"
-          sx={{ p: 2.5, fontSize: "1.1rem" }}
-        ></Chip>
-      </Box>
-
-      {loading
-        ? console.log("cargando...")
-        : offices.map((item) => {
-            <BookingOfficesDetail item={item} />;
-          })}
-
-      {/* <Paper
+      <Paper
         sx={{
           mt: 10,
           width: "100%",
@@ -65,7 +18,7 @@ export default function BookingOfficesContainer({ offices, loading }) {
         }}
       >
         <Box>
-          <Typography variant="h5">{offices?.sede}</Typography>
+          <Typography variant="h5">Sede MAR DEL PLATA</Typography>
           <Box
             sx={{
               borderBottom: 1,
@@ -97,7 +50,7 @@ export default function BookingOfficesContainer({ offices, loading }) {
             <ListItem>50 litros $34.600</ListItem>
           </List>
         </Box>
-        <Box>
+        {/* <Box>
           <Typography variant="h5">MAR DEL PLATA</Typography>
           <Box
             sx={{
@@ -195,9 +148,8 @@ export default function BookingOfficesContainer({ offices, loading }) {
             <ListItem>30 litros $21.500</ListItem>
             <ListItem>50 litros $34.600</ListItem>
           </List>
-        </Box>
-      </Paper> */}
-      <Footer />
+        </Box> */}
+      </Paper>
     </>
   );
 }

@@ -9,7 +9,11 @@ function Categorias() {
 
   return (
     <>
-      <Container maxWidth="xl" disableGutters>
+      <Container
+        maxWidth="xl"
+        disableGutters
+        sx={{ backgroundColor: "#ededed" }}
+      >
         <ItemListContainer
           isCategoryRoute={isCategoryRoute}
           categoryId={params.id}

@@ -18,20 +18,18 @@ import { useState, useEffect } from "react";
 
 export default function Reservas() {
   const [offices, setOffices] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // const officesPromise = new Promise((resolve, reject) =>
-    //   setTimeout(() => resolve(sucursales), 2000)
-    // );
+    setLoading(true);
+
     const officesPromise = new Promise((resolve, reject) =>
       resolve(sucursales)
     );
-
     officesPromise
       .then((response) => {
-        response.map((item) => {
-          setOffices(item);
-        });
+        setLoading(false);
+        setOffices(response);
       })
       .catch((err) => console.log(err));
   }, [setOffices]);
@@ -51,14 +49,7 @@ export default function Reservas() {
             title=""
             image="../../public/assets/images/barriles.jpg"
           />
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{ mt: 5 }}
-            fontWeight={400}
-            fontFamily="fantasy"
-            letterSpacing={4}
-          >
+          <Typography variant="h2" align="center" sx={{ mt: 5 }}>
             RESERVAS
           </Typography>
           <Container
@@ -110,7 +101,7 @@ export default function Reservas() {
               reunión!
             </Typography>
           </CardContent>
-          <BookingOffices offices={offices} />
+          <BookingOffices offices={offices} loading={loading} />
         </Card>
       </Container>
     </>

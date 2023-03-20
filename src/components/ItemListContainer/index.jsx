@@ -32,7 +32,11 @@ export default function ItemListContainer({ categoryId, isCategoryRoute }) {
   }, [categoryId]);
 
   return (
-    <Container maxWidth={false} disableGutters>
+    <Container
+      maxWidth={false}
+      disableGutters
+      sx={{ backgroundColor: "#ededed" }}
+    >
       <ItemList products={productos} />
     </Container>
   );
