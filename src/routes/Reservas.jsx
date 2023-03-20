@@ -8,32 +8,11 @@ import {
   CardContent,
 } from "@mui/material";
 
-// MOCKUPS
-import sucursales from "../mocks/sucursales";
-
 // COMPONENTES PROPIOS
 import NavBar from "../components/NavBar";
-import BookingOffices from "../components/BookingOffices";
-import { useState, useEffect } from "react";
+import BookingOfficesContainer from "../components/BookingOfficesContainer";
 
 export default function Reservas() {
-  const [offices, setOffices] = useState();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-
-    const officesPromise = new Promise((resolve, reject) =>
-      resolve(sucursales)
-    );
-    officesPromise
-      .then((response) => {
-        setLoading(false);
-        setOffices(response);
-      })
-      .catch((err) => console.log(err));
-  }, [setOffices]);
-
   return (
     <>
       <NavBar />
@@ -101,7 +80,7 @@ export default function Reservas() {
               reunión!
             </Typography>
           </CardContent>
-          <BookingOffices offices={offices} loading={loading} />
+          <BookingOfficesContainer />
         </Card>
       </Container>
     </>

@@ -3,9 +3,30 @@ import { Box, Chip, List, ListItem, Paper, Typography } from "@mui/material";
 // ICONOS MATERIAL-UI
 import CheckIcon from "@mui/icons-material/Check";
 
+// MOCKUPS
+import sucursales from "../../mocks/sucursales";
+
 import Footer from "../Footer";
 import BookingOfficesDetail from "../BookingOfficesDetail";
-export default function BookingOfficesContainer({ offices, loading }) {
+import { useState, useEffect } from "react";
+export default function BookingOfficesContainer() {
+  const [offices, setOffices] = useState();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const officesPromise = new Promise((resolve, reject) =>
+      resolve(sucursales)
+    );
+    officesPromise
+      .then((response) => {
+        setLoading(false);
+        setOffices(response);
+      })
+      .catch((err) => console.log(err));
+  }, [setOffices]);
+
   return (
     <>
       <Box
@@ -49,7 +70,7 @@ export default function BookingOfficesContainer({ offices, loading }) {
       {loading
         ? console.log("cargando...")
         : offices.map((item) => {
-            <BookingOfficesDetail item={item} />;
+            console.log(item);
           })}
 
       {/* <Paper
@@ -65,7 +86,7 @@ export default function BookingOfficesContainer({ offices, loading }) {
         }}
       >
         <Box>
-          <Typography variant="h5">{offices?.sede}</Typography>
+          <Typography variant="h5"></Typography>
           <Box
             sx={{
               borderBottom: 1,
