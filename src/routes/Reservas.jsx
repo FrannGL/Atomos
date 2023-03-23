@@ -9,25 +9,21 @@ import {
 } from "@mui/material";
 
 // COMPONENTES PROPIOS
-import NavBar from "../components/NavBar";
 import BookingOfficesContainer from "../components/BookingOfficesContainer";
+
+// IMAGENES
+import fotoBarril from "../../public/assets/images/barriles.jpg";
 
 export default function Reservas() {
   return (
     <>
-      <NavBar />
-
       <Container
         disableGutters
         maxWidth={false}
         sx={{ width: "100%", height: "100vh" }}
       >
-        <Card sx={{ maxWidth: "100%", mt: 5 }}>
-          <CardMedia
-            sx={{ height: 200 }}
-            title=""
-            image="../../public/assets/images/barriles.jpg"
-          />
+        <Card sx={{ maxWidth: "100%" }}>
+          <CardMedia sx={{ height: 200 }} title="" image={fotoBarril} />
           <Typography variant="h2" align="center" sx={{ mt: 5 }}>
             RESERVAS
           </Typography>

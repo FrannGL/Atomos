@@ -14,7 +14,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 
 // HOOKS REACT
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 // COMPONENTES PROPIOS
@@ -38,13 +38,38 @@ export default function NavBar() {
     setAnchorEl(null);
   };
 
+  const [isScrolling, setIsScrolling] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) setIsScrolling(true);
+      else setIsScrolling(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      <AppBar position="fixed">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+      <AppBar position="sticky">
+        <Toolbar
+          sx={{
+            justifyContent: "space-between",
+            height: isScrolling ? 50 : 100,
+            transition: "all .3s ease",
+          }}
+        >
           <Button>
             <NavLink to={"/"}>
-              <img src={logo} className="logo" style={{ width: "150px" }} />
+              <img
+                src={logo}
+                className="logo"
+                style={{
+                  width: isScrolling ? 100 : 200,
+                  transition: "all .3s ease",
+                }}
+              />
             </NavLink>
           </Button>
           {/* --- VISTA MOBILE ---  */}
@@ -69,6 +94,10 @@ export default function NavBar() {
               aria-haspopup="true"
               aria-expanded={openMenu ? "true" : undefined}
               onClick={handleClick}
+              sx={{
+                fontSize: isScrolling ? 12 : 15,
+                transition: "all .3s ease",
+              }}
             >
               NUESTRAS CERVEZAS
             </Button>
@@ -118,10 +147,26 @@ export default function NavBar() {
               to={"/reservas"}
               style={{ textDecoration: "none", color: "white" }}
             >
-              <Button color="base">RESERVAS</Button>
+              <Button
+                color="base"
+                sx={{
+                  fontSize: isScrolling ? 12 : 15,
+                  transition: "all .3s ease",
+                }}
+              >
+                RESERVAS
+              </Button>
             </NavLink>
             <NavLink style={{ textDecoration: "none", color: "white" }}>
-              <Button color="base">SUCURSALES</Button>
+              <Button
+                color="base"
+                sx={{
+                  fontSize: isScrolling ? 12 : 15,
+                  transition: "all .3s ease",
+                }}
+              >
+                SUCURSALES
+              </Button>
             </NavLink>
             <NavLink
               to={"/nosotros"}
@@ -130,7 +175,15 @@ export default function NavBar() {
                 color: "white",
               }}
             >
-              <Button color="base">NOSOTROS</Button>
+              <Button
+                color="base"
+                sx={{
+                  fontSize: isScrolling ? 12 : 15,
+                  transition: "all .3s ease",
+                }}
+              >
+                NOSOTROS
+              </Button>
             </NavLink>
           </Box>
 

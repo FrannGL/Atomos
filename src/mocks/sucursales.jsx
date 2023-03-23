@@ -28,10 +28,10 @@ export default [
     x50b: 35000,
   },
   {
-    sede: "CORDOBA CAPITAL",
+    sede: "CORDOBA - CAPITAL",
     nombre: "Ignacio Pyptyk",
     telefono: "11-3221-6522",
-    email: "maximartorana@gmail.com",
+    email: "ignpyk@gmail.com",
     categoriaA: "Clasicas: HONEY | IPA | GOLDEN",
     x20a: 16500,
     x30a: 24000,

@@ -14,7 +14,7 @@ export default function Background() {
       <Container
         maxWidth="xl"
         disableGutters
-        sx={{ width: "100%", height: "100vh" }}
+        sx={{ width: "100%", height: "100%", position: "fixed" }}
         className="wrapper"
       >
         <Box
@@ -26,7 +26,7 @@ export default function Background() {
             mx: "auto",
             my: "auto",
             width: "100%",
-            height: "100%",
+            height: "80%",
           }}
         >
           <h1>TIENDA ONLINE</h1>

@@ -17,10 +17,10 @@ import Categorias from "./routes/Categorias";
 import Descripcion from "./routes/Descripcion";
 import PageError from "./routes/Page-Error";
 import Reservas from "./routes/Reservas";
+import Nosotros from "./routes/Nosotros";
 
 // CONTEXT
 import Layout from "./layout";
-import Nosotros from "./routes/Nosotros";
 
 const router = createBrowserRouter([
   {

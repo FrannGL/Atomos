@@ -34,7 +34,7 @@ export default function CardItemDetail({ product }) {
   return (
     <Card
       sx={{
-        mt: 11,
+        mt: 5,
         mb: 4,
         width: "90%",
         height: 400,
@@ -113,7 +113,7 @@ export default function CardItemDetail({ product }) {
                   height: "50%",
                   border: 1,
                   textAlign: "center",
-                  fontSize: 18.5,
+                  fontSize: 18,
                 }}
               >
                 {product?.abv} - {product?.ibu}

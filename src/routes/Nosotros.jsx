@@ -1,6 +1,13 @@
+// COMPONENTES MATERIAL-UI
 import { Card, CardMedia, Grid, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+
+// COMPONENTES PROPIOS
 import Footer from "../components/Footer";
+
+// FOTOS
+import foto1 from "../../public/assets/images/fabrica.jpg";
+import foto2 from "../../public/assets/images/fabrica(2).jpg";
+import foto3 from "../../public/assets/images/fabrica(3).jpg";
 
 export default function Nosotros() {
   return (
@@ -10,7 +17,7 @@ export default function Nosotros() {
         lg={12}
         sx={{
           display: "flex",
-          mt: 10,
+          mt: 3,
           width: "100%",
           height: "100%",
           mx: "auto",
@@ -27,10 +34,7 @@ export default function Nosotros() {
           }}
         >
           <Card>
-            <CardMedia
-              image="../../public/assets/images/fabrica.jpg"
-              sx={{ height: 300 }}
-            ></CardMedia>
+            <CardMedia image={foto1} sx={{ height: 300 }}></CardMedia>
           </Card>
         </Grid>
         <Grid
@@ -77,10 +81,7 @@ export default function Nosotros() {
           sx={{ backgroundColor: "red", minWidth: "35%", height: 300 }}
         >
           <Card>
-            <CardMedia
-              image="../../public/assets/images/fabrica(2).jpg"
-              sx={{ height: 300 }}
-            ></CardMedia>
+            <CardMedia image={foto2} sx={{ height: 300 }}></CardMedia>
           </Card>
         </Grid>
         <Grid
@@ -88,10 +89,7 @@ export default function Nosotros() {
           sx={{ backgroundColor: "red", minWidth: "35%", height: 300 }}
         >
           <Card>
-            <CardMedia
-              image="../../public/assets/images/fabrica(3).jpg"
-              sx={{ height: 300 }}
-            ></CardMedia>
+            <CardMedia image={foto3} sx={{ height: 300 }}></CardMedia>
           </Card>
         </Grid>
         <Grid item sx={{ width: "63%", height: 300 }}>

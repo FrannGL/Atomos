@@ -1,14 +1,18 @@
-import { Box, Chip, List, ListItem, Paper, Typography } from "@mui/material";
+// COMPONENTES MATERIAL-UI
+import { Box, Chip } from "@mui/material";
 
 // ICONOS MATERIAL-UI
 import CheckIcon from "@mui/icons-material/Check";
 
+// HOOKS REACT
+import { useState, useEffect } from "react";
+
 // MOCKUPS
 import sucursales from "../../mocks/sucursales";
 
+// COMPONENTES PROPIOS
 import Footer from "../Footer";
 import BookingOfficesDetail from "../BookingOfficesDetail";
-import { useState, useEffect } from "react";
 export default function BookingOfficesContainer() {
   const [offices, setOffices] = useState();
   const [loading, setLoading] = useState(true);
@@ -21,8 +25,8 @@ export default function BookingOfficesContainer() {
     );
     officesPromise
       .then((response) => {
-        setLoading(false);
         setOffices(response);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, [setOffices]);
@@ -67,157 +71,27 @@ export default function BookingOfficesContainer() {
         ></Chip>
       </Box>
 
-      {loading
-        ? console.log("cargando...")
-        : offices.map((item) => {
-            <BookingOfficesDetail item={item} />;
-          })}
-
-      {/* <Paper
-        sx={{
-          mt: 10,
+      <ul
+        style={{
           width: "100%",
-          height: "100%",
+          height: "auto",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
           flexWrap: "wrap",
-          gap: 25,
+          gap: "2rem",
         }}
       >
-        <Box>
-          <Typography variant="h5"></Typography>
-          <Box
-            sx={{
-              borderBottom: 1,
-              width: "30%",
-              mb: 3,
-              py: 0.3,
-            }}
-          ></Box>
-          <Typography variant="h6">Franco Galluccio | 11-2155-7802</Typography>
-          <Typography variant="p">francoivangalluccio@gmail.com</Typography>
-          <List>
-            Clásicas: Kölsch/Scotch/Porter.
-            <ListItem>20 litros $13.500.-</ListItem>
-            <ListItem>30 litros $19.000.-</ListItem>
-            <ListItem>50 litros $30.500.-</ListItem>
-          </List>
-          <List>
-            Especiales: Honey Beer/Playa Grande/
-            <br />
-            Imperial Stout/Barley Wine.
-            <ListItem>20 litros $14.800</ListItem>
-            <ListItem>30 litros $21.000</ListItem>
-            <ListItem>50 litros $33.800</ListItem>
-          </List>
-          <List>
-            IPA / Caravana
-            <ListItem>20 litros $15.000</ListItem>
-            <ListItem>30 litros $21.500</ListItem>
-            <ListItem>50 litros $34.600</ListItem>
-          </List>
-        </Box>
-        <Box>
-          <Typography variant="h5">MAR DEL PLATA</Typography>
-          <Box
-            sx={{
-              borderBottom: 1,
-              width: "30%",
-              mb: 3,
-              py: 0.3,
-            }}
-          ></Box>
-          <Typography variant="h6">Franco Galluccio | 11-2155-7802</Typography>
-          <Typography variant="p">francoivangalluccio@gmail.com</Typography>
-          <List>
-            Clásicas: Kölsch/Scotch/Porter.
-            <ListItem>20 litros $13.500.-</ListItem>
-            <ListItem>30 litros $19.000.-</ListItem>
-            <ListItem>50 litros $30.500.-</ListItem>
-          </List>
-          <List>
-            Especiales: Honey Beer/Playa Grande/
-            <br />
-            Imperial Stout/Barley Wine.
-            <ListItem>20 litros $14.800</ListItem>
-            <ListItem>30 litros $21.000</ListItem>
-            <ListItem>50 litros $33.800</ListItem>
-          </List>
-          <List>
-            IPA / Caravana
-            <ListItem>20 litros $15.000</ListItem>
-            <ListItem>30 litros $21.500</ListItem>
-            <ListItem>50 litros $34.600</ListItem>
-          </List>
-        </Box>
-        <Box>
-          <Typography variant="h5">MAR DEL PLATA</Typography>
-          <Box
-            sx={{
-              borderBottom: 1,
-              width: "30%",
-              mb: 3,
-              py: 0.3,
-            }}
-          ></Box>
-          <Typography variant="h6">Franco Galluccio | 11-2155-7802</Typography>
-          <Typography variant="p">francoivangalluccio@gmail.com</Typography>
-          <List>
-            Clásicas: Kölsch/Scotch/Porter.
-            <ListItem>20 litros $13.500.-</ListItem>
-            <ListItem>30 litros $19.000.-</ListItem>
-            <ListItem>50 litros $30.500.-</ListItem>
-          </List>
-          <List>
-            Especiales: Honey Beer/Playa Grande/
-            <br />
-            Imperial Stout/Barley Wine.
-            <ListItem>20 litros $14.800</ListItem>
-            <ListItem>30 litros $21.000</ListItem>
-            <ListItem>50 litros $33.800</ListItem>
-          </List>
-          <List>
-            IPA / Caravana
-            <ListItem>20 litros $15.000</ListItem>
-            <ListItem>30 litros $21.500</ListItem>
-            <ListItem>50 litros $34.600</ListItem>
-          </List>
-        </Box>
-        <Box>
-          <Typography variant="h5">MAR DEL PLATA</Typography>
-          <Box
-            sx={{
-              borderBottom: 1,
-              width: "30%",
-              mb: 3,
-              py: 0.3,
-            }}
-          ></Box>
-          <Typography variant="h6">Franco Galluccio | 11-2155-7802</Typography>
-          <Typography variant="p">francoivangalluccio@gmail.com</Typography>
-          <List>
-            Clásicas: Kölsch/Scotch/Porter.
-            <ListItem>20 litros $13.500.-</ListItem>
-            <ListItem>30 litros $19.000.-</ListItem>
-            <ListItem>50 litros $30.500.-</ListItem>
-          </List>
-          <List>
-            Especiales: Honey Beer/Playa Grande/
-            <br />
-            Imperial Stout/Barley Wine.
-            <ListItem>20 litros $14.800</ListItem>
-            <ListItem>30 litros $21.000</ListItem>
-            <ListItem>50 litros $33.800</ListItem>
-          </List>
-          <List>
-            IPA / Caravana
-            <ListItem>20 litros $15.000</ListItem>
-            <ListItem>30 litros $21.500</ListItem>
-            <ListItem>50 litros $34.600</ListItem>
-          </List>
-        </Box>
-      </Paper> */}
+        {loading
+          ? console.log("cargando...")
+          : offices.map((item) => {
+              return (
+                <li style={{ listStyle: "none" }}>
+                  {<BookingOfficesDetail item={item} />}
+                </li>
+              );
+            })}
+      </ul>
+
       <Footer />
     </>
   );

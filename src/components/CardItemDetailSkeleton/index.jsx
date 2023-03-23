@@ -5,7 +5,7 @@ export default function CardItemDetailSkeleton() {
   return (
     <Card
       sx={{
-        mt: 10,
+        mt: 5,
         mb: 3,
         width: "90%",
         height: 350,

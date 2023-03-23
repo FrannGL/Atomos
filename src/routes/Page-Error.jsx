@@ -18,6 +18,7 @@ export default function ErrorPage() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          backgroundColor: "#ededed",
         }}
       >
         <Typography
