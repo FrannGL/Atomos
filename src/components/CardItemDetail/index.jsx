@@ -16,10 +16,11 @@ import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 // COMPONENTES PROPIOS
 import ItemCount from "../ItemCount";
+import { Context } from "../../Context";
 
 export default function CardItemDetail({ product }) {
   const [openMenu, setOpenMenu] = useState(null);
@@ -30,6 +31,8 @@ export default function CardItemDetail({ product }) {
 
   const open = Boolean(openMenu);
   const id = open ? "simple-popper" : undefined;
+
+  const { onAdd } = useContext(Context);
 
   return (
     <Card
@@ -201,7 +204,12 @@ export default function CardItemDetail({ product }) {
             mb: 2,
           }}
         >
-          <Button size="large" variant="contained" color="primary">
+          <Button
+            size="large"
+            variant="contained"
+            color="primary"
+            onClick={onAdd}
+          >
             Agregar al carrito
           </Button>
           <NavLink

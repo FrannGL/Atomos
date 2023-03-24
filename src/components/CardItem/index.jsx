@@ -8,13 +8,17 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import { useContext } from "react";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { Context } from "../../Context";
 
 export default function CardItem({ product }) {
   const { id } = useParams();
+
+  const { onAdd } = useContext(Context);
 
   return (
     <Card
@@ -103,7 +107,12 @@ export default function CardItem({ product }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" variant="contained" color="info">
+        <Button
+          size="small"
+          variant="contained"
+          color="info"
+          onClick={() => onAdd()}
+        >
           Agregar al carrito
         </Button>
         <Button size="small" variant="outlined" color="base">

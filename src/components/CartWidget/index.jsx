@@ -3,6 +3,8 @@ import { Box, styled, Badge, IconButton } from "@mui/material";
 
 // ICONOS MATERIAL-UI
 import LocalMallIcon from "@mui/icons-material/LocalMall";
+import { useContext } from "react";
+import { Context } from "../../Context";
 
 const StyledBadge = styled(Badge)(() => ({
   "& .MuiBadge-badge": {
@@ -14,10 +16,15 @@ const StyledBadge = styled(Badge)(() => ({
 }));
 
 export default function CartWidget() {
+  const { itemsAddedQuantity } = useContext(Context);
+
   return (
     <Box sx={{ mx: 3, display: { xs: "none", sm: "flex" } }}>
       <IconButton aria-label="cart">
-        <StyledBadge badgeContent={4} color="info">
+        <StyledBadge
+          badgeContent={itemsAddedQuantity < 1 ? 0 : itemsAddedQuantity.length}
+          color="info"
+        >
           <LocalMallIcon color="base" fontSize="medium" />
         </StyledBadge>
       </IconButton>

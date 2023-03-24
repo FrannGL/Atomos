@@ -14,7 +14,13 @@ export default function Background() {
       <Container
         maxWidth="xl"
         disableGutters
-        sx={{ width: "100%", height: "100%", position: "fixed" }}
+        sx={{
+          minWidth: "100%",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
         className="wrapper"
       >
         <Box
@@ -23,13 +29,16 @@ export default function Background() {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "column",
-            mx: "auto",
-            my: "auto",
             width: "100%",
-            height: "80%",
+            mb: 15,
           }}
         >
-          <h1>TIENDA ONLINE</h1>
+          <Typography
+            variant="h1"
+            style={{ fontFamily: "Oswald", color: "white", letterSpacing: 10 }}
+          >
+            TIENDA ONLINE
+          </Typography>
           <Typography variant="h6" color="white" sx={{ letterSpacing: 5 }}>
             CALIDAD EN CERVEZAS ARTESANALES
           </Typography>

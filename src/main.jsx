@@ -19,8 +19,11 @@ import PageError from "./routes/Page-Error";
 import Reservas from "./routes/Reservas";
 import Nosotros from "./routes/Nosotros";
 
-// CONTEXT
+// LAYOUT
 import Layout from "./layout";
+
+// CONTEXT
+import CustomProvider from "./Context/index";
 
 const router = createBrowserRouter([
   {
@@ -83,11 +86,26 @@ const theme = createTheme({
   },
 });
 
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBd9_BcdIN3ZbOQynCPcLkVCgahb7JrHX0",
+  authDomain: "juguetes-perdidos.firebaseapp.com",
+  projectId: "juguetes-perdidos",
+  storageBucket: "juguetes-perdidos.appspot.com",
+  messagingSenderId: "448426853768",
+  appId: "1:448426853768:web:158795965e51db6419e63d",
+};
+
+initializeApp(firebaseConfig);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <CustomProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </CustomProvider>
   </React.StrictMode>
 );
