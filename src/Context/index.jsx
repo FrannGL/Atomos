@@ -2,20 +2,31 @@ import { createContext, useState } from "react";
 
 export const Context = createContext();
 export default function CustomProvider({ children }) {
-  const [itemsAddedQuantity, setItemsAddedQuantity] = useState([]);
+  const [itemsAdded, setItemsAdded] = useState([]);
+  const [open, setOpen] = useState(false);
 
-  const onAdd = () => {
-    setItemsAddedQuantity((prev) => prev.concat({}));
+  const handleClick = () => {
+    setOpen(true);
   };
 
-  const onRemove = () => {
-    setItemsAddedQuantity((prev) => prev.slice(1));
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const onAdd = (product, cantidad) => {
+    setItemsAdded([...itemsAdded, { ...product, cantidad }]);
   };
 
   const value = {
-    itemsAddedQuantity,
+    itemsAdded,
     onAdd,
-    onRemove,
+    handleClick,
+    handleClose,
+    open,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

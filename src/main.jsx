@@ -18,6 +18,7 @@ import Descripcion from "./routes/Descripcion";
 import PageError from "./routes/Page-Error";
 import Reservas from "./routes/Reservas";
 import Nosotros from "./routes/Nosotros";
+import Carrito from "./routes/Carrito";
 
 // LAYOUT
 import Layout from "./layout";
@@ -61,7 +62,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <div>Hello world!</div>,
+        element: <Carrito />,
       },
       {
         path: "/checkout",

@@ -1,14 +1,17 @@
 // COMPONENTES MATERIAL-UI
 import {
+  Alert,
   Box,
   Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
+  IconButton,
+  Snackbar,
   Typography,
 } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
@@ -17,6 +20,19 @@ import { Context } from "../../Context";
 
 export default function CardItem({ product }) {
   const { id } = useParams();
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const { onAdd } = useContext(Context);
 
@@ -111,7 +127,10 @@ export default function CardItem({ product }) {
           size="small"
           variant="contained"
           color="info"
-          onClick={() => onAdd()}
+          onClick={() => {
+            onAdd(product, 1);
+            handleClick();
+          }}
         >
           Agregar al carrito
         </Button>
@@ -124,6 +143,16 @@ export default function CardItem({ product }) {
           </NavLink>
         </Button>
       </CardActions>
+      <Snackbar open={open} autoHideDuration={2500} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          Producto Agregado al Carrito
+        </Alert>
+      </Snackbar>
     </Card>
   );
 }

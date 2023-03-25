@@ -34,6 +34,10 @@ export default function CardItemDetail({ product }) {
 
   const { onAdd } = useContext(Context);
 
+  const onAddCart = (cantidad) => {
+    onAdd(product, cantidad);
+  };
+
   return (
     <Card
       sx={{
@@ -189,7 +193,7 @@ export default function CardItemDetail({ product }) {
 
         {/* --- CONTENEDOR CONTROLES --- */}
 
-        <ItemCount />
+        <ItemCount onAddCart={onAddCart}/>
 
         {/* --- CONTENEDOR CARRITO ---  */}
         <Box
@@ -204,15 +208,7 @@ export default function CardItemDetail({ product }) {
             mb: 2,
           }}
         >
-          <Button
-            size="large"
-            variant="contained"
-            color="primary"
-            onClick={onAdd}
-          >
-            Agregar al carrito
-          </Button>
-          <NavLink
+          {/* <NavLink
             to={"/products"}
             style={{ textDecoration: "none", color: "white" }}
           >
@@ -234,7 +230,7 @@ export default function CardItemDetail({ product }) {
             >
               Finalizar Compra
             </Button>
-          </NavLink>
+          </NavLink> */}
         </Box>
       </Box>
     </Card>
