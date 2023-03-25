@@ -191,47 +191,9 @@ export default function CardItemDetail({ product }) {
           </Typography>
         </Box>
 
-        {/* --- CONTENEDOR CONTROLES --- */}
+        {/* ------- CONTROLES -------- */}
 
-        <ItemCount onAddCart={onAddCart}/>
-
-        {/* --- CONTENEDOR CARRITO ---  */}
-        <Box
-          sx={{
-            width: "97%",
-            height: "auto",
-            display: "flex",
-            justifyContent: "start",
-            alignItems: "center",
-            gap: 5,
-            mr: 2,
-            mb: 2,
-          }}
-        >
-          {/* <NavLink
-            to={"/products"}
-            style={{ textDecoration: "none", color: "white" }}
-          >
-            <Button
-              size="large"
-              variant="outlined"
-              color="info"
-              startIcon={<AddShoppingCartIcon />}
-            >
-              Seguir Comprando
-            </Button>
-          </NavLink>
-          <NavLink to={""} style={{ textDecoration: "none", color: "white" }}>
-            <Button
-              size="large"
-              variant="outlined"
-              color="success"
-              startIcon={<CheckCircleIcon />}
-            >
-              Finalizar Compra
-            </Button>
-          </NavLink> */}
-        </Box>
+        <ItemCount onAddCart={onAddCart} />
       </Box>
     </Card>
   );

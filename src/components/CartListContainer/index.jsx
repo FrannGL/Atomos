@@ -1,21 +1,28 @@
-import { Box, Button, Chip, Typography } from "@mui/material";
-import { useContext, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { Context } from "../../Context";
+// COMPONENTES MATERIAL-UI
+import { Alert, Box, Button, Chip, Typography } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 
-import CartListItem from "../CartListItem";
-import CartListItemSkeleton from "../CartLisItemSkeleton";
-import Footer from "../Footer";
-
+// ICONOS MATERIAL-UI
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import DeleteIcon from "@mui/icons-material/Delete";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
+
+// HOOKS REACT
+import { useContext, useState, useEffect } from "react";
+import { Context } from "../../Context";
+import { NavLink } from "react-router-dom";
+
+// COMPONENTES PROPIOS
+import CartListItem from "../CartListItem";
+import Footer from "../Footer";
 
 export default function CartListContainer() {
   const { itemsAdded } = useContext(Context);
   const [loading, setLoading] = useState(true);
 
-  const fakePromise = () => new Promise((resolve) => setTimeout(resolve, 2000));
+  const fakePromise = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
   const getProducts = async () => {
     try {
@@ -33,6 +40,7 @@ export default function CartListContainer() {
 
   return (
     <>
+      {/*  --------------------- CONTENEDOR ------------------- */}
       <Box
         sx={{
           minHeight: "100vh",
@@ -40,6 +48,7 @@ export default function CartListContainer() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
+          mt: 5,
         }}
       >
         {/* --------------------- TITLE ------------------------- */}
@@ -49,85 +58,132 @@ export default function CartListContainer() {
             justifyContent: "center",
             alignItems: "center",
           }}
-        >
-          {itemsAdded.length >= 1 ? (
-            <Typography variant="h2">CARRITO</Typography>
-          ) : (
-            <Typography variant="h2">TU CARRITO ESTA VACIO :(</Typography>
-          )}
-        </Box>
+        ></Box>
 
         {/* ---- RENDERIZADO DE PRODUCTOS AGREGADOS AL CARRITO ----- */}
 
-        {loading
-          ? [1, 2, 3].map((item) => <CartListItemSkeleton key={item} />)
-          : itemsAdded.map((product) => (
-              <CartListItem key={product.id} product={product} />
-            ))}
-
-        {/* ------------------- TOTAL DE LA COMPRA --------------- */}
-
-        {itemsAdded.length >= 1 ? (
+        {loading ? (
           <>
-            {" "}
-            <Box
-              sx={{
-                width: "85%",
-                height: 40,
-                display: "flex",
-                justifyContent: "end",
-                alignItems: "center",
-              }}
-            >
-              <Chip
-                icon={<AttachMoneyIcon />}
-                label="ARS: $15.240"
-                variant="outlined"
-                sx={{ fontSize: 25, padding: 2 }}
-              />
-            </Box>
-            {/* ------------------ CONTROLES -----------------  */}
-            <Box
-              sx={{
-                width: "100%",
-                height: 100,
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: 5,
-              }}
-            >
-              <NavLink
-                to={"/products"}
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                <Button
-                  size="large"
-                  variant="outlined"
-                  color="info"
-                  startIcon={<AddShoppingCartIcon />}
-                >
-                  Seguir Comprando
-                </Button>
-              </NavLink>
-              <NavLink
-                to={""}
-                style={{ textDecoration: "none", color: "white", mt: 5 }}
-              >
-                <Button
-                  size="large"
-                  variant="contained"
-                  color="success"
-                  startIcon={<CheckCircleIcon />}
-                >
-                  Finalizar Compra
-                </Button>
-              </NavLink>
-            </Box>
+            <CircularProgress size={50} />
+            <Typography sx={{ mt: 3, fontSize: 20 }}>CARGANDO...</Typography>
           </>
         ) : (
-          ""
+          <>
+            {itemsAdded.length >= 1 ? (
+              <Typography variant="h5">DETALLE DEL CARRITO</Typography>
+            ) : (
+              ""
+            )}
+            {itemsAdded.map((product) => (
+              <CartListItem key={product.id} product={product} />
+            ))}
+            {itemsAdded.length >= 1 ? (
+              <>
+                <Box
+                  sx={{
+                    width: "80%",
+                    height: 40,
+                    display: "flex",
+                    justifyContent: "end",
+                    alignItems: "center",
+                  }}
+                >
+                  <Chip
+                    icon={<AttachMoneyIcon />}
+                    label="ARS: $15.240"
+                    variant="outlined"
+                    sx={{ fontSize: 25, padding: 2 }}
+                  />
+                </Box>
+                {/* ------------------ CONTROLES -----------------  */}
+                <Box
+                  sx={{
+                    width: "80%",
+                    height: 100,
+                    display: "flex",
+                    justifyContent: "start",
+                    alignItems: "center",
+                    gap: 1,
+                  }}
+                >
+                  <Button
+                    size="large"
+                    variant="contained"
+                    color="error"
+                    startIcon={<DeleteIcon />}
+                  >
+                    Vaciar Carrito
+                  </Button>
+                  <NavLink
+                    to={"/products"}
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <Button
+                      size="large"
+                      variant="contained"
+                      color="info"
+                      startIcon={<AddShoppingCartIcon />}
+                    >
+                      Seguir Comprando
+                    </Button>
+                  </NavLink>
+                  <Box
+                    sx={{
+                      width: "60%",
+                      height: "100%",
+                      display: "flex",
+                      justifyContent: "end",
+                      alignItems: "center",
+                    }}
+                  >
+                    <NavLink
+                      to={""}
+                      style={{ textDecoration: "none", color: "white", mt: 5 }}
+                    >
+                      <Button
+                        size="large"
+                        variant="contained"
+                        color="success"
+                        startIcon={<CheckCircleIcon />}
+                      >
+                        Finalizar Compra
+                      </Button>
+                    </NavLink>
+                  </Box>
+                </Box>
+              </>
+            ) : (
+              <Box
+                sx={{
+                  width: "50%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Alert
+                  icon={
+                    <SentimentVeryDissatisfiedIcon
+                      fontSize="large"
+                      sx={{ my: "auto" }}
+                    />
+                  }
+                  severity="error"
+                  variant="outlined"
+                >
+                  <Typography variant="h6" fontWeight="bold">
+                    LO SIENTO
+                  </Typography>
+                  <Typography variant="p" fontSize={25}>
+                    El Carrito está vacio! - <strong>¡Agrega Productos!</strong>
+                  </Typography>
+                </Alert>
+              </Box>
+            )}
+          </>
         )}
+
+        {/* ------------------- TOTAL DE LA COMPRA --------------- */}
       </Box>
 
       <Footer />

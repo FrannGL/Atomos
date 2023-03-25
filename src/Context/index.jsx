@@ -17,6 +17,13 @@ export default function CustomProvider({ children }) {
     setOpen(false);
   };
 
+  const DeleteProduct = (product) => {
+    const producto = product.find((item) => {
+      item.id === id;
+    });
+    product.splice(product.indexOf(producto), 1);
+  };
+
   const onAdd = (product, cantidad) => {
     setItemsAdded([...itemsAdded, { ...product, cantidad }]);
   };
@@ -27,6 +34,7 @@ export default function CustomProvider({ children }) {
     handleClick,
     handleClose,
     open,
+    DeleteProduct,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

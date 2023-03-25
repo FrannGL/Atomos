@@ -94,7 +94,7 @@ export default function ItemCount({ onAddCart }) {
 
       {/* ----------- ALERTA ----------- */}
 
-      {/* <AlertSuccess /> */}
+      <AlertSuccess />
 
       {/* ------ SEGUIR COMPRANDO | FINALIZAR COMPRA -------- */}
       <Box sx={{ display: "flex", gap: 5, mt: 3 }}>

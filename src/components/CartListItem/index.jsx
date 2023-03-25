@@ -1,19 +1,20 @@
+// COMPONENTES MATERIAL-UI
 import {
   Box,
   Card,
-  CardContent,
   CardMedia,
   Container,
   IconButton,
-  Skeleton,
-  Stack,
   Typography,
 } from "@mui/material";
 
+// ICONOS MATERIAL-UI
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useContext } from "react";
+import { Context } from "../../Context";
 
 export default function CartListItem({ product }) {
-  console.log(product);
+  const { DeleteProduct } = useContext(Context);
 
   return (
     <>
@@ -129,7 +130,11 @@ export default function CartListItem({ product }) {
                 </Typography>
               </Box>
               <Box width="10%" textAlign="center">
-                <IconButton aria-label="delete" color="error">
+                <IconButton
+                  aria-label="delete"
+                  color="error"
+                  onClick={DeleteProduct}
+                >
                   <DeleteIcon />
                 </IconButton>
               </Box>
