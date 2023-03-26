@@ -20,6 +20,8 @@ import Footer from "../Footer";
 
 export default function CartListContainer() {
   const { itemsAdded } = useContext(Context);
+  const { TotalPrice } = useContext(Context);
+  const { total } = useContext(Context);
   const [loading, setLoading] = useState(true);
 
   const fakePromise = () => new Promise((resolve) => setTimeout(resolve, 1000));
@@ -37,6 +39,10 @@ export default function CartListContainer() {
   useEffect(() => {
     getProducts();
   }, []);
+
+  useEffect(() => {
+    TotalPrice();
+  }, [itemsAdded]);
 
   return (
     <>
@@ -81,18 +87,21 @@ export default function CartListContainer() {
               <>
                 <Box
                   sx={{
-                    width: "80%",
+                    width: "65%",
                     height: 40,
                     display: "flex",
                     justifyContent: "end",
                     alignItems: "center",
                   }}
                 >
+                  <Typography variant="p" fontSize={18}>
+                    TOTAL DE LA COMPRA:{" "}
+                  </Typography>
                   <Chip
-                    icon={<AttachMoneyIcon />}
-                    label="ARS: $15.240"
+                    icon={<AttachMoneyIcon sx={{ fontSize: 30 }} />}
+                    label={total}
                     variant="outlined"
-                    sx={{ fontSize: 25, padding: 2 }}
+                    sx={{ fontSize: 30, padding: 2 }}
                   />
                 </Box>
                 {/* ------------------ CONTROLES -----------------  */}
@@ -101,9 +110,8 @@ export default function CartListContainer() {
                     width: "80%",
                     height: 100,
                     display: "flex",
-                    justifyContent: "start",
+                    justifyContent: "space-between",
                     alignItems: "center",
-                    gap: 1,
                   }}
                 >
                   <Button
@@ -129,7 +137,7 @@ export default function CartListContainer() {
                   </NavLink>
                   <Box
                     sx={{
-                      width: "60%",
+                      width: "50%",
                       height: "100%",
                       display: "flex",
                       justifyContent: "end",
@@ -159,6 +167,7 @@ export default function CartListContainer() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  flexDirection: "column",
                 }}
               >
                 <Alert
@@ -178,6 +187,14 @@ export default function CartListContainer() {
                     El Carrito está vacio! - <strong>¡Agrega Productos!</strong>
                   </Typography>
                 </Alert>
+                <NavLink
+                  to={"/products"}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <Button variant="contained" size="large" sx={{ mt: 5 }}>
+                    VER PRODUCTOS
+                  </Button>
+                </NavLink>
               </Box>
             )}
           </>

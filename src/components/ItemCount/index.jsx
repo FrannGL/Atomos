@@ -22,7 +22,7 @@ import AlertSuccess from "../AlertSuccess";
 import AlertError from "../AlertSuccess";
 
 export default function ItemCount({ onAddCart }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const { itemsAdded } = useContext(Context);
   const { handleClick } = useContext(Context);

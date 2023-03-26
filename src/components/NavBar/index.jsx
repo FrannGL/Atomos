@@ -20,10 +20,10 @@ import { NavLink } from "react-router-dom";
 // COMPONENTES PROPIOS
 import NavListDrawe from "../NavListDrawer";
 import CartWidget from "../CartWidget/index";
-import SearchInput from "../SearchInput";
 
 // LOGO
 import logo from "../../../public/assets/images/logo-white.png";
+import MUIswitch from "../MUIswitch";
 
 export default function NavBar() {
   const [open, setOpen] = useState(false);
@@ -41,7 +41,7 @@ export default function NavBar() {
   const [isScrolling, setIsScrolling] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) setIsScrolling(true);
+      if (window.scrollY > 1) setIsScrolling(true);
       else setIsScrolling(false);
     };
 
@@ -56,7 +56,7 @@ export default function NavBar() {
         <Toolbar
           sx={{
             justifyContent: "space-between",
-            height: isScrolling ? 50 : 100,
+            height: isScrolling ? 50 : 80,
             transition: "all .3s ease",
           }}
         >
@@ -66,7 +66,7 @@ export default function NavBar() {
                 src={logo}
                 className="logo"
                 style={{
-                  width: isScrolling ? 100 : 200,
+                  width: isScrolling ? 100 : 150,
                   transition: "all .3s ease",
                 }}
               />
@@ -189,7 +189,8 @@ export default function NavBar() {
 
           {/* --- MENU DERECHO --- */}
 
-          <SearchInput />
+          <MUIswitch />
+          {/* <SearchInput /> */}
           <CartWidget />
         </Toolbar>
       </AppBar>

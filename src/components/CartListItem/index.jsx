@@ -10,11 +10,11 @@ import {
 
 // ICONOS MATERIAL-UI
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../../Context";
 
 export default function CartListItem({ product }) {
-  const { DeleteProduct } = useContext(Context);
+  const { showAlert } = useContext(Context);
 
   return (
     <>
@@ -133,7 +133,7 @@ export default function CartListItem({ product }) {
                 <IconButton
                   aria-label="delete"
                   color="error"
-                  onClick={DeleteProduct}
+                  onClick={() => showAlert(product)}
                 >
                   <DeleteIcon />
                 </IconButton>

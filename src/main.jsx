@@ -26,6 +26,8 @@ import Layout from "./layout";
 // CONTEXT
 import CustomProvider from "./Context/index";
 
+import "./main.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
