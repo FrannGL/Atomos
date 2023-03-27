@@ -26,13 +26,37 @@ export default function CustomProvider({ children }) {
 
   // FUNCION AGREGAR PRODUCTOS AL CARRITO
   const onAdd = (product, cantidad) => {
-    setItemsAdded([...itemsAdded, { ...product, cantidad }]);
+    const existsInCart = itemsAdded.find((prod) => prod.id === product.id);
+    if (existsInCart) {
+      const carritoActualizado = itemsAdded.map((prod) => {
+        if (prod.id === product.id) {
+          return { ...prod, cantidad: prod.cantidad + cantidad };
+        } else {
+          return prod;
+        }
+      });
+      setItemsAdded(carritoActualizado);
+    } else {
+      setItemsAdded([...itemsAdded, { ...product, cantidad }]);
+    }
+  };
+
+  // FUNCION PARA COMPARAR SI YA EXISTE EL PRODUCTO EN EL CARRITO
+  const isInCart = (product) => {
+    itemsAdded.some((productAdded) => {
+      productAdded.id === product.id;
+    });
   };
 
   // FUNCION ELIMINAR PRODUCTOS DEL CARRITO
   const DeleteProduct = (id) => {
     const find = itemsAdded.filter((item) => item.id !== id);
     setItemsAdded(find);
+  };
+
+  // FUNCION VACIAR CARRITO
+  const clearCart = () => {
+    setItemsAdded([]);
   };
 
   // FUNCION PARA CALCULAR TOTAL DEL CARRITO
@@ -67,6 +91,29 @@ export default function CustomProvider({ children }) {
     });
   };
 
+  // ALERTA AL CLICKEAR "VACIAR CARRITO"
+  const showClearAlert = () => {
+    Swal.fire({
+      title: "¿Estás seguro que queres vaciar el carrito?",
+      text: "Si estás seguro hace click en Si. Caso contrario, No.",
+      icon: "warning",
+      iconColor: "red",
+      confirmButtonText: "VACIAR",
+      confirmButtonColor: "green",
+      cancelButtonText: "CANCELAR",
+      cancelButtonColor: "red",
+      showCancelButton: true,
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+        Swal.fire("Hecho!", "Carrito vacío", "success");
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire("Cancelado", "Cancelaste la accion", "error");
+      }
+    });
+  };
+
   // VALUES DEL CONTEXT
   const value = {
     itemsAdded,
@@ -78,6 +125,7 @@ export default function CustomProvider({ children }) {
     showAlert,
     TotalPrice,
     total,
+    showClearAlert,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

@@ -22,6 +22,7 @@ export default function CartListContainer() {
   const { itemsAdded } = useContext(Context);
   const { TotalPrice } = useContext(Context);
   const { total } = useContext(Context);
+  const { showClearAlert } = useContext(Context);
   const [loading, setLoading] = useState(true);
 
   const fakePromise = () => new Promise((resolve) => setTimeout(resolve, 1000));
@@ -85,6 +86,7 @@ export default function CartListContainer() {
             ))}
             {itemsAdded.length >= 1 ? (
               <>
+                {/* ------------------- TOTAL DE LA COMPRA --------------- */}
                 <Box
                   sx={{
                     width: "65%",
@@ -104,7 +106,7 @@ export default function CartListContainer() {
                     sx={{ fontSize: 30, padding: 2 }}
                   />
                 </Box>
-                {/* ------------------ CONTROLES -----------------  */}
+                {/* ---------------- CONTROLES VACIAR CARRITO - SEGUIR COMPRANDO --------------- */}
                 <Box
                   sx={{
                     width: "80%",
@@ -119,12 +121,16 @@ export default function CartListContainer() {
                     variant="contained"
                     color="error"
                     startIcon={<DeleteIcon />}
+                    onClick={() => showClearAlert()}
                   >
                     Vaciar Carrito
                   </Button>
                   <NavLink
                     to={"/products"}
-                    style={{ textDecoration: "none", color: "white" }}
+                    style={{
+                      textDecoration: "none",
+                      color: "white",
+                    }}
                   >
                     <Button
                       size="large"
@@ -146,7 +152,11 @@ export default function CartListContainer() {
                   >
                     <NavLink
                       to={""}
-                      style={{ textDecoration: "none", color: "white", mt: 5 }}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                        mt: 5,
+                      }}
                     >
                       <Button
                         size="large"
@@ -189,7 +199,10 @@ export default function CartListContainer() {
                 </Alert>
                 <NavLink
                   to={"/products"}
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                  }}
                 >
                   <Button variant="contained" size="large" sx={{ mt: 5 }}>
                     VER PRODUCTOS
@@ -199,8 +212,6 @@ export default function CartListContainer() {
             )}
           </>
         )}
-
-        {/* ------------------- TOTAL DE LA COMPRA --------------- */}
       </Box>
 
       <Footer />

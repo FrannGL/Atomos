@@ -21,6 +21,7 @@ import { useContext, useState } from "react";
 // COMPONENTES PROPIOS
 import ItemCount from "../ItemCount";
 import { Context } from "../../Context";
+import AlertSuccess from "../AlertSuccess";
 
 export default function CardItemDetail({ product }) {
   const [openMenu, setOpenMenu] = useState(null);
@@ -33,6 +34,7 @@ export default function CardItemDetail({ product }) {
   const id = open ? "simple-popper" : undefined;
 
   const { onAdd } = useContext(Context);
+  const { itemsAdded } = useContext(Context);
 
   const onAddCart = (cantidad) => {
     onAdd(product, cantidad);

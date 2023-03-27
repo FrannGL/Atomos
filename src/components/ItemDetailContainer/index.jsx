@@ -30,7 +30,7 @@ export default function ItemDetailContainer({ id }) {
 
   return (
     <Container
-      maxWidth={false}
+      maxWidth="false"
       disableGutters
       sx={{ backgroundColor: "#ededed" }}
     >

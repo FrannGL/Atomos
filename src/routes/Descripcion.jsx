@@ -6,7 +6,7 @@ function Descripcion() {
   const { id } = useParams();
   return (
     <>
-      <Container maxWidth="xl" disableGutters>
+      <Container maxWidth={false} disableGutters>
         <ItemDetailContainer id={id} />
       </Container>
     </>

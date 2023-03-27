@@ -26,7 +26,8 @@ import Layout from "./layout";
 // CONTEXT
 import CustomProvider from "./Context/index";
 
-import "./main.css";
+// FIREBASE
+import { initializeApp } from "firebase/app";
 
 const router = createBrowserRouter([
   {
@@ -88,8 +89,6 @@ const theme = createTheme({
     },
   },
 });
-
-import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBd9_BcdIN3ZbOQynCPcLkVCgahb7JrHX0",

@@ -8,20 +8,39 @@ export default function CardItemDetailSkeleton() {
         mt: 5,
         mb: 3,
         width: "90%",
-        height: 350,
+        height: 410,
         display: "flex",
       }}
     >
-      <Box sx={{ width: "45%", mx: 2, my: 2 }}>
+      {/* ------------- IMAGEN --------------- */}
+      <Box sx={{ width: "40%", mx: 2, my: 2 }}>
         <Skeleton variant="rectangular" height="100%" />
       </Box>
 
-      <Stack spacing={1} sx={{ width: "100%", mx: 2, my: 2 }}>
-        <Skeleton variant="rounded" height="10%" width="50%" />
-        <Skeleton variant="text" height="20%" width="30%" />
-        <Skeleton variant="text" height="40%" width="100%" />
-        <Skeleton variant="text" height="20%" width="30%" />
-        <Skeleton variant="text" height="20%" width="30%" />
+      <Stack sx={{ width: "100%", height: "auto", mx: 2, my: 2 }}>
+        {/* --------- TITULO - INFO ---------- */}
+        <Stack
+          direction="row"
+          sx={{ width: "100%", height: "auto", gap: 7, my: 2 }}
+        >
+          <Skeleton variant="rounded" height={50} width="50%" />
+          <Skeleton variant="rounded" height={60} width="20%" />
+        </Stack>
+
+        {/* -------------- PRECIO ------------- */}
+        <Skeleton variant="rounded" height="30%" width="20%" />
+
+        {/* ------------- DESCRIPCION ---------- */}
+        <Skeleton variant="text" height="80%" width="100%" />
+
+        {/* ---------- ITEM-COUNT - BOTON AGREGAR ------- */}
+        <Stack sx={{ width: "100%", height: "auto", gap: 3 }} direction="row">
+          <Skeleton variant="text" height={60} width="25%" />
+          <Skeleton variant="text" height={60} width="25%" />
+        </Stack>
+
+        {/* ------------ SEGUIR COMPRANDO ----------- */}
+        <Skeleton variant="rounded" height="35%" width="25%" />
       </Stack>
     </Card>
   );
