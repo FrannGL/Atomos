@@ -30,7 +30,7 @@ export default function NavBar() {
   const [anchorEl, setAnchorEl] = useState(null);
   const openMenu = Boolean(anchorEl);
 
-  const handleClick = (event) => {
+  const handleOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -93,7 +93,7 @@ export default function NavBar() {
               aria-controls={openMenu ? "basic-menu" : undefined}
               aria-haspopup="true"
               aria-expanded={openMenu ? "true" : undefined}
-              onClick={handleClick}
+              onClick={handleOpen}
               sx={{
                 fontSize: isScrolling ? 12 : 15,
                 transition: "all .3s ease",

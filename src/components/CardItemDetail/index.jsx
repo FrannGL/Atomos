@@ -26,7 +26,7 @@ import AlertSuccess from "../AlertSuccess";
 export default function CardItemDetail({ product }) {
   const [openMenu, setOpenMenu] = useState(null);
 
-  const handleClick = (event) => {
+  const handleOpen = (event) => {
     setOpenMenu(openMenu ? null : event.currentTarget);
   };
 
@@ -131,7 +131,7 @@ export default function CardItemDetail({ product }) {
             <IconButton
               aria-describedby={id}
               type="button"
-              onClick={handleClick}
+              onClick={handleOpen}
             >
               <HelpOutlineIcon />
             </IconButton>

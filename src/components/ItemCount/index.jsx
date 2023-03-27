@@ -22,9 +22,10 @@ import AlertSuccess from "../AlertSuccess";
 import { NavLink } from "react-router-dom";
 
 export default function ItemCount({ onAddCart }) {
-  const [count, setCount] = useState(1);
   const [productAdded, setProductAdded] = useState(false);
-  const { handleClick } = useContext(Context);
+  const { handleOpen } = useContext(Context);
+  const { count } = useContext(Context);
+  const { setCount } = useContext(Context);
 
   const countValidator = () => {
     if (count >= 1) {
@@ -58,21 +59,22 @@ export default function ItemCount({ onAddCart }) {
               }}
             >
               <Box sx={{ border: 1, backgroundColor: "#040b16" }}>
-                <IconButton color="base" onClick={() => setCount(count + 1)}>
-                  <AddIcon />
+                <IconButton
+                  color="base"
+                  disabled={count === 1}
+                  onClick={() =>
+                    count > 0 ? setCount(count - 1) : setCount(0)
+                  }
+                >
+                  <RemoveIcon />
                 </IconButton>
               </Box>
               <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
                 {count}
               </Typography>
               <Box sx={{ border: 1, backgroundColor: "#040b16" }}>
-                <IconButton
-                  color="base"
-                  onClick={() =>
-                    count > 0 ? setCount(count - 1) : setCount(0)
-                  }
-                >
-                  <RemoveIcon />
+                <IconButton color="base" onClick={() => setCount(count + 1)}>
+                  <AddIcon />
                 </IconButton>
               </Box>
             </Box>
@@ -83,7 +85,7 @@ export default function ItemCount({ onAddCart }) {
               color="primary"
               onClick={() => {
                 countValidator();
-                handleClick();
+                handleOpen();
               }}
             >
               Agregar al carrito

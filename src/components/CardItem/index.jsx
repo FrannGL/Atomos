@@ -13,6 +13,10 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 
+// ICONOS MATERIAL-UI
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -21,8 +25,10 @@ import { Context } from "../../Context";
 export default function CardItem({ product }) {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
+  const { count } = useContext(Context);
+  const { setCount } = useContext(Context);
 
-  const handleClick = () => {
+  const handleOpen = () => {
     setOpen(true);
   };
 
@@ -40,8 +46,8 @@ export default function CardItem({ product }) {
     <Card
       sx={{
         bgcolor: "#040b16",
-        maxWidth: 290,
-        height: 430,
+        minWidth: 275,
+        height: 490,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -51,19 +57,33 @@ export default function CardItem({ product }) {
         boxShadow: 10,
       }}
     >
+      {/* ----- IMAGEN ------- */}
       <CardMedia
         component="img"
         alt={product.name}
         height="200"
         image={product.image}
       />
-      <CardContent>
+      <CardContent
+        sx={{
+          padding: 0,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: 1,
+        }}
+      >
+        {/* ------ TITULO -------- */}
         <Typography
-          gutterBottom
           variant="h5"
           component="div"
           align="center"
-          sx={{ color: "#fff", fontWeight: "bold" }}
+          sx={{
+            color: "#fff",
+            fontWeight: "bold",
+            mt: 1,
+          }}
         >
           {product.name}
         </Typography>
@@ -76,6 +96,7 @@ export default function CardItem({ product }) {
             display: "flex",
           }}
         >
+          {/* ----- INFO -------- */}
           <CardMedia
             image={product.typeimage}
             sx={{
@@ -85,6 +106,7 @@ export default function CardItem({ product }) {
             }}
           ></CardMedia>
           <Box sx={{ width: "100%" }}>
+            {/* ------ CATEGORIA ------- */}
             <Box
               sx={{
                 width: "100%",
@@ -97,6 +119,7 @@ export default function CardItem({ product }) {
             >
               {product.category}
             </Box>
+            {/* ------ DETALLE PRODUCTO ------- */}
             <Box
               sx={{
                 width: "100%",
@@ -109,6 +132,7 @@ export default function CardItem({ product }) {
             </Box>
           </Box>
         </Box>
+        {/* --------- PRECIO ---------- */}
         <Typography
           variant="body2"
           color="text.secondary"
@@ -116,24 +140,86 @@ export default function CardItem({ product }) {
           sx={{
             color: "#fff",
             fontSize: 25,
-            mt: 2,
+            mt: 1,
           }}
         >
           $ {product.precio}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: 1,
+        }}
+      >
+        {/* ------ COUNT -------- */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            border: 1,
+            width: "50%",
+            height: 30,
+            color: "white",
+          }}
+        >
+          <Box
+            sx={{
+              border: 1,
+              backgroundColor: "white",
+              width: "30%",
+              height: 30,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <IconButton
+              sx={{ width: "25%" }}
+              disabled={count === 1}
+              onClick={() => (count > 0 ? setCount(count - 1) : setCount(0))}
+            >
+              <RemoveIcon sx={{ fontSize: 20, color: "black" }} />
+            </IconButton>
+          </Box>
+          <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
+            {count}
+          </Typography>
+          <Box
+            sx={{
+              border: 1,
+              backgroundColor: "white",
+              width: "30%",
+              height: 30,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <IconButton onClick={() => setCount(count + 1)}>
+              <AddIcon sx={{ fontSize: 20, color: "black" }} />
+            </IconButton>
+          </Box>
+        </Box>
+        {/* ------- AGREGAR AL CARRITO ---------- */}
         <Button
           size="small"
           variant="contained"
           color="info"
           onClick={() => {
             onAdd(product, 1);
-            handleClick();
+            handleOpen();
           }}
+          sx={{ width: "80%" }}
         >
           Agregar al carrito
         </Button>
+        {/* --------- VER MÁS ------------- */}
         <Button size="small" variant="outlined" color="base">
           <NavLink
             to={`/descripcion/${product.id}`}
@@ -143,6 +229,7 @@ export default function CardItem({ product }) {
           </NavLink>
         </Button>
       </CardActions>
+      {/* ---------- ALERTA ------------- */}
       <Snackbar open={open} autoHideDuration={2500} onClose={handleClose}>
         <Alert
           onClose={handleClose}

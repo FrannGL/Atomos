@@ -9,9 +9,10 @@ export default function CustomProvider({ children }) {
   const [itemsAdded, setItemsAdded] = useState([]);
   const [open, setOpen] = useState(false);
   const [total, setTotal] = useState(0);
+  const [count, setCount] = useState(1);
 
   // FUNCION ABRIR MENU
-  const handleClick = () => {
+  const handleOpen = () => {
     setOpen(true);
   };
 
@@ -39,13 +40,6 @@ export default function CustomProvider({ children }) {
     } else {
       setItemsAdded([...itemsAdded, { ...product, cantidad }]);
     }
-  };
-
-  // FUNCION PARA COMPARAR SI YA EXISTE EL PRODUCTO EN EL CARRITO
-  const isInCart = (product) => {
-    itemsAdded.some((productAdded) => {
-      productAdded.id === product.id;
-    });
   };
 
   // FUNCION ELIMINAR PRODUCTOS DEL CARRITO
@@ -118,7 +112,7 @@ export default function CustomProvider({ children }) {
   const value = {
     itemsAdded,
     onAdd,
-    handleClick,
+    handleOpen,
     handleClose,
     open,
     DeleteProduct,
@@ -126,6 +120,8 @@ export default function CustomProvider({ children }) {
     TotalPrice,
     total,
     showClearAlert,
+    count,
+    setCount,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
