@@ -26,7 +26,7 @@ export default function CustomProvider({ children }) {
   };
 
   // FUNCION AGREGAR PRODUCTOS AL CARRITO
-  const onAdd = (product, cantidad) => {
+  const addToCart = (product, cantidad) => {
     const existsInCart = itemsAdded.find((prod) => prod.id === product.id);
     if (existsInCart) {
       const carritoActualizado = itemsAdded.map((prod) => {
@@ -43,7 +43,7 @@ export default function CustomProvider({ children }) {
   };
 
   // FUNCION ELIMINAR PRODUCTOS DEL CARRITO
-  const DeleteProduct = (id) => {
+  const deleteProduct = (id) => {
     const find = itemsAdded.filter((item) => item.id !== id);
     setItemsAdded(find);
   };
@@ -54,7 +54,7 @@ export default function CustomProvider({ children }) {
   };
 
   // FUNCION PARA CALCULAR TOTAL DEL CARRITO
-  const TotalPrice = () => {
+  const totalPrice = () => {
     const acc = itemsAdded.reduce(
       (total, producto) => total + producto.cantidad * producto.precio,
       0
@@ -77,7 +77,7 @@ export default function CustomProvider({ children }) {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        DeleteProduct(product.id);
+        deleteProduct(product.id);
         Swal.fire("Hecho!", "Producto Eliminado", "success");
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire("Cancelado", "Cancelaste la accion", "error");
@@ -111,13 +111,13 @@ export default function CustomProvider({ children }) {
   // VALUES DEL CONTEXT
   const value = {
     itemsAdded,
-    onAdd,
+    addToCart,
     handleOpen,
     handleClose,
     open,
-    DeleteProduct,
+    deleteProduct,
     showAlert,
-    TotalPrice,
+    totalPrice,
     total,
     showClearAlert,
     count,

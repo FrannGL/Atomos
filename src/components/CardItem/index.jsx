@@ -7,15 +7,10 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  IconButton,
   Snackbar,
   Typography,
 } from "@mui/material";
 import { useContext, useState } from "react";
-
-// ICONOS MATERIAL-UI
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
@@ -25,10 +20,8 @@ import { Context } from "../../Context";
 export default function CardItem({ product }) {
   const { id } = useParams();
   const [open, setOpen] = useState(false);
-  const { count } = useContext(Context);
-  const { setCount } = useContext(Context);
 
-  const handleOpen = () => {
+  const handleClick = () => {
     setOpen(true);
   };
 
@@ -40,14 +33,14 @@ export default function CardItem({ product }) {
     setOpen(false);
   };
 
-  const { onAdd } = useContext(Context);
+  const { addToCart } = useContext(Context);
 
   return (
     <Card
       sx={{
         bgcolor: "#040b16",
-        minWidth: 275,
-        height: 490,
+        minWidth: 280,
+        height: 420,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -152,70 +145,17 @@ export default function CardItem({ product }) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          flexDirection: "column",
-          gap: 1,
         }}
       >
-        {/* ------ COUNT -------- */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            border: 1,
-            width: "50%",
-            height: 30,
-            color: "white",
-          }}
-        >
-          <Box
-            sx={{
-              border: 1,
-              backgroundColor: "white",
-              width: "30%",
-              height: 30,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <IconButton
-              sx={{ width: "25%" }}
-              disabled={count === 1}
-              onClick={() => (count > 0 ? setCount(count - 1) : setCount(0))}
-            >
-              <RemoveIcon sx={{ fontSize: 20, color: "black" }} />
-            </IconButton>
-          </Box>
-          <Typography sx={{ fontSize: 20, fontWeight: "bold" }}>
-            {count}
-          </Typography>
-          <Box
-            sx={{
-              border: 1,
-              backgroundColor: "white",
-              width: "30%",
-              height: 30,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <IconButton onClick={() => setCount(count + 1)}>
-              <AddIcon sx={{ fontSize: 20, color: "black" }} />
-            </IconButton>
-          </Box>
-        </Box>
         {/* ------- AGREGAR AL CARRITO ---------- */}
         <Button
           size="small"
           variant="contained"
           color="info"
           onClick={() => {
-            onAdd(product, 1);
-            handleOpen();
+            addToCart(product, 1);
+            handleClick();
           }}
-          sx={{ width: "80%" }}
         >
           Agregar al carrito
         </Button>

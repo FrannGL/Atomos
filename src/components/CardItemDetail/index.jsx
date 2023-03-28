@@ -1,7 +1,6 @@
 // COMPONENTES MATERIAL-UI
 import {
   Box,
-  Button,
   Card,
   CardMedia,
   IconButton,
@@ -10,8 +9,6 @@ import {
 } from "@mui/material";
 
 // ICONOS MATERIAL-UI
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 
 // HOOKS REACT
@@ -33,11 +30,10 @@ export default function CardItemDetail({ product }) {
   const open = Boolean(openMenu);
   const id = open ? "simple-popper" : undefined;
 
-  const { onAdd } = useContext(Context);
-  const { itemsAdded } = useContext(Context);
+  const { addToCart } = useContext(Context);
 
   const onAddCart = (cantidad) => {
-    onAdd(product, cantidad);
+    addToCart(product, cantidad);
   };
 
   return (

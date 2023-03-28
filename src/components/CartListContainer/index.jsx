@@ -20,7 +20,7 @@ import Footer from "../Footer";
 
 export default function CartListContainer() {
   const { itemsAdded } = useContext(Context);
-  const { TotalPrice } = useContext(Context);
+  const { totalPrice } = useContext(Context);
   const { total } = useContext(Context);
   const { showClearAlert } = useContext(Context);
   const [loading, setLoading] = useState(true);
@@ -42,7 +42,7 @@ export default function CartListContainer() {
   }, []);
 
   useEffect(() => {
-    TotalPrice();
+    totalPrice();
   }, [itemsAdded]);
 
   return (
