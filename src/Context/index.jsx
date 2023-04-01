@@ -42,6 +42,13 @@ export default function CustomProvider({ children }) {
     }
   };
 
+  // FUNCION PARA MOSTRAR CANTIDAD AGREGADA AL CARRITO
+  const cartQuantity = () => {
+    return itemsAdded.reduce((acc, prod) => {
+      acc += prod.cantidad;
+    }, 0);
+  };
+
   // FUNCION ELIMINAR PRODUCTOS DEL CARRITO
   const deleteProduct = (id) => {
     const find = itemsAdded.filter((item) => item.id !== id);
@@ -122,6 +129,7 @@ export default function CustomProvider({ children }) {
     showClearAlert,
     count,
     setCount,
+    cartQuantity
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

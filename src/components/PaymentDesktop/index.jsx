@@ -19,8 +19,82 @@ import bgMainMobile from "../../../public/assets/images/bg-main-mobile.png";
 import iconComplete from "../../../public/assets/images/icon-complete.svg";
 import cardLogo from "../../../public/assets/images/card-logo.svg";
 import { NavLink } from "react-router-dom";
-//
+import { useEffect } from "react";
+import { useState } from "react";
+
 export default function PaymentDesktop() {
+  const [orderDetail, setOrderDetail] = useState(null);
+  useEffect(() => {
+    const inputNumber = document.querySelector("#inputNumber");
+    const inputName = document.querySelector("#inputName");
+    const inputExpMont = document.querySelector("#inputExpMonth");
+    const inputExpYear = document.querySelector("#inputExpYear");
+    const inputCvc = document.querySelector("#inputCvc");
+    const cardNumber = document.querySelector("#cardNumber");
+    const cardName = document.querySelector("#cardName");
+    const cardExpMonth = document.querySelector("#cardExpMonth");
+    const cardExpYear = document.querySelector("#cardExpYear");
+    const cardCvc = document.querySelector("#cardCvc");
+    const form = document.querySelector("#form");
+
+    inputName.addEventListener("input", () => {
+      cardName.innerText = inputName.value;
+      if (inputName.value.length === 0) {
+        cardName.innerText = "JAMES RODRIGUEZ";
+      }
+    });
+
+    inputNumber.addEventListener("input", () => {
+      cardNumber.innerText = inputNumber.value;
+      if (inputNumber.value.length === 0) {
+        cardNumber.innerText = "0000 0000 0000 0000";
+      }
+    });
+
+    inputExpMont.addEventListener("input", () => {
+      cardExpMonth.innerText = inputExpMonth.value;
+      if (inputExpMonth.value.length === 0) {
+        cardExpMonth.innerText = "00";
+      }
+    });
+
+    inputExpYear.addEventListener("input", () => {
+      cardExpYear.innerText = inputExpYear.value;
+      if (inputExpYear.value.length === 0) {
+        cardExpYear.innerText = "00";
+      }
+    });
+
+    inputCvc.addEventListener("input", () => {
+      cardCvc.innerText = inputCvc.value;
+      if (inputCvc.value.length === 0) {
+        cardCvc.innerText = "000";
+      }
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nombre = inputName.value;
+      const numero = inputNumber.value;
+      const expMonth = inputExpMont.value;
+      const expYear = inputExpYear.value;
+      const cvc = inputCvc.value;
+
+      const detalleDeCompra = {
+        Nombre: nombre,
+        Numero: numero,
+        mesVencimiento: expMonth,
+        añovencimiento: expYear,
+        codigoSeguridad: cvc,
+      };
+
+      setOrderDetail(detalleDeCompra);
+      form.reset();
+    });
+  }, []);
+
+  console.log(orderDetail);
+
   return (
     <>
       <Container maxWidth={false} disableGutters>
@@ -92,6 +166,7 @@ export default function PaymentDesktop() {
                     letterSpacing={3}
                     fontWeight="bold"
                     sx={{ mb: 2 }}
+                    id="cardNumber"
                   >
                     0000 0000 0000 0000
                   </Typography>
@@ -104,8 +179,18 @@ export default function PaymentDesktop() {
                       fontSize: "0.8rem",
                     }}
                   >
-                    <Typography variant="p">James Rodriguez</Typography>
-                    <Typography variant="p">00/00</Typography>
+                    <Typography variant="p" id="cardName">
+                      James Rodriguez
+                    </Typography>
+                    <Box sx={{ display: "flex" }}>
+                      <Typography variant="p" id="cardExpMonth">
+                        00
+                      </Typography>
+                      <Typography variant="p">/</Typography>
+                      <Typography variant="p" id="cardExpYear">
+                        00
+                      </Typography>
+                    </Box>
                   </Box>
                 </CardContent>
               </Card>
@@ -141,6 +226,7 @@ export default function PaymentDesktop() {
                     paddingTop: 2.5,
                     fontSize: "1.2rem",
                   }}
+                  id="cardCvc"
                 >
                   000
                 </Typography>
@@ -160,6 +246,7 @@ export default function PaymentDesktop() {
             }}
             noValidate
             autoComplete="off"
+            id="form"
           >
             <Box
               sx={{
@@ -172,8 +259,9 @@ export default function PaymentDesktop() {
               <TextField
                 required
                 label="Card Number"
-                defaultValue="Card Number"
                 placeholder="Card Number"
+                id="inputNumber"
+                type="number"
               />
             </Box>
             <Box
@@ -187,8 +275,8 @@ export default function PaymentDesktop() {
               <TextField
                 required
                 label="Card Holder Name"
-                defaultValue="Card Holder Name"
                 placeholder="Card Holder Name"
+                id="inputName"
                 fullWidth
               />
             </Box>
@@ -204,20 +292,23 @@ export default function PaymentDesktop() {
                 <TextField
                   required
                   label="Exp Date MONTH"
-                  defaultValue="MM"
                   placeholder="MM"
+                  type="number"
+                  id="inputExpMonth"
                 />
                 <TextField
                   required
                   label="Exp Date YEAR"
-                  defaultValue="YY"
                   placeholder="YY"
+                  type="number"
+                  id="inputExpYear"
                 />
                 <TextField
                   required
                   label="CVC"
-                  defaultValue="CVC"
                   placeholder="CVC"
+                  type="number"
+                  id="inputCvc"
                 />
               </Box>
             </Box>

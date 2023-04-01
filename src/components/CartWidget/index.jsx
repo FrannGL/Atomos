@@ -18,16 +18,13 @@ const StyledBadge = styled(Badge)(() => ({
 }));
 
 export default function CartWidget() {
-  const { itemsAdded } = useContext(Context);
+  const { cartQuantity } = useContext(Context);
 
   return (
     <Box sx={{ mx: 3, display: { xs: "none", sm: "flex" } }}>
       <IconButton aria-label="cart">
         <NavLink to={"../../cart"}>
-          <StyledBadge
-            badgeContent={itemsAdded < 1 ? "0" : itemsAdded.length}
-            color="info"
-          >
+          <StyledBadge badgeContent={cartQuantity} color="info">
             <LocalMallIcon color="base" fontSize="medium" />
           </StyledBadge>
         </NavLink>

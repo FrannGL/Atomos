@@ -164,7 +164,7 @@ export default function CartListContainer() {
                         color="success"
                         startIcon={<CheckCircleIcon />}
                       >
-                        Finalizar Compra
+                        Ir a pagar
                       </Button>
                     </NavLink>
                   </Box>

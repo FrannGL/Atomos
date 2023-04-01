@@ -18,8 +18,57 @@ import bgMainMobile from "../../../public/assets/images/bg-main-mobile.png";
 import iconComplete from "../../../public/assets/images/icon-complete.svg";
 import cardLogo from "../../../public/assets/images/card-logo.svg";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function PaymentResponsive() {
+  useEffect(() => {
+    const inputNumber = document.querySelector("#inputNumber");
+    const inputName = document.querySelector("#inputName");
+    const inputExpMont = document.querySelector("#inputExpMonth");
+    const inputExpYear = document.querySelector("#inputExpYear");
+    const inputCvc = document.querySelector("#inputCvc");
+    const cardNumber = document.querySelector("#cardNumber");
+    const cardName = document.querySelector("#cardName");
+    const cardExpMonth = document.querySelector("#cardExpMonth");
+    const cardExpYear = document.querySelector("#cardExpYear");
+    const cardCvc = document.querySelector("#cardCvc");
+
+    inputName.addEventListener("input", () => {
+      cardName.innerText = inputName.value;
+      if (inputName.value.length === 0) {
+        cardName.innerText = "JAMES RODRIGUEZ";
+      }
+    });
+
+    inputNumber.addEventListener("input", () => {
+      cardNumber.innerText = inputNumber.value;
+      if (inputNumber.value.length === 0) {
+        cardNumber.innerText = "0000 0000 0000 0000";
+      }
+    });
+
+    inputExpMont.addEventListener("input", () => {
+      cardExpMonth.innerText = inputExpMonth.value;
+      if (inputExpMonth.value.length === 0) {
+        cardExpMonth.innerText = "00";
+      }
+    });
+
+    inputExpYear.addEventListener("input", () => {
+      cardExpYear.innerText = inputExpYear.value;
+      if (inputExpYear.value.length === 0) {
+        cardExpYear.innerText = "00";
+      }
+    });
+
+    inputCvc.addEventListener("input", () => {
+      cardCvc.innerText = inputCvc.value;
+      if (inputCvc.value.length === 0) {
+        cardCvc.innerText = "000";
+      }
+    });
+  }, []);
+
   return (
     <>
       <CardMedia
@@ -85,7 +134,12 @@ export default function PaymentResponsive() {
                   mt: 5,
                 }}
               >
-                <Typography variant="p" letterSpacing={3} fontWeight="bold">
+                <Typography
+                  variant="p"
+                  letterSpacing={3}
+                  fontWeight="bold"
+                  id="cardNumber"
+                >
                   0000 0000 0000 0000
                 </Typography>
                 <Box
@@ -98,8 +152,18 @@ export default function PaymentResponsive() {
                     fontSize: "0.8rem",
                   }}
                 >
-                  <Typography variant="p">James Rodriguez</Typography>
-                  <Typography variant="p">00/00</Typography>
+                  <Typography variant="p" id="cardName">
+                    James Rodriguez
+                  </Typography>
+                  <Box sx={{ display: "flex" }}>
+                    <Typography variant="p" id="cardExpMonth">
+                      00
+                    </Typography>
+                    <Typography variant="p">/</Typography>
+                    <Typography variant="p" id="cardExpYear">
+                      00
+                    </Typography>
+                  </Box>
                 </Box>
               </CardContent>
             </Card>
@@ -135,6 +199,7 @@ export default function PaymentResponsive() {
                   paddingTop: 2.5,
                   fontSize: "1.2rem",
                 }}
+                id="cardCvc"
               >
                 000
               </Typography>
@@ -163,8 +228,9 @@ export default function PaymentResponsive() {
             <TextField
               required
               label="Card Number"
-              defaultValue="Card Number"
               placeholder="Card Number"
+              id="inputNumber"
+              type="number"
             />
           </Box>
           <Box
@@ -177,8 +243,8 @@ export default function PaymentResponsive() {
             <TextField
               required
               label="Card Holder Name"
-              defaultValue="Card Holder Name"
               placeholder="Card Holder Name"
+              id="inputName"
             />
           </Box>
           <Box
@@ -194,20 +260,23 @@ export default function PaymentResponsive() {
               <TextField
                 required
                 label="Exp Date MONTH"
-                defaultValue="MM"
                 placeholder="MM"
+                id="inputExpMonth"
+                type="number"
               />
               <TextField
                 required
                 label="Exp Date YEAR"
-                defaultValue="YY"
                 placeholder="YY"
+                id="inputExpYear"
+                type="number"
               />
               <TextField
                 required
                 label="CVC"
-                defaultValue="CVC"
                 placeholder="CVC"
+                id="inputCvc"
+                type="number"
               />
             </Box>
           </Box>
