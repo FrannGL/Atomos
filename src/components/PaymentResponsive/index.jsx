@@ -17,6 +17,7 @@ import bgMainDesktop from "../../../public/assets/images/bg-main-desktop.png";
 import bgMainMobile from "../../../public/assets/images/bg-main-mobile.png";
 import iconComplete from "../../../public/assets/images/icon-complete.svg";
 import cardLogo from "../../../public/assets/images/card-logo.svg";
+import { NavLink } from "react-router-dom";
 
 export default function PaymentResponsive() {
   return (
