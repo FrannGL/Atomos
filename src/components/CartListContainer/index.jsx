@@ -151,7 +151,7 @@ export default function CartListContainer() {
                     }}
                   >
                     <NavLink
-                      to={""}
+                      to={"/checkout"}
                       style={{
                         textDecoration: "none",
                         color: "white",

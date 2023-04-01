@@ -5,7 +5,7 @@ export default function CardItemSkeleton() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: "50vh",
         minWidth: "15%",
         display: "flex",
         justifyContent: "center",
