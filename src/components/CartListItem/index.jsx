@@ -126,7 +126,7 @@ export default function CartListItem({ product }) {
               </Box>
               <Box width="15%" textAlign="center" sx={{ mt: 1 }}>
                 <Typography variant="p" textAlign="center" fontSize="1.2rem">
-                  $ {product.precio * product.cantidad}
+                  $ {product.price * product.cantidad}
                 </Typography>
               </Box>
               <Box width="10%" textAlign="center">

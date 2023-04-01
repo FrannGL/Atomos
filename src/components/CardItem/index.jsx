@@ -136,7 +136,7 @@ export default function CardItem({ product }) {
             mt: 1,
           }}
         >
-          $ {product.precio}
+          $ {product.price}
         </Typography>
       </CardContent>
       <CardActions

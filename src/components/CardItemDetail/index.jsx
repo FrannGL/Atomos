@@ -168,7 +168,7 @@ export default function CardItemDetail({ product }) {
           }}
         >
           <Typography align="center" variant="h4">
-            $ {product?.precio}
+            $ {product?.price}
           </Typography>
         </Box>
 

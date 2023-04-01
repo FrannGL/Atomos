@@ -44,9 +44,7 @@ export default function CustomProvider({ children }) {
 
   // FUNCION PARA MOSTRAR CANTIDAD AGREGADA AL CARRITO
   const cartQuantity = () => {
-    return itemsAdded.reduce((acc, prod) => {
-      acc += prod.cantidad;
-    }, 0);
+    return itemsAdded.reduce((acc, prod) => (acc += prod.cantidad), 0);
   };
 
   // FUNCION ELIMINAR PRODUCTOS DEL CARRITO
@@ -63,7 +61,7 @@ export default function CustomProvider({ children }) {
   // FUNCION PARA CALCULAR TOTAL DEL CARRITO
   const totalPrice = () => {
     const acc = itemsAdded.reduce(
-      (total, producto) => total + producto.cantidad * producto.precio,
+      (total, producto) => total + producto.cantidad * producto.price,
       0
     );
     setTotal(acc);
@@ -129,7 +127,7 @@ export default function CustomProvider({ children }) {
     showClearAlert,
     count,
     setCount,
-    cartQuantity
+    cartQuantity,
   };
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

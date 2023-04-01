@@ -1,32 +1,30 @@
 // COMPONENTES MATERIAL-UI
 import { Container } from "@mui/system";
 
-// MOCKS PRODUCTS
-import products from "../../mocks/products";
-
 // HOOKS REACT
 import { useEffect, useState } from "react";
 
 // COMPONENTES PROPIOS
 import ItemDetail from "../ItemDetail";
 
+// FIREBASE
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+
 export default function ItemDetailContainer({ id }) {
   const [product, setProduct] = useState(null);
 
-  const getProduct = (id) => {
-    return new Promise((resolve) => {
-      const productoFiltrado = products.find((p) => p.id === parseInt(id));
-      setTimeout(() => {
-        resolve(productoFiltrado);
-      }, 2000);
-    });
-  };
-
   useEffect(() => {
-    getProduct(id).then((item) => {
-      setProduct(item);
-    });
-  }, [id]);
+    const db = getFirestore();
+    const itemRef = doc(db, "Items", id);
+
+    getDoc(itemRef)
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setProduct({ id: snapshot.id, ...snapshot.data() });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <Container

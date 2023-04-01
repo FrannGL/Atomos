@@ -30,6 +30,7 @@ import CustomProvider from "./Context/index";
 // FIREBASE
 import { initializeApp } from "firebase/app";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
