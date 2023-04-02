@@ -1,12 +1,5 @@
 // COMPONENTES MATERIAL-UI
-import {
-  Alert,
-  Box,
-  Button,
-  IconButton,
-  Snackbar,
-  Typography,
-} from "@mui/material";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 
 // ICONOS MATERIAL-UI
 import AddIcon from "@mui/icons-material/Add";
