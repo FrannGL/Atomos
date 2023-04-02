@@ -21,7 +21,7 @@ import { Context } from "../../Context";
 import AlertSuccess from "../AlertSuccess";
 import { NavLink } from "react-router-dom";
 
-export default function ItemCount({ onAddCart }) {
+export default function ItemCountLarge({ onAddCart }) {
   const [productAdded, setProductAdded] = useState(false);
   const { handleOpen } = useContext(Context);
   const { count } = useContext(Context);

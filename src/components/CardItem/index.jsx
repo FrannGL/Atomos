@@ -11,6 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext, useState } from "react";
+import ItemCountMedium from "../ItemCountMedium";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
@@ -40,7 +41,7 @@ export default function CardItem({ product }) {
       sx={{
         bgcolor: "#040b16",
         minWidth: 280,
-        height: 420,
+        height: 500,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -51,12 +52,17 @@ export default function CardItem({ product }) {
       }}
     >
       {/* ----- IMAGEN ------- */}
-      <CardMedia
-        component="img"
-        alt={product.name}
-        height="200"
-        image={product.image}
-      />
+      <NavLink
+        to={`/descripcion/${product.id}`}
+        style={{ textDecoration: "none", width: "100%" }}
+      >
+        <CardMedia
+          component="img"
+          alt={product.name}
+          height="200"
+          image={product.image}
+        />
+      </NavLink>
       <CardContent
         sx={{
           padding: 0,
@@ -145,8 +151,14 @@ export default function CardItem({ product }) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          flexDirection: "column",
+          gap: 1.3,
         }}
       >
+        {/* -------- ITEM COUNT -------------- */}
+
+        <ItemCountMedium />
+
         {/* ------- AGREGAR AL CARRITO ---------- */}
         <Button
           size="small"

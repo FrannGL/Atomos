@@ -16,7 +16,7 @@ import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 
 // COMPONENTES PROPIOS
-import ItemCount from "../ItemCount";
+import ItemCountLarge from "../ItemCountLarge";
 import { Context } from "../../Context";
 import AlertSuccess from "../AlertSuccess";
 
@@ -180,10 +180,12 @@ export default function CardItemDetail({ product }) {
             display: "flex",
             justifyContent: "start",
             alignItems: "start",
+            flexDirection: "column",
             mr: 2,
             mb: 2,
           }}
         >
+          <Typography fontWeight="bold">STOCK: {product?.stock}</Typography>
           <Typography align="justify" variant="h6" fontSize="1.1rem">
             {product?.description}
           </Typography>
@@ -191,7 +193,7 @@ export default function CardItemDetail({ product }) {
 
         {/* ------- CONTROLES -------- */}
 
-        <ItemCount onAddCart={onAddCart} />
+        <ItemCountLarge onAddCart={onAddCart} />
       </Box>
     </Card>
   );

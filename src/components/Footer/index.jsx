@@ -27,7 +27,7 @@ export default function Footer() {
           <Grid item xs={12}>
             <Typography color="white" variant="h5" align="center">
               {`${new Date().getFullYear()} React Starter App including Vite +
-              Material UI + React Router `}
+              Material UI + React Router + Context + Firebase `}
             </Typography>
             <Typography color="white" variant="h6" align="center" fontSize={15}>
               Developed by Franco Galluccio

@@ -10,8 +10,9 @@ import {
 
 // ICONOS MATERIAL-UI
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Context } from "../../Context";
+import ItemCountSmall from "../itemCountSmall";
 
 export default function CartListItem({ product }) {
   const { showAlert } = useContext(Context);
@@ -116,14 +117,12 @@ export default function CartListItem({ product }) {
               </Box>
               <Box width="15%" textAlign="center" sx={{ mt: 1 }}>
                 <Typography variant="p" textAlign="center" fontSize="1.2rem">
-                  $ {product.precio}
+                  $ {product.price}
                 </Typography>
               </Box>
-              <Box width="10%" textAlign="center" sx={{ mt: 1 }}>
-                <Typography variant="p" textAlign="center" fontSize="1.2rem">
-                  {product.cantidad}
-                </Typography>
-              </Box>
+
+              <ItemCountSmall product={product} />
+
               <Box width="15%" textAlign="center" sx={{ mt: 1 }}>
                 <Typography variant="p" textAlign="center" fontSize="1.2rem">
                   $ {product.price * product.cantidad}
