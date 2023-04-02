@@ -12,7 +12,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext } from "react";
 import { Context } from "../../Context";
-import ItemCountSmall from "../itemCountSmall";
+import ItemCountSmall from "../ItemCountSmall";
 
 export default function CartListItem({ product }) {
   const { showAlert } = useContext(Context);
