@@ -10,6 +10,9 @@ import {
   Modal,
 } from "@mui/material";
 
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
@@ -27,9 +30,32 @@ import CartModalDetail from "../CartModalDetail";
 export default function PaymentDesktop() {
   const [orderDetail, setOrderDetail] = useState(null);
 
-  // const { itemsAdded } = useContext(Context);
+  let initialValues = {
+    nombre: "",
+    numeroTarjeta: "",
+    expMonth: "",
+    expYear: "",
+    cvc: "",
+  };
 
-  // console.log(itemsAdded);
+  const submitForm = (data) => {
+    console.log(data);
+  };
+
+  const { handleSubmit, handleChange, errors } = useFormik({
+    initialValues,
+    onSubmit: submitForm,
+    validationSchema: Yup.object({
+      nombre: Yup.string().required("Debes Ingresar un Nombre"),
+      numeroTarjeta: Yup.number().required(
+        "Debes Ingresar los numeros de la tarjeta"
+      ),
+      expMonth: Yup.number().required("Debes Ingresar el mes de vencimiento"),
+      expYear: Yup.number().required("Debes Ingresar el año de vencimiento"),
+      cvc: Yup.number().required("Debes Ingresar el codigo de seguridad"),
+    }),
+  });
+
   useEffect(() => {
     const inputNumber = document.querySelector("#inputNumber");
     const inputName = document.querySelector("#inputName");
@@ -77,29 +103,7 @@ export default function PaymentDesktop() {
         cardCvc.innerText = "000";
       }
     });
-
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const nombre = inputName.value;
-      const numero = inputNumber.value;
-      const expMonth = inputExpMont.value;
-      const expYear = inputExpYear.value;
-      const cvc = inputCvc.value;
-
-      const detalleDeCompra = {
-        Nombre: nombre,
-        NumeroTarjeta: numero,
-        mesVencimiento: expMonth,
-        añovencimiento: expYear,
-        codigoSeguridad: cvc,
-      };
-
-      setOrderDetail(detalleDeCompra);
-      form.reset();
-    });
   }, []);
-
-  console.log(orderDetail);
 
   return (
     <>
@@ -262,6 +266,8 @@ export default function PaymentDesktop() {
                 paddingTop: 0,
                 width: "80%",
               }}
+              noValidate
+              onSubmit={handleSubmit}
               autoComplete="off"
               id="form"
             >
@@ -279,6 +285,10 @@ export default function PaymentDesktop() {
                   placeholder="Card Number"
                   id="inputNumber"
                   type="number"
+                  name="numeroTarjeta"
+                  error={errors.numeroTarjeta}
+                  helperText={errors.numeroTarjeta}
+                  onChange={handleChange}
                 />
               </Box>
               <Box
@@ -294,6 +304,10 @@ export default function PaymentDesktop() {
                   label="Card Holder Name"
                   placeholder="Card Holder Name"
                   id="inputName"
+                  name="nombre"
+                  onChange={handleChange}
+                  error={errors.nombre}
+                  helperText={errors.nombre}
                   fullWidth
                 />
               </Box>
@@ -312,6 +326,10 @@ export default function PaymentDesktop() {
                     placeholder="MM"
                     type="number"
                     id="inputExpMonth"
+                    name="expMonth"
+                    error={errors.expMonth}
+                    helperText={errors.expMonth}
+                    onChange={handleChange}
                   />
                   <TextField
                     required
@@ -319,6 +337,10 @@ export default function PaymentDesktop() {
                     placeholder="YY"
                     type="number"
                     id="inputExpYear"
+                    name="expYear"
+                    error={errors.expYear}
+                    helperText={errors.expYear}
+                    onChange={handleChange}
                   />
                   <TextField
                     required
@@ -326,6 +348,10 @@ export default function PaymentDesktop() {
                     placeholder="CVC"
                     type="number"
                     id="inputCvc"
+                    name="cvc"
+                    error={errors.cvc}
+                    helperText={errors.cvc}
+                    onChange={handleChange}
                   />
                 </Box>
               </Box>

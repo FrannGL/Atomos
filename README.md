@@ -1,5 +1,5 @@
-# DOCUMENTACION
+# **INTRODUCCION**
 
 ## TIENDA VIRTUAL JUGUETES PERDIDOS
 
-## Primera aplicación creada a base de ReactJS, utilizando VITE cómo principal herramientas de compilación y MATERIAL-UI como librería de estilos. También utiliza la librería REACT-ROUTER la cual permite
+### Primer proyecto utilizando **React JS**, creado a partir de la herramienta de compilación **VITE** y estirilizado con **Material UI**. Navegabilidad a cargo de **React-Router** y contexto creado a traves de **Context API**. Los datos se encuentran alojados en **FIREBASE**.
