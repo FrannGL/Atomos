@@ -1,3 +1,4 @@
+// COMPONENTES MATERIAL-UI
 import {
   Box,
   Button,
@@ -8,19 +9,73 @@ import {
   Typography,
 } from "@mui/material";
 
+// ICONOS MATERIAL UI
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
+// HOOKS REACT
+import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+
+// IMAGENES
 import bgCardBack from "../../../public/assets/images/bg-card-back.png";
 import bgCardFront from "../../../public/assets/images/bg-card-front.png";
 import bgMainDesktop from "../../../public/assets/images/bg-main-desktop.png";
-import bgMainMobile from "../../../public/assets/images/bg-main-mobile.png";
 import iconComplete from "../../../public/assets/images/icon-complete.svg";
 import cardLogo from "../../../public/assets/images/card-logo.svg";
-import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import CartModalDetail from "../CartModalDetail";
+
+// FORMIK Y YUP
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export default function PaymentResponsive() {
+  let initialValues = {
+    nombre: "",
+    numeroTarjeta: "",
+    dni: "",
+    expMonth: "",
+    expYear: "",
+    cvc: "",
+  };
+
+  const submitForm = (data) => {
+    console.log(data);
+  };
+
+  const { handleSubmit, handleChange, errors, values } = useFormik({
+    initialValues,
+    onSubmit: submitForm,
+    validationSchema: Yup.object({
+      nombre: Yup.string()
+        .required("Debes Ingresar un Nombre")
+        .matches(
+          /^[A-ZÑa-zñáéíóúÁÉÍÓÚ'° ]+$/,
+          "No debe ingresar números ni simbolos"
+        ),
+      numeroTarjeta: Yup.string()
+        .required("Debes Ingresar los numeros de la tarjeta")
+        .matches(/^[0-9]+$/, "Debes ingresar como máximo 16 caracteres")
+        .min(16, "Debes ingresar los 16 números de la tarjeta"),
+      dni: Yup.string()
+        .required("Debes ingresar el número de DNI del Titular")
+        .matches(/^[0-9]+$/, "Debes ingresar sólo números con un máximo de 8")
+        .min(8, "Debes ingresar sólo números con un máximo de 8"),
+      expMonth: Yup.string()
+        .required("Debes Ingresar el mes de vencimiento")
+        .matches(/^[0-9]+$/, "Debes ingresar como máximo 2 caracteres")
+        .max(2, "Debes ingresar como máximo 2 caracteres"),
+      expYear: Yup.string()
+        .required("Debes Ingresar el año de vencimiento")
+        .matches(/^[0-9]+$/, "Debes ingresar como máximo 2 caracteres")
+        .max(2, "Debes ingresar como máximo 2 caracteres"),
+      cvc: Yup.string()
+        .required("Debes Ingresar el codigo de seguridad")
+        .matches(/^[0-9]+$/, "Debes ingresar como máximo 3 caracteres")
+        .max(3, "Debes ingresar como máximo 3 caracteres"),
+    }),
+  });
   useEffect(() => {
     const inputNumber = document.querySelector("#inputNumber");
     const inputName = document.querySelector("#inputName");
@@ -206,111 +261,175 @@ export default function PaymentResponsive() {
             </CardContent>
           </Card>
         </Box>
+
         <Box
-          component="form"
           sx={{
+            maxWidth: "100%",
+            my: 10,
             display: "flex",
+            alignItems: "center",
             flexDirection: "column",
-            gap: "1rem",
-            padding: "2rem",
-            paddingTop: 0,
+            gap: 4,
           }}
-          noValidate
-          autoComplete="off"
         >
+          <CartModalDetail />
           <Box
+            component="form"
             sx={{
               display: "flex",
               flexDirection: "column",
-              textTransform: "uppercase",
-            }}
-          >
-            <TextField
-              required
-              label="Card Number"
-              placeholder="Card Number"
-              id="inputNumber"
-              type="number"
-            />
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              textTransform: "uppercase",
-            }}
-          >
-            <TextField
-              required
-              label="Card Holder Name"
-              placeholder="Card Holder Name"
-              id="inputName"
-            />
-          </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              textTransform: "uppercase",
-              justifyContent: "center",
               alignItems: "center",
+              justifyContent: "center",
+              gap: "1rem",
+              paddingTop: 0,
+              width: "80%",
             }}
+            noValidate
+            onSubmit={handleSubmit}
+            autoComplete="off"
+            id="form"
           >
-            <Box sx={{ display: "flex", gap: 2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textTransform: "uppercase",
+                width: "100%",
+              }}
+            >
               <TextField
                 required
-                label="Exp Date MONTH"
-                placeholder="MM"
-                id="inputExpMonth"
+                label="Número de Tarjeta"
+                placeholder="Número de Tarjeta"
+                id="inputNumber"
                 type="number"
-              />
-              <TextField
-                required
-                label="Exp Date YEAR"
-                placeholder="YY"
-                id="inputExpYear"
-                type="number"
-              />
-              <TextField
-                required
-                label="CVC"
-                placeholder="CVC"
-                id="inputCvc"
-                type="number"
+                name="numeroTarjeta"
+                error={errors.numeroTarjeta}
+                helperText={errors.numeroTarjeta}
+                value={values.numeroTarjeta}
+                onChange={handleChange}
               />
             </Box>
-          </Box>
-          <Box
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flexDirection: "column",
-              gap: 1,
-              mt: 10,
-            }}
-          >
-            <Button
-              type="submit"
-              variant="contained"
-              color="success"
-              sx={{ width: "50%" }}
-              startIcon={<CheckCircleIcon />}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textTransform: "uppercase",
+                width: "100%",
+              }}
             >
-              PAGAR
-            </Button>
-            <NavLink to={"../../cart"} style={{ textDecoration: "none" }}>
+              <TextField
+                required
+                label="Titular de la Tarjeta"
+                placeholder="Titular de la Tarjeta"
+                id="inputName"
+                name="nombre"
+                type="text"
+                onChange={handleChange}
+                error={errors.nombre}
+                helperText={errors.nombre}
+                value={values.nombre}
+                fullWidth
+              />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textTransform: "uppercase",
+                width: "100%",
+              }}
+            >
+              <TextField
+                required
+                label="DNI del Titular"
+                placeholder="DNI del Titular"
+                name="dni"
+                type="text"
+                onChange={handleChange}
+                error={errors.dni}
+                helperText={errors.dni}
+                value={values.dni}
+                fullWidth
+              />
+            </Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                textTransform: "uppercase",
+                width: "100%",
+              }}
+            >
+              <Box sx={{ display: "flex", gap: 2, width: "100%" }}>
+                <TextField
+                  required
+                  label="Mes de Vencimiento"
+                  placeholder="MM"
+                  type="number"
+                  id="inputExpMonth"
+                  name="expMonth"
+                  error={errors.expMonth}
+                  helperText={errors.expMonth}
+                  value={values.expMonth}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  label="Año de Vencimiento"
+                  placeholder="YY"
+                  type="number"
+                  id="inputExpYear"
+                  name="expYear"
+                  error={errors.expYear}
+                  helperText={errors.expYear}
+                  value={values.expYear}
+                  onChange={handleChange}
+                />
+                <TextField
+                  required
+                  label="CVC"
+                  placeholder="CVC"
+                  type="number"
+                  id="inputCvc"
+                  name="cvc"
+                  error={errors.cvc}
+                  helperText={errors.cvc}
+                  value={values.cvc}
+                  onChange={handleChange}
+                />
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: 1,
+              }}
+            >
               <Button
                 type="submit"
                 variant="contained"
-                color="info"
+                color="success"
                 sx={{ minWidth: "100%" }}
-                startIcon={<AddShoppingCartIcon />}
+                startIcon={<CheckCircleIcon />}
               >
-                VOLVER AL CARRITO
+                PAGAR
               </Button>
-            </NavLink>
+              <NavLink to={"../../cart"} style={{ textDecoration: "none" }}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="info"
+                  sx={{ minWidth: "100%" }}
+                  startIcon={<AddShoppingCartIcon />}
+                >
+                  VOLVER AL CARRITO
+                </Button>
+              </NavLink>
+            </Box>
           </Box>
         </Box>
 
