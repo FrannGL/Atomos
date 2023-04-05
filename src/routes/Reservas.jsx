@@ -53,7 +53,6 @@ export default function Reservas() {
             >
               <Typography
                 variant="h2"
-                color="initial"
                 sx={{
                   fontSize: "1.2rem",
                   fontStyle: "italic",

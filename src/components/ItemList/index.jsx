@@ -41,7 +41,9 @@ export default function ItemList({ products }) {
 			}}
 		>
 			{loading
-				? [1, 2, 3, 4].map((item) => <CardItemSkeleton key={item} />)
+				? [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+						<CardItemSkeleton key={item} />
+				  ))
 				: products.map((product) => (
 						<CardItem
 							product={product}
