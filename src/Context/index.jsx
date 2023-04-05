@@ -1,135 +1,136 @@
 // REACT CONTEXT
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 export const Context = createContext();
 
 // SWEET ALERT
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 export default function CustomProvider({ children }) {
-  const [itemsAdded, setItemsAdded] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [total, setTotal] = useState(0);
-  const [count, setCount] = useState(1);
+	const [itemsAdded, setItemsAdded] = useState([]);
+	const [open, setOpen] = useState(false);
+	const [total, setTotal] = useState(0);
+	const [count, setCount] = useState(1);
 
-  // FUNCION ABRIR MENU
-  const handleOpen = () => {
-    setOpen(true);
-  };
 
-  // FUNCION CERRAR MENU
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+	// FUNCION ABRIR MENU
+	const handleOpen = () => {
+		setOpen(true);
+	};
 
-    setOpen(false);
-  };
+	// FUNCION CERRAR MENU
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
 
-  // FUNCION AGREGAR PRODUCTOS AL CARRITO
-  const addToCart = (product, cantidad) => {
-    const existsInCart = itemsAdded.find((prod) => prod.id === product.id);
-    if (existsInCart) {
-      const carritoActualizado = itemsAdded.map((prod) => {
-        if (prod.id === product.id) {
-          return { ...prod, cantidad: prod.cantidad + cantidad };
-        } else {
-          return prod;
-        }
-      });
-      setItemsAdded(carritoActualizado);
-    } else {
-      setItemsAdded([...itemsAdded, { ...product, cantidad }]);
-    }
-  };
+		setOpen(false);
+	};
 
-  // FUNCION PARA MOSTRAR CANTIDAD AGREGADA AL CARRITO
-  const cartQuantity = () => {
-    return itemsAdded.reduce((acc, prod) => (acc += prod.cantidad), 0);
-  };
+	// FUNCION AGREGAR PRODUCTOS AL CARRITO
+	const addToCart = (product, cantidad) => {
+		const existsInCart = itemsAdded.find((prod) => prod.id === product.id);
+		if (existsInCart) {
+			const carritoActualizado = itemsAdded.map((prod) => {
+				if (prod.id === product.id) {
+					return { ...prod, cantidad: prod.cantidad + cantidad };
+				} else {
+					return prod;
+				}
+			});
+			setItemsAdded(carritoActualizado);
+		} else {
+			setItemsAdded([...itemsAdded, { ...product, cantidad }]);
+		}
+	};
 
-  // FUNCION ELIMINAR PRODUCTOS DEL CARRITO
-  const deleteProduct = (id) => {
-    const find = itemsAdded.filter((item) => item.id !== id);
-    setItemsAdded(find);
-  };
+	// FUNCION PARA MOSTRAR CANTIDAD AGREGADA AL CARRITO
+	const cartQuantity = () => {
+		return itemsAdded.reduce((acc, prod) => (acc += prod.cantidad), 0);
+	};
 
-  // FUNCION VACIAR CARRITO
-  const clearCart = () => {
-    setItemsAdded([]);
-  };
+	// FUNCION ELIMINAR PRODUCTOS DEL CARRITO
+	const deleteProduct = (id) => {
+		const find = itemsAdded.filter((item) => item.id !== id);
+		setItemsAdded(find);
+	};
 
-  // FUNCION PARA CALCULAR TOTAL DEL CARRITO
-  const totalPrice = () => {
-    const acc = itemsAdded.reduce(
-      (total, producto) => total + producto.cantidad * producto.price,
-      0
-    );
-    setTotal(acc);
-  };
+	// FUNCION VACIAR CARRITO
+	const clearCart = () => {
+		setItemsAdded([]);
+	};
 
-  // ALERTA AL CLICKEAR ELIMINAR PRODUCTO DEL CARRITO
-  const showAlert = (product) => {
-    Swal.fire({
-      title: "¿Estás seguro que queres eliminar el producto?",
-      text: "Si estás seguro hace click en Si. Caso contrario, No.",
-      icon: "warning",
-      iconColor: "red",
-      confirmButtonText: "Si, eliminar",
-      confirmButtonColor: "green",
-      cancelButtonText: "No, cancelar",
-      cancelButtonColor: "red",
-      showCancelButton: true,
-      reverseButtons: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteProduct(product.id);
-        Swal.fire("Hecho!", "Producto Eliminado", "success");
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire("Cancelado", "Cancelaste la accion", "error");
-      }
-    });
-  };
+	// FUNCION PARA CALCULAR TOTAL DEL CARRITO
+	const totalPrice = () => {
+		const acc = itemsAdded.reduce(
+			(total, producto) => total + producto.cantidad * producto.price,
+			0
+		);
+		setTotal(acc);
+	};
 
-  // ALERTA AL CLICKEAR "VACIAR CARRITO"
-  const showClearAlert = () => {
-    Swal.fire({
-      title: "¿Estás seguro que queres vaciar el carrito?",
-      text: "Si estás seguro hace click en Si. Caso contrario, No.",
-      icon: "warning",
-      iconColor: "red",
-      confirmButtonText: "VACIAR",
-      confirmButtonColor: "green",
-      cancelButtonText: "CANCELAR",
-      cancelButtonColor: "red",
-      showCancelButton: true,
-      reverseButtons: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        clearCart();
-        Swal.fire("Hecho!", "Carrito vacío", "success");
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire("Cancelado", "Cancelaste la accion", "error");
-      }
-    });
-  };
+	// ALERTA AL CLICKEAR ELIMINAR PRODUCTO DEL CARRITO
+	const showAlert = (product) => {
+		Swal.fire({
+			title: '¿Estás seguro que queres eliminar el producto?',
+			text: 'Si estás seguro hace click en Si. Caso contrario, No.',
+			icon: 'warning',
+			iconColor: 'red',
+			confirmButtonText: 'Si, eliminar',
+			confirmButtonColor: 'green',
+			cancelButtonText: 'No, cancelar',
+			cancelButtonColor: 'red',
+			showCancelButton: true,
+			reverseButtons: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				deleteProduct(product.id);
+				Swal.fire('Hecho!', 'Producto Eliminado', 'success');
+			} else if (result.dismiss === Swal.DismissReason.cancel) {
+				Swal.fire('Cancelado', 'Cancelaste la accion', 'error');
+			}
+		});
+	};
 
-  // VALUES DEL CONTEXT
-  const value = {
-    itemsAdded,
-    setItemsAdded,
-    addToCart,
-    handleOpen,
-    handleClose,
-    open,
-    deleteProduct,
-    showAlert,
-    totalPrice,
-    total,
-    showClearAlert,
-    count,
-    setCount,
-    cartQuantity,
-  };
+	// ALERTA AL CLICKEAR "VACIAR CARRITO"
+	const showClearAlert = () => {
+		Swal.fire({
+			title: '¿Estás seguro que queres vaciar el carrito?',
+			text: 'Si estás seguro hace click en Si. Caso contrario, No.',
+			icon: 'warning',
+			iconColor: 'red',
+			confirmButtonText: 'VACIAR',
+			confirmButtonColor: 'green',
+			cancelButtonText: 'CANCELAR',
+			cancelButtonColor: 'red',
+			showCancelButton: true,
+			reverseButtons: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				clearCart();
+				Swal.fire('Hecho!', 'Carrito vacío', 'success');
+			} else if (result.dismiss === Swal.DismissReason.cancel) {
+				Swal.fire('Cancelado', 'Cancelaste la accion', 'error');
+			}
+		});
+	};
 
-  return <Context.Provider value={value}>{children}</Context.Provider>;
+	// VALUES DEL CONTEXT
+	const value = {
+		itemsAdded,
+		setItemsAdded,
+		addToCart,
+		handleOpen,
+		handleClose,
+		open,
+		deleteProduct,
+		showAlert,
+		totalPrice,
+		total,
+		showClearAlert,
+		count,
+		setCount,
+		cartQuantity,
+	};
+
+	return <Context.Provider value={value}>{children}</Context.Provider>;
 }

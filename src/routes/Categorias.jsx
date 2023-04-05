@@ -12,7 +12,7 @@ function Categorias() {
       <Container
         maxWidth="xl"
         disableGutters
-        sx={{ backgroundColor: "#ededed", height: "100vh" }}
+        sx={{ height: "100vh" }}
       >
         <ItemListContainer
           isCategoryRoute={isCategoryRoute}
