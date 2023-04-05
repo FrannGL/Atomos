@@ -1,3 +1,4 @@
+import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -65,7 +66,9 @@ export default function CartModalDetail() {
 						}}
 					>
 						{itemsAdded.map((product) => (
-							<>
+							<React.Fragment key={product.id}>
+								{' '}
+								{/* Agregas la clave aquí */}
 								<Box
 									sx={{
 										display: 'flex',
@@ -80,7 +83,9 @@ export default function CartModalDetail() {
 										<img
 											src={product.image}
 											width='50'
-										></img>
+											alt={product.name}
+										/>{' '}
+										{/* Agregas un atributo alt */}
 									</li>
 									<li>
 										<span style={{ fontWeight: 'bold' }}>
@@ -107,7 +112,7 @@ export default function CartModalDetail() {
 										${product.price * product.cantidad}
 									</li>
 								</Box>
-							</>
+							</React.Fragment>
 						))}
 						<Box
 							sx={{
