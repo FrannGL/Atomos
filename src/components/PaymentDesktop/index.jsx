@@ -13,12 +13,13 @@ import {
 // ICONOS MATERIAL UI
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import CircularProgress from "@mui/material/CircularProgress";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../../Context";
 
 // IMAGENES
 import bgCardBack from "../../../public/assets/images/bg-card-back.png";
@@ -26,13 +27,13 @@ import bgCardFront from "../../../public/assets/images/bg-card-front.png";
 import bgMainDesktop from "../../../public/assets/images/bg-main-desktop.png";
 import iconComplete from "../../../public/assets/images/icon-complete.svg";
 import cardLogo from "../../../public/assets/images/card-logo.svg";
+
+// COMPONENTES PROPIOS
 import CartModalDetail from "../CartModalDetail";
 
 // FORMIK Y YUP
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useContext } from "react";
-import { Context } from "../../Context";
 
 export default function PaymentDesktop() {
   const [orderDetail, setOrderDetail] = useState([]);
