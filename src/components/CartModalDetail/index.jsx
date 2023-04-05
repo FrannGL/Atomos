@@ -50,7 +50,7 @@ export default function CartModalDetail() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Detalle del Carrito
+            DETALLE DE LA COMPRA
           </Typography>
           <ul
             style={{
@@ -69,7 +69,7 @@ export default function CartModalDetail() {
                     alignItems: "center",
                     gap: 3,
                     width: 700,
-                    marginRight: 6
+                    marginRight: 6,
                   }}
                 >
                   <li>

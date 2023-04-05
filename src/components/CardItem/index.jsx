@@ -157,7 +157,7 @@ export default function CardItem({ product }) {
       >
         {/* -------- ITEM COUNT -------------- */}
 
-        <ItemCountMedium />
+        <ItemCountMedium product={product} />
 
         {/* ------- AGREGAR AL CARRITO ---------- */}
         <Button

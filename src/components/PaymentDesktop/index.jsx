@@ -13,6 +13,7 @@ import {
 // ICONOS MATERIAL UI
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import CircularProgress from "@mui/material/CircularProgress";
 
 // HOOKS REACT
 import { NavLink } from "react-router-dom";
@@ -30,9 +31,15 @@ import CartModalDetail from "../CartModalDetail";
 // FORMIK Y YUP
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useContext } from "react";
+import { Context } from "../../Context";
 
 export default function PaymentDesktop() {
-  const [orderDetail, setOrderDetail] = useState(null);
+  const [orderDetail, setOrderDetail] = useState([]);
+  const [payment, setPayment] = useState(false);
+  const { setItemsAdded } = useContext(Context);
+  const { itemsAdded } = useContext(Context);
+  const { total } = useContext(Context);
 
   let initialValues = {
     nombre: "",
@@ -44,7 +51,11 @@ export default function PaymentDesktop() {
   };
 
   const submitForm = (data) => {
-    console.log(data);
+    const order = [data, ...itemsAdded, total];
+    setOrderDetail(order);
+    console.log(order);
+    setPayment(true);
+    setItemsAdded([]);
   };
 
   const { handleSubmit, handleChange, errors, values } = useFormik({
@@ -277,177 +288,203 @@ export default function PaymentDesktop() {
               gap: 4,
             }}
           >
-            <CartModalDetail />
-            <Box
-              component="form"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "1rem",
-                paddingTop: 0,
-                width: "80%",
-              }}
-              noValidate
-              onSubmit={handleSubmit}
-              autoComplete="off"
-              id="form"
-            >
-              <Box
+            {payment ? (
+              <Card
                 sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  textTransform: "uppercase",
-                  width: "100%",
-                }}
-              >
-                <TextField
-                  required
-                  label="Número de Tarjeta"
-                  placeholder="Número de Tarjeta"
-                  id="inputNumber"
-                  type="number"
-                  name="numeroTarjeta"
-                  error={errors.numeroTarjeta}
-                  helperText={errors.numeroTarjeta}
-                  value={values.numeroTarjeta}
-                  onChange={handleChange}
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  textTransform: "uppercase",
-                  width: "100%",
-                }}
-              >
-                <TextField
-                  required
-                  label="Titular de la Tarjeta"
-                  placeholder="Titular de la Tarjeta"
-                  id="inputName"
-                  name="nombre"
-                  type="text"
-                  onChange={handleChange}
-                  error={errors.nombre}
-                  helperText={errors.nombre}
-                  value={values.nombre}
-                  fullWidth
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  textTransform: "uppercase",
-                  width: "100%",
-                }}
-              >
-                <TextField
-                  required
-                  label="DNI del Titular"
-                  placeholder="DNI del Titular"
-                  name="dni"
-                  type="text"
-                  onChange={handleChange}
-                  error={errors.dni}
-                  helperText={errors.dni}
-                  value={values.dni}
-                  fullWidth
-                />
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  textTransform: "uppercase",
-                  width: "100%",
-                }}
-              >
-                <Box sx={{ display: "flex", gap: 2, width: "100%" }}>
-                  <TextField
-                    required
-                    label="Mes de Vencimiento"
-                    placeholder="MM"
-                    type="number"
-                    id="inputExpMonth"
-                    name="expMonth"
-                    error={errors.expMonth}
-                    helperText={errors.expMonth}
-                    value={values.expMonth}
-                    onChange={handleChange}
-                  />
-                  <TextField
-                    required
-                    label="Año de Vencimiento"
-                    placeholder="YY"
-                    type="number"
-                    id="inputExpYear"
-                    name="expYear"
-                    error={errors.expYear}
-                    helperText={errors.expYear}
-                    value={values.expYear}
-                    onChange={handleChange}
-                  />
-                  <TextField
-                    required
-                    label="CVC"
-                    placeholder="CVC"
-                    type="number"
-                    id="inputCvc"
-                    name="cvc"
-                    error={errors.cvc}
-                    helperText={errors.cvc}
-                    value={values.cvc}
-                    onChange={handleChange}
-                  />
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  width: "100%",
+                  maxWidth: "auto",
                   display: "flex",
                   justifyContent: "center",
+                  alignItems: "center",
                   flexDirection: "column",
-                  gap: 1,
+                  border: 0,
+                  padding: 5,
+                  mt: 15,
                 }}
+                variant="outlined"
               >
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="success"
-                  sx={{ minWidth: "100%" }}
-                  startIcon={<CheckCircleIcon />}
-                >
-                  PAGAR
-                </Button>
-                <NavLink to={"../../cart"} style={{ textDecoration: "none" }}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="info"
-                    sx={{ minWidth: "100%" }}
-                    startIcon={<AddShoppingCartIcon />}
-                  >
-                    VOLVER AL CARRITO
+                <CardMedia
+                  image={iconComplete}
+                  sx={{ height: 50, width: 50 }}
+                  alt="Icono completado"
+                />
+                <Typography sx={{ mt: 3, fontSize: 20 }} variant="h2">
+                  ¡ MUCHAS GRACIAS !
+                </Typography>
+                <Typography>Hemos registrado tu orden</Typography>
+                <NavLink to={"/"}>
+                  <Button variant="contained" size="small" sx={{ mt: 3 }}>
+                    VOLVER AL INICIO
                   </Button>
                 </NavLink>
-              </Box>
-            </Box>
-          </Box>
+              </Card>
+            ) : (
+              <>
+                <CartModalDetail />
 
-          {/* <Card sx={{ maxWidth: 50 }}>
-  <CardMedia
-    image={iconComplete}
-    sx={{ height: 50 }}
-    alt="Icono completado"
-  />
-  <Typography>GRACIAS!</Typography>
-  <Typography>We ve added your card details</Typography>
-  <Button>CONTINUAR</Button>
-  </Card> */}
+                <Box
+                  component="form"
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "1rem",
+                    paddingTop: 0,
+                    width: "80%",
+                  }}
+                  noValidate
+                  onSubmit={handleSubmit}
+                  autoComplete="off"
+                  id="form"
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textTransform: "uppercase",
+                      width: "100%",
+                    }}
+                  >
+                    <TextField
+                      required
+                      label="Número de Tarjeta"
+                      placeholder="Número de Tarjeta"
+                      id="inputNumber"
+                      type="number"
+                      name="numeroTarjeta"
+                      error={errors.numeroTarjeta}
+                      helperText={errors.numeroTarjeta}
+                      value={values.numeroTarjeta}
+                      onChange={handleChange}
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textTransform: "uppercase",
+                      width: "100%",
+                    }}
+                  >
+                    <TextField
+                      required
+                      label="Titular de la Tarjeta"
+                      placeholder="Titular de la Tarjeta"
+                      id="inputName"
+                      name="nombre"
+                      type="text"
+                      onChange={handleChange}
+                      error={errors.nombre}
+                      helperText={errors.nombre}
+                      value={values.nombre}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textTransform: "uppercase",
+                      width: "100%",
+                    }}
+                  >
+                    <TextField
+                      required
+                      label="DNI del Titular"
+                      placeholder="DNI del Titular"
+                      name="dni"
+                      type="text"
+                      onChange={handleChange}
+                      error={errors.dni}
+                      helperText={errors.dni}
+                      value={values.dni}
+                      fullWidth
+                    />
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textTransform: "uppercase",
+                      width: "100%",
+                    }}
+                  >
+                    <Box sx={{ display: "flex", gap: 2, width: "100%" }}>
+                      <TextField
+                        required
+                        label="Mes de Vencimiento"
+                        placeholder="MM"
+                        type="number"
+                        id="inputExpMonth"
+                        name="expMonth"
+                        error={errors.expMonth}
+                        helperText={errors.expMonth}
+                        value={values.expMonth}
+                        onChange={handleChange}
+                      />
+                      <TextField
+                        required
+                        label="Año de Vencimiento"
+                        placeholder="YY"
+                        type="number"
+                        id="inputExpYear"
+                        name="expYear"
+                        error={errors.expYear}
+                        helperText={errors.expYear}
+                        value={values.expYear}
+                        onChange={handleChange}
+                      />
+                      <TextField
+                        required
+                        label="CVC"
+                        placeholder="CVC"
+                        type="number"
+                        id="inputCvc"
+                        name="cvc"
+                        error={errors.cvc}
+                        helperText={errors.cvc}
+                        value={values.cvc}
+                        onChange={handleChange}
+                      />
+                    </Box>
+                  </Box>
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                      gap: 1,
+                    }}
+                  >
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="success"
+                      sx={{ minWidth: "100%" }}
+                      startIcon={<CheckCircleIcon />}
+                    >
+                      PAGAR
+                    </Button>
+                    <NavLink
+                      to={"../../cart"}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        color="info"
+                        sx={{ minWidth: "100%" }}
+                        startIcon={<AddShoppingCartIcon />}
+                      >
+                        VOLVER AL CARRITO
+                      </Button>
+                    </NavLink>
+                  </Box>
+                </Box>
+              </>
+            )}
+          </Box>
         </CardMedia>
       </Container>
     </>

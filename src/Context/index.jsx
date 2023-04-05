@@ -116,6 +116,7 @@ export default function CustomProvider({ children }) {
   // VALUES DEL CONTEXT
   const value = {
     itemsAdded,
+    setItemsAdded,
     addToCart,
     handleOpen,
     handleClose,
