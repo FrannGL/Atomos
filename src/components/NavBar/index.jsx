@@ -157,17 +157,6 @@ export default function NavBar() {
                 RESERVAS
               </Button>
             </NavLink>
-            <NavLink style={{ textDecoration: "none", color: "white" }}>
-              <Button
-                color="base"
-                sx={{
-                  fontSize: isScrolling ? 12 : 15,
-                  transition: "all .3s ease",
-                }}
-              >
-                SUCURSALES
-              </Button>
-            </NavLink>
             <NavLink
               to={"/nosotros"}
               style={{
