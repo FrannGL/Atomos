@@ -1,9 +1,13 @@
-import CartListContainer from "../components/CartListContainer";
+import CartListContainer from '../components/CartListContainer';
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
 
 export default function Car() {
-  return (
-    <>
-      <CartListContainer />
-    </>
-  );
+	return (
+		<>
+			<NavBar />
+			<CartListContainer />
+			<Footer />
+		</>
+	);
 }

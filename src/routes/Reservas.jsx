@@ -10,6 +10,7 @@ import {
 
 // COMPONENTES PROPIOS
 import BookingOfficesContainer from "../components/BookingOfficesContainer";
+import NavBar from '../components/NavBar'
 
 // IMAGENES
 import fotoBarril from "../../public/assets/images/barriles.jpg";
@@ -17,6 +18,7 @@ import fotoBarril from "../../public/assets/images/barriles.jpg";
 export default function Reservas() {
   return (
     <>
+      <NavBar />
       <Container
         disableGutters
         maxWidth={false}
