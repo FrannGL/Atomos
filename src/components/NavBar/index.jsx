@@ -8,14 +8,14 @@ import {
 	MenuItem,
 	Toolbar,
 	Box,
+	Stack,
 } from '@mui/material';
 
 // ICONOS MATERIAL UI
 import MenuIcon from '@mui/icons-material/Menu';
 
 // HOOKS REACT
-import { useState, useEffect, useContext } from 'react';
-import { Context } from '../../Context';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 
 // COMPONENTES PROPIOS
@@ -73,6 +73,7 @@ export default function NavBar() {
 							/>
 						</NavLink>
 					</Button>
+
 					{/* --- VISTA MOBILE ---  */}
 					<IconButton
 						color='inherit'
@@ -82,122 +83,128 @@ export default function NavBar() {
 					>
 						<MenuIcon />
 					</IconButton>
-					{/* --- VISTA DESKTOP ---- */}
 
-					{/* --- MENU IZQUIERDO --- */}
+					{/* --- VISTA DESKTOP ---- */}
 					<Box
 						sx={{
-							display: { xs: 'none', sm: 'block' },
+							display: { xs: 'none', sm: 'flex' },
+							justifyContent: 'space-between',
+							alignItems: 'center',
 							ml: 3,
 							flexGrow: 1,
 						}}
 					>
-						<Button
-							color='base'
-							id='basic-button'
-							aria-controls={openMenu ? 'basic-menu' : undefined}
-							aria-haspopup='true'
-							aria-expanded={openMenu ? 'true' : undefined}
-							onClick={handleOpen}
-							sx={{
-								fontSize: isScrolling ? 12 : 15,
-								transition: 'all .3s ease',
-							}}
-						>
-							NUESTRAS CERVEZAS
-						</Button>
-						<Menu
-							id='basic-menu'
-							anchorEl={anchorEl}
-							open={openMenu}
-							onClose={handleClose}
-							MenuListProps={{
-								'aria-labelledby': 'basic-button',
-							}}
-						>
-							<MenuItem onClick={handleClose}>
-								<NavLink
-									to={'/category/rubia'}
-									style={{
-										textDecoration: 'none',
-										color: 'black',
-									}}
-								>
-									CERVEZAS RUBIAS
-								</NavLink>
-							</MenuItem>
-							<MenuItem onClick={handleClose}>
-								<NavLink
-									to={'/category/roja'}
-									style={{
-										textDecoration: 'none',
-										color: 'black',
-									}}
-								>
-									CERVEZAS ROJAS
-								</NavLink>
-							</MenuItem>
-							<MenuItem onClick={handleClose}>
-								<NavLink
-									to={'/category/negra'}
-									style={{
-										textDecoration: 'none',
-										color: 'black',
-									}}
-								>
-									CERVEZAS NEGRAS
-								</NavLink>
-							</MenuItem>
-							<MenuItem onClick={handleClose}>
-								<NavLink
-									to={'/products'}
-									style={{
-										textDecoration: 'none',
-										color: 'black',
-									}}
-								>
-									VER TODO
-								</NavLink>
-							</MenuItem>
-						</Menu>
-						<NavLink
-							to={'/reservas'}
-							style={{ textDecoration: 'none', color: 'white' }}
-						>
+						<Box>
 							<Button
 								color='base'
+								id='basic-button'
+								aria-controls={
+									openMenu ? 'basic-menu' : undefined
+								}
+								aria-haspopup='true'
+								aria-expanded={openMenu ? 'true' : undefined}
+								onClick={handleOpen}
 								sx={{
 									fontSize: isScrolling ? 12 : 15,
 									transition: 'all .3s ease',
 								}}
 							>
-								RESERVAS
+								NUESTRAS CERVEZAS
 							</Button>
-						</NavLink>
-						<NavLink
-							to={'/nosotros'}
-							style={{
-								textDecoration: 'none',
-								color: 'white',
-							}}
-						>
-							<Button
-								color='base'
-								sx={{
-									fontSize: isScrolling ? 12 : 15,
-									transition: 'all .3s ease',
+							<Menu
+								id='basic-menu'
+								anchorEl={anchorEl}
+								open={openMenu}
+								onClose={handleClose}
+								MenuListProps={{
+									'aria-labelledby': 'basic-button',
 								}}
 							>
-								NOSOTROS
-							</Button>
-						</NavLink>
+								<MenuItem onClick={handleClose}>
+									<NavLink
+										to={'/category/rubia'}
+										style={{
+											textDecoration: 'none',
+											color: 'black',
+										}}
+									>
+										CERVEZAS RUBIAS
+									</NavLink>
+								</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<NavLink
+										to={'/category/roja'}
+										style={{
+											textDecoration: 'none',
+											color: 'black',
+										}}
+									>
+										CERVEZAS ROJAS
+									</NavLink>
+								</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<NavLink
+										to={'/category/negra'}
+										style={{
+											textDecoration: 'none',
+											color: 'black',
+										}}
+									>
+										CERVEZAS NEGRAS
+									</NavLink>
+								</MenuItem>
+								<MenuItem onClick={handleClose}>
+									<NavLink
+										to={'/products'}
+										style={{
+											textDecoration: 'none',
+											color: 'black',
+										}}
+									>
+										VER TODO
+									</NavLink>
+								</MenuItem>
+							</Menu>
+							<NavLink
+								to={'/reservas'}
+								style={{
+									textDecoration: 'none',
+									color: 'white',
+								}}
+							>
+								<Button
+									color='base'
+									sx={{
+										fontSize: isScrolling ? 12 : 15,
+										transition: 'all .3s ease',
+									}}
+								>
+									RESERVAS
+								</Button>
+							</NavLink>
+							<NavLink
+								to={'/nosotros'}
+								style={{
+									textDecoration: 'none',
+									color: 'white',
+								}}
+							>
+								<Button
+									color='base'
+									sx={{
+										fontSize: isScrolling ? 12 : 15,
+										transition: 'all .3s ease',
+									}}
+								>
+									NOSOTROS
+								</Button>
+							</NavLink>
+						</Box>
+						<Stack direction='row'>
+							<MUIswitch />
+							<CartWidget />
+						</Stack>
 					</Box>
-
-					{/* --- MENU DERECHO --- */}
-
-					<MUIswitch />
-					{/* <SearchInput /> */}
-					<CartWidget />
 				</Toolbar>
 			</AppBar>
 
@@ -207,7 +214,7 @@ export default function NavBar() {
 				onClose={() => setOpen(false)}
 				sx={{ display: { sx: 'flex', sm: 'none' } }}
 			>
-				<NavListDrawe setOpen={setOpen} />
+				<NavListDrawe />
 			</Drawer>
 		</>
 	);

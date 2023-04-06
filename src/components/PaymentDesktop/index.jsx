@@ -396,7 +396,7 @@ export default function PaymentDesktop() {
 											id='inputNumber'
 											type='number'
 											name='numeroTarjeta'
-											error={errors.numeroTarjeta}
+											error={!!errors.numeroTarjeta}
 											helperText={errors.numeroTarjeta}
 											value={values.numeroTarjeta}
 											onChange={handleChange}
@@ -418,7 +418,7 @@ export default function PaymentDesktop() {
 											name='nombre'
 											type='text'
 											onChange={handleChange}
-											error={errors.nombre}
+											error={!!errors.nombre}
 											helperText={errors.nombre}
 											value={values.nombre}
 											fullWidth
@@ -439,7 +439,7 @@ export default function PaymentDesktop() {
 											name='dni'
 											type='text'
 											onChange={handleChange}
-											error={errors.dni}
+											error={!!errors.dni}
 											helperText={errors.dni}
 											value={values.dni}
 											fullWidth
@@ -467,7 +467,7 @@ export default function PaymentDesktop() {
 												type='number'
 												id='inputExpMonth'
 												name='expMonth'
-												error={errors.expMonth}
+												error={!!errors.expMonth}
 												helperText={errors.expMonth}
 												value={values.expMonth}
 												onChange={handleChange}
@@ -479,7 +479,7 @@ export default function PaymentDesktop() {
 												type='number'
 												id='inputExpYear'
 												name='expYear'
-												error={errors.expYear}
+												error={!!errors.expYear}
 												helperText={errors.expYear}
 												value={values.expYear}
 												onChange={handleChange}
@@ -491,7 +491,7 @@ export default function PaymentDesktop() {
 												type='number'
 												id='inputCvc'
 												name='cvc'
-												error={errors.cvc}
+												error={!!errors.cvc}
 												helperText={errors.cvc}
 												value={values.cvc}
 												onChange={handleChange}
