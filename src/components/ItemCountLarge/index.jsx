@@ -145,11 +145,13 @@ export default function ItemCountLarge({ onAddCart }) {
 			) : (
 				<Box
 					sx={{
-						width: '64%',
+						maxWidth: { xs: 'auto', md: '64%' },
 						height: 'auto',
 						display: 'flex',
+						justifyContent: 'center',
 						alignItems: 'center',
 						gap: 5,
+						mb: 5,
 					}}
 				>
 					{!productAdded ? (
@@ -202,7 +204,7 @@ export default function ItemCountLarge({ onAddCart }) {
 							</Box>
 
 							<Button
-								size='large'
+								sx={{ fontSize: { xs: 13, sm: '1rem' } }}
 								variant='contained'
 								color='primary'
 								onClick={() => {

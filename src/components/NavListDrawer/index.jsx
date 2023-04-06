@@ -21,7 +21,6 @@ import { NavLink } from 'react-router-dom';
 // COMPONENTES PROPIOS
 import MUISwitch from '../MUIswitch';
 import CartWidget from '../CartWidget/index';
-import { Stack } from '@mui/material';
 
 export default function NavListDrawer() {
 	const [openMenu, setOpenMenu] = useState(false);
@@ -145,6 +144,9 @@ export default function NavListDrawer() {
 				<ListItemButton>
 					<ListItemText primary='Screen Mode' />
 					<MUISwitch />
+				</ListItemButton>
+				<ListItemButton>
+					<CartWidget />
 				</ListItemButton>
 			</List>
 		</>
