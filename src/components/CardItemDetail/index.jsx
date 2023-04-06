@@ -42,15 +42,26 @@ export default function CardItemDetail({ product }) {
 			{isDarkMode ? (
 				<Card
 					sx={{
-						mt: 5,
-						mb: 4,
 						width: '90%',
-						height: 400,
+						height: { xs: 'auto', md: 400 },
 						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						flexDirection: {
+							xs: 'column',
+							sm: 'column',
+							md: 'row',
+						},
 					}}
 				>
 					{/* --- CONTENEDOR IMAGEN --- */}
-					<Box sx={{ width: '40%', mx: 2, my: 2 }}>
+					<Box
+						sx={{
+							width: '50%',
+							height: 'auto',
+							mt: 3,
+						}}
+					>
 						<CardMedia
 							component='img'
 							sx={{ height: '100%' }}
@@ -70,11 +81,13 @@ export default function CardItemDetail({ product }) {
 						{/* --- CONTENEDOR TITULO */}
 						<Box
 							sx={{
-								width: '97%',
+								width: 'auto',
 								height: 'auto',
 								display: 'flex',
-								justifyContent: 'start',
+								justifyContent: { xs: 'center', md: 'center' },
 								alignItems: 'center',
+								flexWrap: { xs: 'wrap', md: 'no-wrap' },
+								flexDirection: { xs: 'column', md: 'row' },
 								mr: 2,
 								mt: 2,
 								mb: 2,
@@ -172,13 +185,14 @@ export default function CardItemDetail({ product }) {
 						{/* --- CONTENEDOR PRECIO --- */}
 						<Box
 							sx={{
-								width: '97%',
+								width: 'auto',
 								height: 'auto',
 								display: 'flex',
-								justifyContent: 'start',
+								justifyContent: { xs: 'center', md: 'start' },
 								alignItems: 'center',
 								mr: 2,
 								mb: 2,
+								mt: { xs: 2 },
 							}}
 						>
 							<Typography align='center' variant='h4'>
@@ -192,21 +206,18 @@ export default function CardItemDetail({ product }) {
 								width: '97%',
 								height: 'auto',
 								display: 'flex',
-								justifyContent: 'start',
-								alignItems: 'start',
+								justifyContent: { xs: 'center', md: 'start' },
+								alignItems: { xs: 'center', md: 'start' },
 								flexDirection: 'column',
 								mr: 2,
 								mb: 2,
+								textAlign: { xs: 'center', md: 'justify' },
 							}}
 						>
 							<Typography fontWeight='bold'>
 								STOCK: {product?.stock}
 							</Typography>
-							<Typography
-								align='justify'
-								variant='h6'
-								fontSize='1.1rem'
-							>
+							<Typography variant='h6' fontSize='1.1rem'>
 								{product?.description}
 							</Typography>
 						</Box>
@@ -220,7 +231,7 @@ export default function CardItemDetail({ product }) {
 				<Card
 					sx={{
 						width: '90%',
-						height: { xs: 700, md: 400 },
+						height: { xs: 'auto', md: 400 },
 						display: 'flex',
 						justifyContent: 'center',
 						alignItems: 'center',

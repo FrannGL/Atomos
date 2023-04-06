@@ -42,6 +42,7 @@ export default function ItemDetail({ product }) {
 					alignItems: 'center',
 					flexDirection: 'column',
 					height: '100vh',
+					my: 3,
 				}}
 			>
 				{loading ? (

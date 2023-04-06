@@ -36,11 +36,13 @@ export default function ItemCountLarge({ onAddCart }) {
 			{isDarkMode ? (
 				<Box
 					sx={{
-						width: '64%',
-						height: 'auto',
+						maxWidth: { xs: 'auto', md: '64%' },
+						height: '100',
 						display: 'flex',
+						justifyContent: 'center',
 						alignItems: 'center',
 						gap: 5,
+						mb: 5,
 					}}
 				>
 					{!productAdded ? (
@@ -93,7 +95,7 @@ export default function ItemCountLarge({ onAddCart }) {
 							</Box>
 
 							<Button
-								size='large'
+								sx={{ fontSize: { xs: 13, sm: '1rem' } }}
 								variant='contained'
 								color='primary'
 								onClick={() => {
@@ -105,7 +107,14 @@ export default function ItemCountLarge({ onAddCart }) {
 							</Button>
 						</>
 					) : (
-						<Box sx={{ display: 'flex', gap: 5, mt: 3 }}>
+						<Box
+							sx={{
+								display: 'flex',
+								gap: { xs: 2, sm: 2, md: 4 },
+								my: 1,
+								mx: 1,
+							}}
+						>
 							<NavLink
 								to={'/products'}
 								style={{
@@ -114,7 +123,9 @@ export default function ItemCountLarge({ onAddCart }) {
 								}}
 							>
 								<Button
-									size='large'
+									sx={{
+										fontSize: { xs: 12, sm: 17, md: 14 },
+									}}
 									variant='outlined'
 									color='info'
 									startIcon={<AddShoppingCartIcon />}
@@ -131,7 +142,9 @@ export default function ItemCountLarge({ onAddCart }) {
 								}}
 							>
 								<Button
-									size='large'
+									sx={{
+										fontSize: { xs: 12, sm: 17, md: 14 },
+									}}
 									variant='outlined'
 									color='success'
 									startIcon={<CheckCircleIcon />}
@@ -216,7 +229,14 @@ export default function ItemCountLarge({ onAddCart }) {
 							</Button>
 						</>
 					) : (
-						<Box sx={{ display: 'flex', gap: 5, mt: 3 }}>
+						<Box
+							sx={{
+								display: 'flex',
+								gap: { xs: 2, sm: 2, md: 4 },
+								my: 1,
+								mx: 1,
+							}}
+						>
 							<NavLink
 								to={'/products'}
 								style={{
@@ -225,7 +245,9 @@ export default function ItemCountLarge({ onAddCart }) {
 								}}
 							>
 								<Button
-									size='large'
+									sx={{
+										fontSize: { xs: 12, sm: 17 },
+									}}
 									variant='outlined'
 									color='info'
 									startIcon={<AddShoppingCartIcon />}
@@ -242,7 +264,9 @@ export default function ItemCountLarge({ onAddCart }) {
 								}}
 							>
 								<Button
-									size='large'
+									sx={{
+										fontSize: { xs: 12, sm: 17 },
+									}}
 									variant='outlined'
 									color='success'
 									startIcon={<CheckCircleIcon />}
