@@ -21,13 +21,14 @@ const style = {
 	p: 3,
 };
 
-export default function CartModalDetail() {
+export default function CartOrderPurchase() {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	const { itemsAdded } = useContext(Context);
 	const { totalPrice } = useContext(Context);
 	const { total } = useContext(Context);
+	const { orderID } = useContext(Context);
 
 	useEffect(() => {
 		totalPrice();
@@ -55,7 +56,7 @@ export default function CartModalDetail() {
 						variant='h6'
 						component='h2'
 					>
-						DETALLE DE LA COMPRA
+						EL ID DE LA COMPRA ES: <span>{orderID}</span>
 					</Typography>
 					<ul
 						style={{
@@ -67,8 +68,6 @@ export default function CartModalDetail() {
 					>
 						{itemsAdded.map((product) => (
 							<React.Fragment key={product.id}>
-								{' '}
-								{/* Agregas la clave aquí */}
 								<Box
 									sx={{
 										display: 'flex',
@@ -84,12 +83,11 @@ export default function CartModalDetail() {
 											src={product.image}
 											width='50'
 											alt={product.name}
-										/>{' '}
-										{/* Agregas un atributo alt */}
+										/>
 									</li>
 									<li>
 										<span style={{ fontWeight: 'bold' }}>
-											Producto:{' '}
+											Producto:
 										</span>
 										{product.name}
 									</li>

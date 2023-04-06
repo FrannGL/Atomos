@@ -27,18 +27,23 @@ import iconComplete from '../../../public/assets/images/icon-complete.svg';
 import cardLogo from '../../../public/assets/images/card-logo.svg';
 
 // COMPONENTES PROPIOS
-import CartModalDetail from '../CartModalDetail';
+import CartOrderSummary from '../CartOrderSummary';
+import CartOrderPurchase from '../CartOrderPurchase';
 
 // FORMIK Y YUP
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+// FIREBASE
+import { collection, getFirestore, addDoc } from 'firebase/firestore';
+
 export default function PaymentResponsive() {
-	const [orderDetail, setOrderDetail] = useState([]);
 	const [payment, setPayment] = useState(false);
 	const { setItemsAdded } = useContext(Context);
 	const { itemsAdded } = useContext(Context);
 	const { total } = useContext(Context);
+	const { updateData } = useContext(Context);
+	const { setOrderID } = useContext(Context);
 
 	let initialValues = {
 		nombre: '',
@@ -51,10 +56,20 @@ export default function PaymentResponsive() {
 
 	const submitForm = (data) => {
 		const order = { buyer: data, products: itemsAdded, total: total };
-		setOrderDetail(order);
-		console.log(order);
 		setPayment(true);
-		setItemsAdded([]);
+
+		const db = getFirestore();
+		const collectionRef = collection(db, 'orders');
+		addDoc(collectionRef, order)
+			.then((data) => {
+				const orderId = data.id;
+				setOrderID(orderId);
+				itemsAdded.map((product) => {
+					const finalStock = product.stock - product.cantidad;
+					updateData(product.id, finalStock);
+				});
+			})
+			.catch((err) => console.log(err));
 	};
 
 	const { handleSubmit, handleChange, errors, values } = useFormik({
@@ -295,44 +310,50 @@ export default function PaymentResponsive() {
 					}}
 				>
 					{payment ? (
-						<Card
-							sx={{
-								maxWidth: 'auto',
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								flexDirection: 'column',
-								border: 0,
-								padding: 5,
-								mt: 15,
-							}}
-							variant='outlined'
-						>
-							<CardMedia
-								image={iconComplete}
-								sx={{ height: 50, width: 50 }}
-								alt='Icono completado'
-							/>
-							<Typography
-								sx={{ mt: 3, fontSize: 20 }}
-								variant='h2'
+						<>
+							<CartOrderPurchase />
+
+							<Card
+								sx={{
+									maxWidth: 'auto',
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									flexDirection: 'column',
+									border: 0,
+									padding: 5,
+									mt: 15,
+								}}
+								variant='outlined'
 							>
-								¡ MUCHAS GRACIAS !
-							</Typography>
-							<Typography>Hemos registrado tu orden</Typography>
-							<NavLink to={'/'}>
-								<Button
-									variant='contained'
-									size='small'
-									sx={{ mt: 3 }}
+								<CardMedia
+									image={iconComplete}
+									sx={{ height: 50, width: 50 }}
+									alt='Icono completado'
+								/>
+								<Typography
+									sx={{ mt: 3, fontSize: 20 }}
+									variant='h2'
 								>
-									VOLVER AL INICIO
-								</Button>
-							</NavLink>
-						</Card>
+									¡ MUCHAS GRACIAS !
+								</Typography>
+								<Typography>
+									Hemos registrado tu orden
+								</Typography>
+								<NavLink to={'/'}>
+									<Button
+										variant='contained'
+										size='small'
+										sx={{ mt: 3 }}
+									>
+										VOLVER AL INICIO
+									</Button>
+								</NavLink>
+							</Card>
+						</>
 					) : (
 						<>
-							<CartModalDetail />
+							<CartOrderSummary />
 							<Box
 								component='form'
 								sx={{

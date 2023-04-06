@@ -1,4 +1,5 @@
 // REACT CONTEXT
+import { getFirestore, doc, updateDoc } from 'firebase/firestore';
 import { createContext, useState } from 'react';
 export const Context = createContext();
 
@@ -10,7 +11,7 @@ export default function CustomProvider({ children }) {
 	const [open, setOpen] = useState(false);
 	const [total, setTotal] = useState(0);
 	const [count, setCount] = useState(1);
-
+	const [orderID, setOrderID] = useState('');
 
 	// FUNCION ABRIR MENU
 	const handleOpen = () => {
@@ -114,6 +115,13 @@ export default function CustomProvider({ children }) {
 		});
 	};
 
+	// ACTUALIZAR STOCK EN BASE DE DATOS
+	const updateData = (productId, finalStock) => {
+		const db = getFirestore();
+		const itemRef = doc(db, 'Items', productId);
+		updateDoc(itemRef, { stock: finalStock });
+	};
+
 	// VALUES DEL CONTEXT
 	const value = {
 		itemsAdded,
@@ -130,6 +138,9 @@ export default function CustomProvider({ children }) {
 		count,
 		setCount,
 		cartQuantity,
+		updateData,
+		setOrderID,
+		orderID
 	};
 
 	return <Context.Provider value={value}>{children}</Context.Provider>;
