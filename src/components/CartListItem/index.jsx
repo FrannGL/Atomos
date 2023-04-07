@@ -34,9 +34,17 @@ export default function CartListItem({ product }) {
 			>
 				<Card
 					sx={{
-						width: '80%',
-						height: 150,
+						width: { xs: '95%', sm: '90%', md: '80%' },
+						height: { md: 150 },
 						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						flexDirection: {
+							xs: 'column',
+							sm: 'column',
+							md: 'row',
+						},
+						pb: 2,
 					}}
 				>
 					<Box sx={{ width: '20%' }}>
@@ -61,11 +69,13 @@ export default function CartListItem({ product }) {
 								display: 'flex',
 								justifyContent: 'space-between',
 								alignItems: 'end',
-								height: 80,
+								height: { sm: 'auto', md: 80 },
 							}}
 						>
 							<Typography
-								minWidth='50%'
+								sx={{
+									width: { xs: '20%', sm: '30%', md: '50%' },
+								}}
 								textAlign='center'
 								variant='h6'
 								fontSize={12}
@@ -117,12 +127,15 @@ export default function CartListItem({ product }) {
 								justifyContent: 'space-between',
 							}}
 						>
-							<Box width='50%' textAlign='center' sx={{ mt: 1 }}>
-								<Typography
-									variant='p'
-									textAlign='center'
-									fontSize='1.5rem'
-								>
+							<Box
+								textAlign='center'
+								sx={{
+									mt: 1,
+									fontSize: { sm: '1.2rem', md: '1.5rem' },
+									width: { xs: '20%', sm: '30%', md: '50%' },
+								}}
+							>
+								<Typography variant='p' textAlign='center'>
 									{product.name}
 								</Typography>
 							</Box>

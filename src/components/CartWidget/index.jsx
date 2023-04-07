@@ -6,6 +6,7 @@ import LocalMallIcon from '@mui/icons-material/LocalMall';
 import { useContext } from 'react';
 import { Context } from '../../Context';
 import { NavLink } from 'react-router-dom';
+import { ThemeContext } from '../../ThemeContextProvider';
 
 const StyledBadge = styled(Badge)(() => ({
 	'& .MuiBadge-badge': {
@@ -20,19 +21,34 @@ const StyledBadge = styled(Badge)(() => ({
 export default function CartWidget() {
 	const { cartQuantity } = useContext(Context);
 	const { itemsAdded } = useContext(Context);
+	const { isDarkMode } = useContext(ThemeContext);
 
 	return (
 		<Box>
 			<IconButton aria-label='cart'>
 				<NavLink to={'../../cart'}>
-					<StyledBadge
-						badgeContent={
-							itemsAdded.length === 0 ? '0' : cartQuantity()
-						}
-						color='info'
-					>
-						<LocalMallIcon color='base' fontSize='medium' />
-					</StyledBadge>
+					{isDarkMode ? (
+						<StyledBadge
+							badgeContent={
+								itemsAdded.length === 0 ? '0' : cartQuantity()
+							}
+							color='info'
+						>
+							<LocalMallIcon color='base' fontSize='medium' />
+						</StyledBadge>
+					) : (
+						<StyledBadge
+							badgeContent={
+								itemsAdded.length === 0 ? '0' : cartQuantity()
+							}
+							color='info'
+						>
+							<LocalMallIcon
+								style={{ color: 'black' }}
+								fontSize='medium'
+							/>
+						</StyledBadge>
+					)}
 				</NavLink>
 			</IconButton>
 		</Box>

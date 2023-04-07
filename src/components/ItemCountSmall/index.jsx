@@ -16,7 +16,10 @@ export default function ItemCountSmall({ product }) {
 	return (
 		<>
 			{isDarkMode ? (
-				<Box width='10%' textAlign='center' sx={{ mt: 1 }}>
+				<Box
+					sx={{ mt: 1, width: { xs: '20%', sm: '15%', md: '10%' } }}
+					textAlign='center'
+				>
 					<Box
 						sx={{
 							display: 'flex',
@@ -27,7 +30,7 @@ export default function ItemCountSmall({ product }) {
 						<Box
 							sx={{
 								border: 1,
-								backgroundColor: 'black',
+								backgroundColor: 'white',
 								height: '100%',
 							}}
 						>
@@ -35,7 +38,7 @@ export default function ItemCountSmall({ product }) {
 								color='black'
 								sx={{
 									padding: 0,
-									color: 'white',
+									color: 'black',
 								}}
 								onClick={() => handleCount(-1)}
 							>
@@ -62,13 +65,13 @@ export default function ItemCountSmall({ product }) {
 						<Box
 							sx={{
 								border: 1,
-								backgroundColor: 'black',
+								backgroundColor: 'white',
 								height: '100%',
 							}}
 						>
 							<IconButton
 								color='black'
-								sx={{ padding: 0, color: 'white' }}
+								sx={{ padding: 0, color: 'black' }}
 								onClick={() => handleCount(1)}
 							>
 								<AddIcon fontSize='small' />
@@ -77,7 +80,10 @@ export default function ItemCountSmall({ product }) {
 					</Box>
 				</Box>
 			) : (
-				<Box width='10%' textAlign='center' sx={{ mt: 1 }}>
+				<Box
+					textAlign='center'
+					sx={{ mt: 1, width: { xs: '20%', sm: '15%', md: '10%' } }}
+				>
 					<Box
 						sx={{
 							display: 'flex',
@@ -88,13 +94,13 @@ export default function ItemCountSmall({ product }) {
 						<Box
 							sx={{
 								border: 1,
-								backgroundColor: 'white',
+								backgroundColor: '#040b16',
 								height: '100%',
 							}}
 						>
 							<IconButton
 								color='black'
-								sx={{ padding: 0, color: 'black' }}
+								sx={{ padding: 0, color: 'white' }}
 								onClick={() => handleCount(-1)}
 							>
 								<RemoveIcon fontSize='small' />
@@ -119,13 +125,13 @@ export default function ItemCountSmall({ product }) {
 						<Box
 							sx={{
 								border: 1,
-								backgroundColor: 'white',
+								backgroundColor: '#040b16',
 								height: '100%',
 							}}
 						>
 							<IconButton
 								color='black'
-								sx={{ padding: 0, color: 'black' }}
+								sx={{ padding: 0, color: 'white' }}
 								onClick={() => handleCount(1)}
 							>
 								<AddIcon fontSize='small' />

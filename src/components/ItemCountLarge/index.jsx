@@ -59,11 +59,11 @@ export default function ItemCountLarge({ onAddCart }) {
 								<Box
 									sx={{
 										border: 1,
-										backgroundColor: '#040b16',
+										backgroundColor: 'white',
+										color: '#000',
 									}}
 								>
 									<IconButton
-										color='base'
 										disabled={count === 1}
 										onClick={() =>
 											count > 0
@@ -82,11 +82,13 @@ export default function ItemCountLarge({ onAddCart }) {
 								<Box
 									sx={{
 										border: 1,
-										backgroundColor: '#040b16',
+										backgroundColor: 'white',
+										color: '#000',
+										fontWeight: 'bold',
 									}}
 								>
 									<IconButton
-										color='base'
+										sx={{ color: 'black' }}
 										onClick={() => setCount(count + 1)}
 									>
 										<AddIcon />
@@ -97,7 +99,7 @@ export default function ItemCountLarge({ onAddCart }) {
 							<Button
 								sx={{ fontSize: { xs: 13, sm: '1rem' } }}
 								variant='contained'
-								color='primary'
+								color='info'
 								onClick={() => {
 									countValidator();
 									handleOpen();

@@ -29,6 +29,7 @@ import cardLogo from '../../../public/assets/images/card-logo.svg';
 // COMPONENTES PROPIOS
 import CartOrderSummary from '../CartOrderSummary';
 import CartOrderPurchase from '../CartOrderPurchase';
+import NavBar from '../NavBar';
 
 // FORMIK Y YUP
 import { useFormik } from 'formik';
@@ -157,6 +158,7 @@ export default function PaymentResponsive() {
 
 	return (
 		<>
+			<NavBar />
 			<CardMedia
 				image={bgMainDesktop}
 				sx={{
@@ -494,6 +496,7 @@ export default function PaymentResponsive() {
 										justifyContent: 'center',
 										flexDirection: 'column',
 										gap: 1,
+										mb: 5,
 									}}
 								>
 									<Button

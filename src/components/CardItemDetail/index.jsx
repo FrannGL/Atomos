@@ -154,7 +154,9 @@ export default function CardItemDetail({ product }) {
 									type='button'
 									onClick={handleOpen}
 								>
-									<HelpOutlineIcon />
+									<HelpOutlineIcon
+										style={{ color: 'white' }}
+									/>
 								</IconButton>
 								<Popper id={id} open={open} anchorEl={openMenu}>
 									<Box

@@ -50,12 +50,13 @@ export default function CartListContainer() {
 			{/*  --------------------- CONTENEDOR ------------------- */}
 			<Box
 				sx={{
-					minHeight: '100vh',
+					height: { xs: '100%', md: '100vh' },
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
 					flexDirection: 'column',
 					mt: 5,
+					mb: 3,
 				}}
 			>
 				{/* --------------------- TITLE ------------------------- */}
@@ -93,7 +94,7 @@ export default function CartListContainer() {
 								{/* ------------------- TOTAL DE LA COMPRA --------------- */}
 								<Box
 									sx={{
-										width: '65%',
+										width: { sm: '50%', md: '65' },
 										height: 40,
 										display: 'flex',
 										justifyContent: 'end',
@@ -114,18 +115,34 @@ export default function CartListContainer() {
 										sx={{ fontSize: 30, padding: 2 }}
 									/>
 								</Box>
-								{/* ---------------- CONTROLES VACIAR CARRITO - SEGUIR COMPRANDO --------------- */}
+								{/* ---------------- CONTROLES VACIAR CARRITO - SEGUIR COMPRANDO - PAGAR ------------ */}
 								<Box
 									sx={{
-										width: '80%',
-										height: 100,
+										width: {
+											xs: '80%',
+											sm: '90%',
+											md: '80%',
+										},
+										height: 'auto',
 										display: 'flex',
 										justifyContent: 'space-between',
-										alignItems: 'center',
+										alignItems: { xs: 'center' },
+										flexDirection: {
+											xs: 'column',
+											sm: 'row',
+										},
+										mt: { xs: 3, sm: 3, md: 5 },
+										gap: { xs: 1 },
 									}}
 								>
 									<Button
-										size='large'
+										sx={{
+											fontSize: {
+												sm: 10,
+												md: 12,
+												lg: 15,
+											},
+										}}
 										variant='contained'
 										color='error'
 										startIcon={<DeleteIcon />}
@@ -141,7 +158,13 @@ export default function CartListContainer() {
 										}}
 									>
 										<Button
-											size='large'
+											sx={{
+												fontSize: {
+													sm: 10,
+													md: 12,
+													lg: 15,
+												},
+											}}
 											variant='contained'
 											color='info'
 											startIcon={<AddShoppingCartIcon />}
@@ -152,10 +175,14 @@ export default function CartListContainer() {
 									<Box
 										sx={{
 											width: '50%',
-											height: '100%',
+											height: 'auto',
 											display: 'flex',
-											justifyContent: 'end',
+											justifyContent: {
+												xs: 'center',
+												sm: 'end',
+											},
 											alignItems: 'center',
+											mt: { xs: 3, sm: 0 },
 										}}
 									>
 										<NavLink
@@ -167,7 +194,6 @@ export default function CartListContainer() {
 											}}
 										>
 											<Button
-												size='large'
 												variant='contained'
 												color='success'
 												startIcon={<CheckCircleIcon />}

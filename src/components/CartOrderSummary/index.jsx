@@ -43,92 +43,114 @@ export default function CartOrderSummary() {
 			>
 				RESUMEN DEL PEDIDO
 			</Button>
-			<Modal
-				open={open}
-				onClose={handleClose}
-				aria-labelledby='modal-modal-title'
-				aria-describedby='modal-modal-description'
+			<Box
+				sx={{
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
 			>
-				<Box sx={style}>
-					<Typography
-						id='modal-modal-title'
-						variant='h6'
-						component='h2'
-					>
-						RESUMEN DEL PEDIDO
-					</Typography>
-					<ul
-						style={{
-							textDecoration: 'none',
-							listStyle: 'none',
-							display: 'flex',
-							flexDirection: 'column',
-						}}
-					>
-						{itemsAdded.map((product) => (
-							<React.Fragment key={product.id}>
-								<Box
-									sx={{
-										display: 'flex',
-										justifyContent: 'space-between',
-										alignItems: 'center',
-										gap: 3,
-										width: 700,
-										marginRight: 6,
-									}}
-								>
-									<li>
-										<img
-											src={product.image}
-											width='50'
-											alt={product.name}
-										/>
-									</li>
-									<li>
-										<span style={{ fontWeight: 'bold' }}>
-											Producto:
-										</span>
-										{product.name}
-									</li>
-									<li>
-										<span style={{ fontWeight: 'bold' }}>
-											Cantidad:{' '}
-										</span>
-										{product.cantidad}
-									</li>
-									<li>
-										<span style={{ fontWeight: 'bold' }}>
-											Precio:{' '}
-										</span>
-										${product.price}
-									</li>
-									<li>
-										<span style={{ fontWeight: 'bold' }}>
-											Subtotal:{' '}
-										</span>
-										${product.price * product.cantidad}
-									</li>
-								</Box>
-							</React.Fragment>
-						))}
-						<Box
-							sx={{
-								width: '93%',
+				<Modal
+					open={open}
+					onClose={handleClose}
+					aria-labelledby='modal-modal-title'
+					aria-describedby='modal-modal-description'
+				>
+					<Box sx={style}>
+						<Typography
+							id='modal-modal-title'
+							variant='h6'
+							component='h2'
+							textAlign='center'
+						>
+							RESUMEN DEL PEDIDO
+						</Typography>
+						<ul
+							style={{
+								textDecoration: 'none',
+								listStyle: 'none',
 								display: 'flex',
-								justifyContent: 'end',
-								mt: 5,
+								flexDirection: 'column',
 							}}
 						>
-							<Typography>
-								<span style={{ fontWeight: 'bold' }}>
-									Total de la Compra:
-								</span>{' '}
-								<span style={{ fontSize: 20 }}>$ {total}</span>
-							</Typography>
-						</Box>
-					</ul>
-				</Box>
-			</Modal>
+							{itemsAdded.map((product) => (
+								<React.Fragment key={product.id}>
+									<Box
+										sx={{
+											display: 'flex',
+											justifyContent: 'space-between',
+											alignItems: 'center',
+											gap: { xs: 0, sm: 0, md: 3 },
+											width: { xs: 300, md: 700 },
+											flexDirection: {
+												xs: 'column',
+												md: 'row',
+											},
+										}}
+									>
+										<li>
+											<img
+												src={product.image}
+												width='70'
+												alt={product.name}
+											/>
+										</li>
+										<li>
+											<span
+												style={{ fontWeight: 'bold' }}
+											>
+												Producto:
+											</span>
+											{product.name}
+										</li>
+										<li>
+											<span
+												style={{ fontWeight: 'bold' }}
+											>
+												Cantidad:{' '}
+											</span>
+											{product.cantidad}
+										</li>
+										<li>
+											<span
+												style={{ fontWeight: 'bold' }}
+											>
+												Precio:{' '}
+											</span>
+											${product.price}
+										</li>
+										<li>
+											<span
+												style={{ fontWeight: 'bold' }}
+											>
+												Subtotal:{' '}
+											</span>
+											${product.price * product.cantidad}
+										</li>
+									</Box>
+								</React.Fragment>
+							))}
+							<Box
+								sx={{
+									width: '93%',
+									display: 'flex',
+									justifyContent: 'end',
+									mt: 5,
+								}}
+							>
+								<Typography>
+									<span style={{ fontWeight: 'bold' }}>
+										Total de la Compra:
+									</span>{' '}
+									<span style={{ fontSize: 20 }}>
+										$ {total}
+									</span>
+								</Typography>
+							</Box>
+						</ul>
+					</Box>
+				</Modal>
+			</Box>
 		</>
 	);
 }

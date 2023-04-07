@@ -21,9 +21,13 @@ import { NavLink } from 'react-router-dom';
 // COMPONENTES PROPIOS
 import MUISwitch from '../MUIswitch';
 import CartWidget from '../CartWidget/index';
+import { Box } from '@mui/material';
+import { ThemeContext } from '../../ThemeContextProvider';
+import { useContext } from 'react';
 
 export default function NavListDrawer() {
 	const [openMenu, setOpenMenu] = useState(false);
+	const { isDarkMode } = useContext(ThemeContext);
 
 	const handleClick = () => {
 		setOpenMenu(!openMenu);
@@ -31,124 +35,265 @@ export default function NavListDrawer() {
 
 	return (
 		<>
-			<List
-				sx={{
-					width: 300,
-					bgcolor: 'background.paper',
-				}}
-				component='nav'
-				aria-labelledby='nested-list-subheader'
-				subheader={
-					<ListSubheader component='div' id='nested-list-subheader'>
-						Juguetes Perdidos Tienda Virtual
-					</ListSubheader>
-				}
-			>
-				<ListItemButton onClick={handleClick}>
-					<ListItemIcon>
-						<SportsBarIcon />
-					</ListItemIcon>
-					<ListItemText primary='NUESTRAS CERVEZAS' />
-					{openMenu ? <ExpandLess /> : <ExpandMore />}
-				</ListItemButton>
-				<Collapse in={openMenu} timeout='auto' unmountOnExit>
-					<List component='div' disablePadding>
-						<ListItemButton>
-							<ListItemIcon>
-								<ArrowRightIcon />
-							</ListItemIcon>
-							<NavLink
-								to={'/category/rubia'}
-								style={{
-									textDecoration: 'none',
-									color: 'inherit',
-								}}
-							>
-								<ListItemText primary='CERVEZAS RUBIAS' />
-							</NavLink>
-						</ListItemButton>
-						<ListItemButton>
-							<ListItemIcon>
-								<ArrowRightIcon />
-							</ListItemIcon>
-							<NavLink
-								to={'/category/roja'}
-								style={{
-									textDecoration: 'none',
-									color: 'inherit',
-								}}
-							>
-								<ListItemText primary='CERVEZAS ROJAS' />
-							</NavLink>
-						</ListItemButton>
-						<ListItemButton>
-							<ListItemIcon>
-								<ArrowRightIcon />
-							</ListItemIcon>
-							<NavLink
-								to={'/category/negra'}
-								style={{
-									textDecoration: 'none',
-									color: 'inherit',
-								}}
-							>
-								<ListItemText primary='CERVEZAS NEGRAS' />
-							</NavLink>
-						</ListItemButton>
-						<ListItemButton>
-							<ListItemIcon>
-								<ArrowRightIcon />
-							</ListItemIcon>
-							<NavLink
-								to={'/products'}
-								style={{
-									textDecoration: 'none',
-									color: 'inherit',
-								}}
-							>
-								<ListItemText primary='VER TODAS' />
-							</NavLink>
-						</ListItemButton>
-					</List>
-				</Collapse>
+			{isDarkMode ? (
+				<List
+					sx={{
+						width: 300,
+						bgcolor: 'background.paper',
+					}}
+					component='nav'
+					aria-labelledby='nested-list-subheader'
+					subheader={
+						<ListSubheader
+							component='div'
+							id='nested-list-subheader'
+						>
+							Juguetes Perdidos Tienda Virtual
+						</ListSubheader>
+					}
+				>
+					<ListItemButton onClick={handleClick}>
+						<ListItemIcon>
+							<SportsBarIcon style={{ color: 'white' }} />
+						</ListItemIcon>
+						<ListItemText primary='NUESTRAS CERVEZAS' />
+						{openMenu ? <ExpandLess /> : <ExpandMore />}
+					</ListItemButton>
+					<Collapse in={openMenu} timeout='auto' unmountOnExit>
+						<List component='div' disablePadding>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon
+										style={{ color: 'white' }}
+									/>
+								</ListItemIcon>
+								<NavLink
+									to={'/category/rubia'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='CERVEZAS RUBIAS' />
+								</NavLink>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon
+										style={{ color: 'white' }}
+									/>
+								</ListItemIcon>
+								<NavLink
+									to={'/category/roja'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='CERVEZAS ROJAS' />
+								</NavLink>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon
+										style={{ color: 'white' }}
+									/>
+								</ListItemIcon>
+								<NavLink
+									to={'/category/negra'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='CERVEZAS NEGRAS' />
+								</NavLink>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon
+										style={{ color: 'white' }}
+									/>
+								</ListItemIcon>
+								<NavLink
+									to={'/products'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='VER TODAS' />
+								</NavLink>
+							</ListItemButton>
+						</List>
+					</Collapse>
 
-				<ListItemButton>
-					<ListItemIcon>
-						<SendIcon />
-					</ListItemIcon>
-					<NavLink
-						to={'/nosotros'}
-						style={{
-							textDecoration: 'none',
-							color: 'inherit',
-						}}
-					>
-						<ListItemText primary='NOSOTROS' />
-					</NavLink>
-				</ListItemButton>
+					<ListItemButton>
+						<ListItemIcon>
+							<SendIcon style={{ color: 'white' }} />
+						</ListItemIcon>
+						<NavLink
+							to={'/nosotros'}
+							style={{
+								textDecoration: 'none',
+								color: 'inherit',
+							}}
+						>
+							<ListItemText primary='NOSOTROS' />
+						</NavLink>
+					</ListItemButton>
 
-				<ListItemButton>
-					<ListItemIcon>
-						<DraftsIcon />
-					</ListItemIcon>
-					<NavLink
-						to={'/reservas'}
-						style={{
-							textDecoration: 'none',
-							color: 'inherit',
-						}}
-					>
-						<ListItemText primary='RESERVAS' />
-					</NavLink>
-				</ListItemButton>
-				<ListItemButton>
-					<ListItemText primary='Screen Mode' />
-					<MUISwitch />
-				</ListItemButton>
-				<ListItemButton>
-					<CartWidget />
-				</ListItemButton>
-			</List>
+					<ListItemButton>
+						<ListItemIcon>
+							<DraftsIcon style={{ color: 'white' }} />
+						</ListItemIcon>
+						<NavLink
+							to={'/reservas'}
+							style={{
+								textDecoration: 'none',
+								color: 'inherit',
+							}}
+						>
+							<ListItemText primary='RESERVAS' />
+						</NavLink>
+					</ListItemButton>
+					<ListItemButton>
+						<ListItemText primary='Screen Mode' />
+						<MUISwitch />
+					</ListItemButton>
+					<ListItemButton>
+						<ListItemText primary='Carrito de Compras' />
+						<Box sx={{ mr: 4 }}>
+							<CartWidget />
+						</Box>
+					</ListItemButton>
+				</List>
+			) : (
+				<List
+					sx={{
+						width: 300,
+						bgcolor: 'background.paper',
+					}}
+					component='nav'
+					aria-labelledby='nested-list-subheader'
+					subheader={
+						<ListSubheader
+							component='div'
+							id='nested-list-subheader'
+						>
+							Juguetes Perdidos Tienda Virtual
+						</ListSubheader>
+					}
+				>
+					<ListItemButton onClick={handleClick}>
+						<ListItemIcon>
+							<SportsBarIcon />
+						</ListItemIcon>
+						<ListItemText primary='NUESTRAS CERVEZAS' />
+						{openMenu ? <ExpandLess /> : <ExpandMore />}
+					</ListItemButton>
+					<Collapse in={openMenu} timeout='auto' unmountOnExit>
+						<List component='div' disablePadding>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon />
+								</ListItemIcon>
+								<NavLink
+									to={'/category/rubia'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='CERVEZAS RUBIAS' />
+								</NavLink>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon />
+								</ListItemIcon>
+								<NavLink
+									to={'/category/roja'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='CERVEZAS ROJAS' />
+								</NavLink>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon />
+								</ListItemIcon>
+								<NavLink
+									to={'/category/negra'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='CERVEZAS NEGRAS' />
+								</NavLink>
+							</ListItemButton>
+							<ListItemButton>
+								<ListItemIcon>
+									<ArrowRightIcon />
+								</ListItemIcon>
+								<NavLink
+									to={'/products'}
+									style={{
+										textDecoration: 'none',
+										color: 'inherit',
+									}}
+								>
+									<ListItemText primary='VER TODAS' />
+								</NavLink>
+							</ListItemButton>
+						</List>
+					</Collapse>
+
+					<ListItemButton>
+						<ListItemIcon>
+							<SendIcon />
+						</ListItemIcon>
+						<NavLink
+							to={'/nosotros'}
+							style={{
+								textDecoration: 'none',
+								color: 'inherit',
+							}}
+						>
+							<ListItemText primary='NOSOTROS' />
+						</NavLink>
+					</ListItemButton>
+
+					<ListItemButton>
+						<ListItemIcon>
+							<DraftsIcon />
+						</ListItemIcon>
+						<NavLink
+							to={'/reservas'}
+							style={{
+								textDecoration: 'none',
+								color: 'inherit',
+							}}
+						>
+							<ListItemText primary='RESERVAS' />
+						</NavLink>
+					</ListItemButton>
+					<ListItemButton>
+						<ListItemText primary='Screen Mode' />
+						<MUISwitch />
+					</ListItemButton>
+					<ListItemButton>
+						<ListItemText primary='Carrito de Compras' />
+						<Box sx={{ mr: 4 }}>
+							<CartWidget />
+						</Box>
+					</ListItemButton>
+				</List>
+			)}
 		</>
 	);
 }

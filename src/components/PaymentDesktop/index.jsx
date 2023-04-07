@@ -31,6 +31,7 @@ import cardLogo from '../../../public/assets/images/card-logo.svg';
 // COMPONENTES PROPIOS
 import CartOrderSummary from '../CartOrderSummary';
 import CartOrderPurchase from '../CartOrderPurchase';
+import NavBar from '../NavBar';
 
 // FORMIK Y YUP
 import { useFormik } from 'formik';
@@ -160,6 +161,7 @@ export default function PaymentDesktop() {
 
 	return (
 		<>
+			<NavBar />
 			<Container maxWidth={false} disableGutters>
 				<CardMedia
 					image={bgMainDesktop}
