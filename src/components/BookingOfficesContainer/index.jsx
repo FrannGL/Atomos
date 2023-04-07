@@ -38,6 +38,7 @@ export default function BookingOfficesContainer() {
 					display: 'flex',
 					justifyContent: 'center',
 					alignItems: 'center',
+					flexWrap: 'wrap',
 					gap: 4,
 				}}
 			>

@@ -1,5 +1,5 @@
 // COMPONENTES MATERIAL-UI
-import { Card, CardMedia, Grid, Typography } from '@mui/material';
+import { Box, Card, CardMedia, Grid, Typography } from '@mui/material';
 
 // COMPONENTES PROPIOS
 import Footer from '../components/Footer';
@@ -16,7 +16,6 @@ export default function Nosotros() {
 			<NavBar />
 			<Grid
 				container
-				lg={12}
 				sx={{
 					display: 'flex',
 					mt: 3,
@@ -26,12 +25,15 @@ export default function Nosotros() {
 					px: 5,
 					py: 5,
 					gap: 2,
+					flexDirection: { xs: 'column', sm: 'column', md: 'row' },
+					justifyContent: { xs: 'center', sm: 'center' },
+					alignItems: { xs: 'center', sm: 'center' },
 				}}
 			>
 				<Grid
 					item
 					sx={{
-						minWidth: '35%',
+						minWidth: { xs: '100%', sm: '100%', md: '35%' },
 						height: 300,
 					}}
 				>
@@ -45,7 +47,7 @@ export default function Nosotros() {
 				<Grid
 					item
 					sx={{
-						width: '63%',
+						width: { sm: '100%', md: '63%' },
 						height: 300,
 					}}
 				>
@@ -63,45 +65,64 @@ export default function Nosotros() {
 						todo nuestro equipo de trabajo.
 					</Typography>
 				</Grid>
-				<Grid item sx={{ width: '63%', height: 300 }}>
-					<Typography variant='h2' align='right'>
-						VISIÓN
-					</Typography>
-					<Typography
-						variant='p'
-						align='right'
-						sx={{
-							display: 'flex',
-							justifyContent: 'end',
-							alignItems: 'center',
-						}}
-					>
-						Aspiramos a ser los Artesanos Cerveceros líderes en
-						generar experiencias únicas, brindándole a la comunidad
-						nuestra calidad humana, fusionando la cerveza con el
-						arte y la gastronomía.
-					</Typography>
-				</Grid>
-				<Grid
-					item
+				<Box
 					sx={{
-						backgroundColor: 'red',
-						minWidth: '35%',
-						height: 300,
+						display: 'flex',
+						flexDirection: {
+							xs: 'column',
+							sm: 'column',
+							md: 'row-reverse',
+						},
 					}}
 				>
-					<Card>
-						<CardMedia
-							image={foto2}
-							sx={{ height: 300 }}
-						></CardMedia>
-					</Card>
-				</Grid>
+					<Grid
+						item
+						sx={{
+							backgroundColor: 'red',
+							minWidth: { xs: '100%', sm: '100%', md: '35%' },
+							height: 300,
+						}}
+					>
+						<Card>
+							<CardMedia
+								image={foto2}
+								sx={{ height: 300 }}
+							></CardMedia>
+						</Card>
+					</Grid>
+					<Grid
+						item
+						sx={{
+							width: { sm: '100%', md: '63%' },
+							height: 300,
+							mr: 3,
+							mt: { xs: 1, md: 0 },
+						}}
+					>
+						<Typography variant='h2' align='right'>
+							VISIÓN
+						</Typography>
+						<Typography
+							variant='p'
+							align='right'
+							sx={{
+								display: 'flex',
+								justifyContent: 'end',
+								alignItems: 'center',
+							}}
+						>
+							Aspiramos a ser los Artesanos Cerveceros líderes en
+							generar experiencias únicas, brindándole a la
+							comunidad nuestra calidad humana, fusionando la
+							cerveza con el arte y la gastronomía.
+						</Typography>
+					</Grid>
+				</Box>
 				<Grid
 					item
 					sx={{
 						backgroundColor: 'red',
-						minWidth: '35%',
+						minWidth: { xs: '100%', sm: '100%', md: '35%' },
 						height: 300,
 					}}
 				>
@@ -112,7 +133,10 @@ export default function Nosotros() {
 						></CardMedia>
 					</Card>
 				</Grid>
-				<Grid item sx={{ width: '63%', height: 300 }}>
+				<Grid
+					item
+					sx={{ width: { sm: '100%', md: '63%' }, height: 300 }}
+				>
 					<Typography variant='h2'>VALORES</Typography>
 					<Typography
 						variant='p'

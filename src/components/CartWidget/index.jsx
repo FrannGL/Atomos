@@ -18,6 +18,8 @@ const StyledBadge = styled(Badge)(() => ({
 	},
 }));
 
+const width = window.innerWidth;
+
 export default function CartWidget() {
 	const { cartQuantity } = useContext(Context);
 	const { itemsAdded } = useContext(Context);
@@ -43,10 +45,17 @@ export default function CartWidget() {
 							}
 							color='info'
 						>
-							<LocalMallIcon
-								style={{ color: 'black' }}
-								fontSize='medium'
-							/>
+							{width > 600 ? (
+								<LocalMallIcon
+									style={{ color: 'white' }}
+									fontSize='medium'
+								/>
+							) : (
+								<LocalMallIcon
+									style={{ color: 'black' }}
+									fontSize='medium'
+								/>
+							)}
 						</StyledBadge>
 					)}
 				</NavLink>
