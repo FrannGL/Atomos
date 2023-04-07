@@ -125,7 +125,7 @@ export default function NavBar() {
 										to={'/category/rubia'}
 										style={{
 											textDecoration: 'none',
-											color: 'black',
+											color: 'inherit',
 										}}
 									>
 										CERVEZAS RUBIAS
@@ -136,7 +136,7 @@ export default function NavBar() {
 										to={'/category/roja'}
 										style={{
 											textDecoration: 'none',
-											color: 'black',
+											color: 'inherit',
 										}}
 									>
 										CERVEZAS ROJAS
@@ -147,7 +147,7 @@ export default function NavBar() {
 										to={'/category/negra'}
 										style={{
 											textDecoration: 'none',
-											color: 'black',
+											color: 'inherit',
 										}}
 									>
 										CERVEZAS NEGRAS
@@ -158,7 +158,7 @@ export default function NavBar() {
 										to={'/products'}
 										style={{
 											textDecoration: 'none',
-											color: 'black',
+											color: 'inherit',
 										}}
 									>
 										VER TODO
@@ -200,7 +200,7 @@ export default function NavBar() {
 								</Button>
 							</NavLink>
 						</Box>
-						<Stack direction='row'>
+						<Stack direction='row' spacing={1} sx={{ mr: 3 }}>
 							<MUIswitch />
 							<CartWidget />
 						</Stack>

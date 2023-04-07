@@ -14,8 +14,8 @@ export default function CardItemSkeleton() {
 		>
 			<Card
 				sx={{
-					width: 280,
-					height: 400,
+					width: 270,
+					height: 500,
 					display: 'flex',
 				}}
 			>
