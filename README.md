@@ -1,6 +1,6 @@
 # TIENDA VIRTUAL JUGUETES PERDIDOS
 
-## DEPLOY: [https://juguetes-perdidos.vercel.app/]
+## DEPLOY: https://juguetes-perdidos.vercel.app/
 
 #### Primer proyecto utilizando **React JS** adaptado a cualquier tipo de pantallas, creado a partir de la herramienta de compilación **VITE** utlizando **NPM** y estirilizado con **Material UI**. Navegabilidad a cargo de **REACT-ROUTER** y contexto creado a traves de **CONTEXT API**. Formularios y Validaciones de la mano de **FORMIK** y **YUP**. Los datos se encuentran alojados en **FIREBASE** y el despliege fue realizado a tráves de **VERCEL**.
 
@@ -14,14 +14,20 @@
 ### Tabla de contenidos:
 
 - NUESTRAS CERVEZAS
-  _ CERVEZAS RUBIAS
-  _ CERVEZAS ROJAS
+  - CERVEZAS RUBIAS
+  - CERVEZAS ROJAS
   - CERVEZAS NEGRAS
+
 - SCREEN MODE
+
 - DETALLE DE CADA PRODUCTO
+
 - CARRITO DE COMPRAS
+
 - CENTRO DE PAGOS
+
 - RESERVAS
+
 - NOSOTROS
 
 ### SCREENSHOTS
