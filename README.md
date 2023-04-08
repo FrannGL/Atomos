@@ -11,9 +11,19 @@
 - npm install
 - npm run dev
 
+### Variables de Entorno:
+
+- VITE_apiKey="AIzaSyBd9_BcdIN3ZbOQynCPcLkVCgahb7JrHX0"
+- VITE_authDomain="juguetes-perdidos.firebaseapp.com"
+- VITE_projectId="juguetes-perdidos"
+- VITE_storageBucket="juguetes-perdidos.appspot.com"
+- VITE_messagingSenderId="448426853768"
+- VITE_appId="1:448426853768:web:158795965e51db6419e63d"
+
 ### Tabla de contenidos:
 
 - NUESTRAS CERVEZAS
+
   - CERVEZAS RUBIAS
   - CERVEZAS ROJAS
   - CERVEZAS NEGRAS
