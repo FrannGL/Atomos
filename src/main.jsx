@@ -79,12 +79,12 @@ const router = createBrowserRouter([
 ]);
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBd9_BcdIN3ZbOQynCPcLkVCgahb7JrHX0",
-  authDomain: "juguetes-perdidos.firebaseapp.com",
-  projectId: "juguetes-perdidos",
-  storageBucket: "juguetes-perdidos.appspot.com",
-  messagingSenderId: "448426853768",
-  appId: "1:448426853768:web:158795965e51db6419e63d",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 initializeApp(firebaseConfig);
