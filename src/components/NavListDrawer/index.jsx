@@ -280,12 +280,20 @@ export default function NavListDrawer() {
             <ListItemText primary="Screen Mode" />
             <MUISwitch />
           </ListItemButton>
-          <ListItemButton>
-            <ListItemText primary="Carrito de Compras" />
-            <Box sx={{ mr: 4 }}>
-              <CartWidget />
-            </Box>
-          </ListItemButton>
+          <NavLink
+            to={"/cart"}
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+          >
+            <ListItemButton>
+              <ListItemText primary="Carrito de Compras" />
+              <Box sx={{ mr: 4 }}>
+                <CartWidget />
+              </Box>
+            </ListItemButton>
+          </NavLink>
         </List>
       )}
     </>
