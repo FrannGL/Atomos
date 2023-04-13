@@ -49,7 +49,7 @@ export default function CartListContainer() {
       {/*  --------------------- CONTENEDOR ------------------- */}
       <Box
         sx={{
-          height: { xs: "100%", md: "100%" },
+          minHeight: "100vh",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

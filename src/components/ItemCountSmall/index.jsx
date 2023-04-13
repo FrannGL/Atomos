@@ -7,6 +7,7 @@ import { ThemeContext } from "../../ThemeContextProvider";
 
 export default function ItemCountSmall({ product }) {
   const { addToCart } = useContext(Context);
+  const { showAlert } = useContext(Context);
   const { isDarkMode } = useContext(ThemeContext);
 
   const handleCount = (quantity) => {
@@ -40,8 +41,11 @@ export default function ItemCountSmall({ product }) {
                   padding: 0,
                   color: "black",
                 }}
-                disabled={product.cantidad === 1}
-                onClick={() => handleCount(-1)}
+                onClick={
+									product.cantidad <= 1
+										? () => showAlert(product)
+										: () => handleCount(-1)
+								}
               >
                 <RemoveIcon fontSize="small" />
               </IconButton>
@@ -101,9 +105,12 @@ export default function ItemCountSmall({ product }) {
             >
               <IconButton
                 color="black"
-                disabled={product.cantidad === 1}
                 sx={{ padding: 0, color: "white" }}
-                onClick={() => handleCount(-1)}
+                onClick={
+									product.cantidad <= 1
+										? () => showAlert(product)
+										: () => handleCount(-1)
+								}
               >
                 <RemoveIcon fontSize="small" />
               </IconButton>
